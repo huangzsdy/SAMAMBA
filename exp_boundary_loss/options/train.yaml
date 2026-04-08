@@ -1,0 +1,66 @@
+# 边界损失 (Boundary Loss) 实验配置
+# 主要修改:
+# 1. 启用 bd_loss 以返回距离图
+# 2. 添加边界损失到损失函数
+
+exp:
+  name: SAMamba_BoundaryLoss
+  save_exp: True
+  bs: 1
+  total_epochs: 400
+  log_interval: 1
+  save_interval: 150
+  test_interval: 1
+  device: 0
+
+model:
+  net:
+    type: SAMamba
+
+  optim:
+    type: AdamW
+    init_lr: !!float 5e-4
+    weight_decay: !!float 1e-4
+    betas: [0.9, 0.999]
+  loss:
+    loss_1:
+      type: SoftIoULoss
+      weight: 1
+    loss_2:
+      type: WeightedDiceLoss
+      weight: 1
+    loss_3:
+      type: FocalLoss
+      weight: 1
+    # 添加边界损失 - 针对小目标边缘优化
+    loss_4:
+      type: BD_loss
+      weight: 0.5  # 边界损失权重，可调整
+  lr:
+    warmup_iter: -1
+    scheduler:
+      type: CosineAnnealingLR
+      step_interval: iter
+      eta_min: !!float 1e-5
+
+dataset:
+  name:
+  train:
+    type: Dataset_aug_bac
+    # data_root: c:/Users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+
+    img_sz: 1024
+    bd_loss: True  # 启用边界损失，需要返回距离图
+
+  test:
+    type: Dataset_test
+    # data_root: c:/Users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+
+    img_sz: 1024
+
+resume:
+  # 不加载预训练模型，从头训练
+  net_path:
+  state_path:

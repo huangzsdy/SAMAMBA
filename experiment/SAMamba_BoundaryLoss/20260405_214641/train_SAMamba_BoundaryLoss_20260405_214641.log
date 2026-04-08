@@ -1,0 +1,372 @@
+2026-04-05 21:46:42,161 INFO: 
+Version Information: 
+	PyTorch: 2.7.1+cu126
+	TorchVision: 0.22.1+cu126
+2026-04-05 21:46:42,161 INFO: 
+  exp:[
+    name: SAMamba_BoundaryLoss
+    save_exp: True
+    bs: 2
+    total_epochs: 400
+    log_interval: 1
+    save_interval: 150
+    test_interval: 1
+    device: 0
+    dist: False
+    num_devices: 1
+    total_iters: 132800
+    exp_root: experiment/SAMamba_BoundaryLoss/20260405_214641
+  ]
+  model:[
+    net:[
+      type: SAMamba
+    ]
+    optim:[
+      type: AdamW
+      init_lr: 0.0005
+      weight_decay: 0.0001
+      betas: [0.9, 0.999]
+    ]
+    loss:[
+      loss_1:[
+        type: SoftIoULoss
+        weight: 1
+      ]
+      loss_2:[
+        type: WeightedDiceLoss
+        weight: 1
+      ]
+      loss_3:[
+        type: FocalLoss
+        weight: 1
+      ]
+      loss_4:[
+        type: BD_loss
+        weight: 0.5
+      ]
+    ]
+    lr:[
+      warmup_iter: -1
+      scheduler:[
+        type: CosineAnnealingLR
+        step_interval: iter
+        eta_min: 1e-05
+      ]
+    ]
+  ]
+  dataset:[
+    name: None
+    train:[
+      type: Dataset_aug_bac
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+      img_sz: 1024
+      bd_loss: True
+    ]
+    test:[
+      type: Dataset_test
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+      img_sz: 1024
+    ]
+  ]
+  resume:[
+    net_path: /mnt/c/users/ThinkPad/my_own_files/work/projects/paper/IRSTD/projects/SAMamba-main/models/net_best_sirst.pth
+    state_path: None
+  ]
+
+2026-04-05 21:46:46,140 INFO: Loading SAMamba model from /mnt/c/users/ThinkPad/my_own_files/work/projects/paper/IRSTD/projects/SAMamba-main/models/net_best_sirst.pth.
+2026-04-05 21:46:46,921 WARNING: Current net - loaded net:
+2026-04-05 21:46:46,921 WARNING:   encoder.bn1.bias
+2026-04-05 21:46:46,922 WARNING:   encoder.bn1.num_batches_tracked
+2026-04-05 21:46:46,922 WARNING:   encoder.bn1.running_mean
+2026-04-05 21:46:46,922 WARNING:   encoder.bn1.running_var
+2026-04-05 21:46:46,923 WARNING:   encoder.bn1.weight
+2026-04-05 21:46:46,923 WARNING:   encoder.bn2.bias
+2026-04-05 21:46:46,923 WARNING:   encoder.bn2.num_batches_tracked
+2026-04-05 21:46:46,923 WARNING:   encoder.bn2.running_mean
+2026-04-05 21:46:46,923 WARNING:   encoder.bn2.running_var
+2026-04-05 21:46:46,923 WARNING:   encoder.bn2.weight
+2026-04-05 21:46:46,924 WARNING:   encoder.bn3.bias
+2026-04-05 21:46:46,924 WARNING:   encoder.bn3.num_batches_tracked
+2026-04-05 21:46:46,924 WARNING:   encoder.bn3.running_mean
+2026-04-05 21:46:46,924 WARNING:   encoder.bn3.running_var
+2026-04-05 21:46:46,924 WARNING:   encoder.bn3.weight
+2026-04-05 21:46:46,924 WARNING:   encoder.bn4.bias
+2026-04-05 21:46:46,924 WARNING:   encoder.bn4.num_batches_tracked
+2026-04-05 21:46:46,924 WARNING:   encoder.bn4.running_mean
+2026-04-05 21:46:46,925 WARNING:   encoder.bn4.running_var
+2026-04-05 21:46:46,925 WARNING:   encoder.bn4.weight
+2026-04-05 21:46:46,925 WARNING:   encoder.conv1.bias
+2026-04-05 21:46:46,925 WARNING:   encoder.conv1.weight
+2026-04-05 21:46:46,925 WARNING:   encoder.conv2.bias
+2026-04-05 21:46:46,925 WARNING:   encoder.conv2.weight
+2026-04-05 21:46:46,925 WARNING:   encoder.conv3.bias
+2026-04-05 21:46:46,925 WARNING:   encoder.conv3.weight
+2026-04-05 21:46:46,926 WARNING:   encoder.conv4.bias
+2026-04-05 21:46:46,926 WARNING:   encoder.conv4.weight
+2026-04-05 21:46:46,926 WARNING: Loaded net - current net:
+2026-04-05 21:46:46,926 WARNING:   encoder.blocks.0.block.attn.proj.bias
+2026-04-05 21:46:46,926 WARNING:   encoder.blocks.0.block.attn.proj.weight
+2026-04-05 21:46:46,926 WARNING:   encoder.blocks.0.block.attn.qkv.bias
+2026-04-05 21:46:46,926 WARNING:   encoder.blocks.0.block.attn.qkv.weight
+2026-04-05 21:46:46,926 WARNING:   encoder.blocks.0.block.mlp.layers.0.bias
+2026-04-05 21:46:46,927 WARNING:   encoder.blocks.0.block.mlp.layers.0.weight
+2026-04-05 21:46:46,927 WARNING:   encoder.blocks.0.block.mlp.layers.1.bias
+2026-04-05 21:46:46,927 WARNING:   encoder.blocks.0.block.mlp.layers.1.weight
+2026-04-05 21:46:46,927 WARNING:   encoder.blocks.0.block.norm1.bias
+2026-04-05 21:46:46,927 WARNING:   encoder.blocks.0.block.norm1.weight
+2026-04-05 21:46:46,928 WARNING:   encoder.blocks.0.block.norm2.bias
+2026-04-05 21:46:46,928 WARNING:   encoder.blocks.0.block.norm2.weight
+2026-04-05 21:46:46,928 WARNING:   encoder.blocks.0.monaOp.projector.bias
+2026-04-05 21:46:46,928 WARNING:   encoder.blocks.0.monaOp.projector.weight
+2026-04-05 21:46:46,928 WARNING:   encoder.blocks.0.monaOp.prompt
+2026-04-05 21:46:46,929 WARNING:   encoder.blocks.0.monaOp.top_down_transform
+2026-04-05 21:46:46,929 WARNING:   encoder.blocks.1.block.attn.proj.bias
+2026-04-05 21:46:46,929 WARNING:   encoder.blocks.1.block.attn.proj.weight
+2026-04-05 21:46:46,929 WARNING:   encoder.blocks.1.block.attn.qkv.bias
+2026-04-05 21:46:46,929 WARNING:   encoder.blocks.1.block.attn.qkv.weight
+2026-04-05 21:46:46,930 WARNING:   encoder.blocks.1.block.mlp.layers.0.bias
+2026-04-05 21:46:46,930 WARNING:   encoder.blocks.1.block.mlp.layers.0.weight
+2026-04-05 21:46:46,930 WARNING:   encoder.blocks.1.block.mlp.layers.1.bias
+2026-04-05 21:46:46,930 WARNING:   encoder.blocks.1.block.mlp.layers.1.weight
+2026-04-05 21:46:46,930 WARNING:   encoder.blocks.1.block.norm1.bias
+2026-04-05 21:46:46,930 WARNING:   encoder.blocks.1.block.norm1.weight
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.block.norm2.bias
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.block.norm2.weight
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.block.proj.bias
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.block.proj.weight
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.monaOp.projector.bias
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.monaOp.projector.weight
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.monaOp.prompt
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.1.monaOp.top_down_transform
+2026-04-05 21:46:46,931 WARNING:   encoder.blocks.10.block.attn.proj.bias
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.attn.proj.weight
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.attn.qkv.bias
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.attn.qkv.weight
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.mlp.layers.0.bias
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.mlp.layers.0.weight
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.mlp.layers.1.bias
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.mlp.layers.1.weight
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.norm1.bias
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.norm1.weight
+2026-04-05 21:46:46,932 WARNING:   encoder.blocks.10.block.norm2.bias
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.10.block.norm2.weight
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.10.monaOp.projector.bias
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.10.monaOp.projector.weight
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.10.monaOp.prompt
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.10.monaOp.top_down_transform
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.11.block.attn.proj.bias
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.11.block.attn.proj.weight
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.11.block.attn.qkv.bias
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.11.block.attn.qkv.weight
+2026-04-05 21:46:46,933 WARNING:   encoder.blocks.11.block.mlp.layers.0.bias
+2026-04-05 21:46:46,934 WARNING:   encoder.blocks.11.block.mlp.layers.0.weight
+2026-04-05 21:46:46,934 WARNING:   encoder.blocks.11.block.mlp.layers.1.bias
+2026-04-05 21:46:46,934 WARNING:   encoder.blocks.11.block.mlp.layers.1.weight
+2026-04-05 21:46:46,934 WARNING:   encoder.blocks.11.block.norm1.bias
+2026-04-05 21:46:46,934 WARNING:   encoder.blocks.11.block.norm1.weight
+2026-04-05 21:46:46,934 WARNING:   encoder.blocks.11.block.norm2.bias
+2026-04-05 21:46:46,935 WARNING:   encoder.blocks.11.block.norm2.weight
+2026-04-05 21:46:46,935 WARNING:   encoder.blocks.11.monaOp.projector.bias
+2026-04-05 21:46:46,935 WARNING:   encoder.blocks.11.monaOp.projector.weight
+2026-04-05 21:46:46,935 WARNING:   encoder.blocks.11.monaOp.prompt
+2026-04-05 21:46:46,935 WARNING:   encoder.blocks.11.monaOp.top_down_transform
+2026-04-05 21:46:46,935 WARNING:   encoder.blocks.12.block.attn.proj.bias
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.attn.proj.weight
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.attn.qkv.bias
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.attn.qkv.weight
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.mlp.layers.0.bias
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.mlp.layers.0.weight
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.mlp.layers.1.bias
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.mlp.layers.1.weight
+2026-04-05 21:46:46,936 WARNING:   encoder.blocks.12.block.norm1.bias
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.12.block.norm1.weight
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.12.block.norm2.bias
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.12.block.norm2.weight
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.12.monaOp.projector.bias
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.12.monaOp.projector.weight
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.12.monaOp.prompt
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.12.monaOp.top_down_transform
+2026-04-05 21:46:46,937 WARNING:   encoder.blocks.13.block.attn.proj.bias
+2026-04-05 21:46:46,938 WARNING:   encoder.blocks.13.block.attn.proj.weight
+2026-04-05 21:46:46,938 WARNING:   encoder.blocks.13.block.attn.qkv.bias
+2026-04-05 21:46:46,938 WARNING:   encoder.blocks.13.block.attn.qkv.weight
+2026-04-05 21:46:46,938 WARNING:   encoder.blocks.13.block.mlp.layers.0.bias
+2026-04-05 21:46:46,938 WARNING:   encoder.blocks.13.block.mlp.layers.0.weight
+2026-04-05 21:46:46,938 WARNING:   encoder.blocks.13.block.mlp.layers.1.bias
+2026-04-05 21:46:46,938 WARNING:   encoder.blocks.13.block.mlp.layers.1.weight
+2026-04-05 21:46:46,939 WARNING:   encoder.blocks.13.block.norm1.bias
+2026-04-05 21:46:46,939 WARNING:   encoder.blocks.13.block.norm1.weight
+2026-04-05 21:46:46,939 WARNING:   encoder.blocks.13.block.norm2.bias
+2026-04-05 21:46:46,939 WARNING:   encoder.blocks.13.block.norm2.weight
+2026-04-05 21:46:46,939 WARNING:   encoder.blocks.13.monaOp.projector.bias
+2026-04-05 21:46:46,939 WARNING:   encoder.blocks.13.monaOp.projector.weight
+2026-04-05 21:46:46,939 WARNING:   encoder.blocks.13.monaOp.prompt
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.13.monaOp.top_down_transform
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.attn.proj.bias
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.attn.proj.weight
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.attn.qkv.bias
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.attn.qkv.weight
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.mlp.layers.0.bias
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.mlp.layers.0.weight
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.mlp.layers.1.bias
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.mlp.layers.1.weight
+2026-04-05 21:46:46,940 WARNING:   encoder.blocks.14.block.norm1.bias
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.block.norm1.weight
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.block.norm2.bias
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.block.norm2.weight
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.block.proj.bias
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.block.proj.weight
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.monaOp.projector.bias
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.monaOp.projector.weight
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.monaOp.prompt
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.14.monaOp.top_down_transform
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.15.block.attn.proj.bias
+2026-04-05 21:46:46,941 WARNING:   encoder.blocks.15.block.attn.proj.weight
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.attn.qkv.bias
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.attn.qkv.weight
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.mlp.layers.0.bias
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.mlp.layers.0.weight
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.mlp.layers.1.bias
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.mlp.layers.1.weight
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.norm1.bias
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.norm1.weight
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.norm2.bias
+2026-04-05 21:46:46,942 WARNING:   encoder.blocks.15.block.norm2.weight
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.15.monaOp.projector.bias
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.15.monaOp.projector.weight
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.15.monaOp.prompt
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.15.monaOp.top_down_transform
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.2.block.attn.proj.bias
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.2.block.attn.proj.weight
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.2.block.attn.qkv.bias
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.2.block.attn.qkv.weight
+2026-04-05 21:46:46,943 WARNING:   encoder.blocks.2.block.mlp.layers.0.bias
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.block.mlp.layers.0.weight
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.block.mlp.layers.1.bias
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.block.mlp.layers.1.weight
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.block.norm1.bias
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.block.norm1.weight
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.block.norm2.bias
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.block.norm2.weight
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.monaOp.projector.bias
+2026-04-05 21:46:46,944 WARNING:   encoder.blocks.2.monaOp.projector.weight
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.2.monaOp.prompt
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.2.monaOp.top_down_transform
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.attn.proj.bias
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.attn.proj.weight
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.attn.qkv.bias
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.attn.qkv.weight
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.mlp.layers.0.bias
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.mlp.layers.0.weight
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.mlp.layers.1.bias
+2026-04-05 21:46:46,945 WARNING:   encoder.blocks.3.block.mlp.layers.1.weight
+2026-04-05 21:46:46,946 WARNING:   encoder.blocks.3.block.norm1.bias
+2026-04-05 21:46:46,946 WARNING:   encoder.blocks.3.block.norm1.weight
+2026-04-05 21:46:46,946 WARNING:   encoder.blocks.3.block.norm2.bias
+2026-04-05 21:46:46,946 WARNING:   encoder.blocks.3.block.norm2.weight
+2026-04-05 21:46:46,946 WARNING:   encoder.blocks.3.block.proj.bias
+2026-04-05 21:46:46,946 WARNING:   encoder.blocks.3.block.proj.weight
+2026-04-05 21:46:46,946 WARNING:   encoder.blocks.3.monaOp.projector.bias
+2026-04-05 21:46:46,947 WARNING:   encoder.blocks.3.monaOp.projector.weight
+2026-04-05 21:46:46,947 WARNING:   encoder.blocks.3.monaOp.prompt
+2026-04-05 21:46:46,947 WARNING:   encoder.blocks.3.monaOp.top_down_transform
+2026-04-05 21:46:46,947 WARNING:   encoder.blocks.4.block.attn.proj.bias
+2026-04-05 21:46:46,947 WARNING:   encoder.blocks.4.block.attn.proj.weight
+2026-04-05 21:46:46,947 WARNING:   encoder.blocks.4.block.attn.qkv.bias
+2026-04-05 21:46:46,947 WARNING:   encoder.blocks.4.block.attn.qkv.weight
+2026-04-05 21:46:46,948 WARNING:   encoder.blocks.4.block.mlp.layers.0.bias
+2026-04-05 21:46:46,948 WARNING:   encoder.blocks.4.block.mlp.layers.0.weight
+2026-04-05 21:46:46,948 WARNING:   encoder.blocks.4.block.mlp.layers.1.bias
+2026-04-05 21:46:46,948 WARNING:   encoder.blocks.4.block.mlp.layers.1.weight
+2026-04-05 21:46:46,948 WARNING:   encoder.blocks.4.block.norm1.bias
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.4.block.norm1.weight
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.4.block.norm2.bias
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.4.block.norm2.weight
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.4.monaOp.projector.bias
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.4.monaOp.projector.weight
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.4.monaOp.prompt
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.4.monaOp.top_down_transform
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.5.block.attn.proj.bias
+2026-04-05 21:46:46,949 WARNING:   encoder.blocks.5.block.attn.proj.weight
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.attn.qkv.bias
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.attn.qkv.weight
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.mlp.layers.0.bias
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.mlp.layers.0.weight
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.mlp.layers.1.bias
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.mlp.layers.1.weight
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.norm1.bias
+2026-04-05 21:46:46,950 WARNING:   encoder.blocks.5.block.norm1.weight
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.5.block.norm2.bias
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.5.block.norm2.weight
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.5.monaOp.projector.bias
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.5.monaOp.projector.weight
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.5.monaOp.prompt
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.5.monaOp.top_down_transform
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.6.block.attn.proj.bias
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.6.block.attn.proj.weight
+2026-04-05 21:46:46,951 WARNING:   encoder.blocks.6.block.attn.qkv.bias
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.attn.qkv.weight
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.mlp.layers.0.bias
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.mlp.layers.0.weight
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.mlp.layers.1.bias
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.mlp.layers.1.weight
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.norm1.bias
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.norm1.weight
+2026-04-05 21:46:46,952 WARNING:   encoder.blocks.6.block.norm2.bias
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.6.block.norm2.weight
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.6.monaOp.projector.bias
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.6.monaOp.projector.weight
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.6.monaOp.prompt
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.6.monaOp.top_down_transform
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.7.block.attn.proj.bias
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.7.block.attn.proj.weight
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.7.block.attn.qkv.bias
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.7.block.attn.qkv.weight
+2026-04-05 21:46:46,953 WARNING:   encoder.blocks.7.block.mlp.layers.0.bias
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.block.mlp.layers.0.weight
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.block.mlp.layers.1.bias
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.block.mlp.layers.1.weight
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.block.norm1.bias
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.block.norm1.weight
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.block.norm2.bias
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.block.norm2.weight
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.monaOp.projector.bias
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.monaOp.projector.weight
+2026-04-05 21:46:46,954 WARNING:   encoder.blocks.7.monaOp.prompt
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.7.monaOp.top_down_transform
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.8.block.attn.proj.bias
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.8.block.attn.proj.weight
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.8.block.attn.qkv.bias
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.8.block.attn.qkv.weight
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.8.block.mlp.layers.0.bias
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.8.block.mlp.layers.0.weight
+2026-04-05 21:46:46,955 WARNING:   encoder.blocks.8.block.mlp.layers.1.bias
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.block.mlp.layers.1.weight
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.block.norm1.bias
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.block.norm1.weight
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.block.norm2.bias
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.block.norm2.weight
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.monaOp.projector.bias
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.monaOp.projector.weight
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.monaOp.prompt
+2026-04-05 21:46:46,956 WARNING:   encoder.blocks.8.monaOp.top_down_transform
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.attn.proj.bias
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.attn.proj.weight
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.attn.qkv.bias
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.attn.qkv.weight
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.mlp.layers.0.bias
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.mlp.layers.0.weight
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.mlp.layers.1.bias
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.mlp.layers.1.weight
+2026-04-05 21:46:46,957 WARNING:   encoder.blocks.9.block.norm1.bias
+2026-04-05 21:46:46,958 WARNING:   encoder.blocks.9.block.norm1.weight
+2026-04-05 21:46:46,958 WARNING:   encoder.blocks.9.block.norm2.bias
+2026-04-05 21:46:46,958 WARNING:   encoder.blocks.9.block.norm2.weight
+2026-04-05 21:46:46,958 WARNING:   encoder.blocks.9.monaOp.projector.bias
+2026-04-05 21:46:46,958 WARNING:   encoder.blocks.9.monaOp.projector.weight
+2026-04-05 21:46:46,958 WARNING:   encoder.blocks.9.monaOp.prompt
+2026-04-05 21:46:46,958 WARNING:   encoder.blocks.9.monaOp.top_down_transform
+2026-04-05 21:46:46,958 WARNING:   encoder.patch_embed.proj.bias
+2026-04-05 21:46:46,958 WARNING:   encoder.patch_embed.proj.weight
+2026-04-05 21:46:46,958 WARNING:   encoder.pos_embed
+2026-04-05 21:46:46,959 WARNING:   encoder.pos_embed_window

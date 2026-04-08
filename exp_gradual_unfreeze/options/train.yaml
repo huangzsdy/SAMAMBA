@@ -1,0 +1,87 @@
+# 渐进式解冻 (Gradual Unfreezing) 实验配置
+# 训练策略:
+# 阶段1: 冻结骨干网络，训练适配器和解码器 (前150 epoch)
+# 阶段2: 解冻最后几层编码器，继续训练 (150-300 epoch)
+# 阶段3: 完全解冻编码器，微调 (300-400 epoch)
+
+exp:
+  name: SAMamba_GradualUnfreeze
+  save_exp: True
+  bs: 1
+  total_epochs: 400
+  log_interval: 1
+  save_interval: 150
+  test_interval: 1
+  device: 1
+
+model:
+  net:
+    type: SAMamba
+
+  # 渐进式解冻配置
+  gradual_unfreeze:
+    enabled: True
+    # 解冻阶段配置
+    stages:
+      - name: stage1_freeze  # 阶段1: 全部冻结
+        start_epoch: 0
+        end_epoch: 150
+        unfreeze_layers: []  # 不解冻任何层
+
+      - name: stage2_partial  # 阶段2: 解冻后半部分
+        start_epoch: 151
+        end_epoch: 300
+        unfreeze_layers: ['encoder.blocks.8', 'encoder.blocks.9', 'encoder.blocks.10',
+                          'encoder.blocks.11', 'encoder.blocks.12', 'encoder.blocks.13',
+                          'encoder.blocks.14', 'encoder.blocks.15']
+
+      - name: stage3_full  # 阶段3: 完全解冻
+        start_epoch: 301
+        end_epoch: 400
+        unfreeze_layers: ['encoder.blocks']  # 解冻所有块
+
+    # 阶段2的学习率调整
+    stage2_lr_factor: 0.1  # 学习率降低为原来的 0.1
+    stage3_lr_factor: 0.01  # 学习率降低为原来的 0.01
+
+  optim:
+    type: AdamW
+    init_lr: !!float 5e-4
+    weight_decay: !!float 1e-4
+    betas: [0.9, 0.999]
+  loss:
+    loss_1:
+      type: SoftIoULoss
+      weight: 1
+    loss_2:
+      type: WeightedDiceLoss
+      weight: 1
+    loss_3:
+      type: FocalLoss
+      weight: 1
+  lr:
+    warmup_iter: -1
+    scheduler:
+      type: CosineAnnealingLR
+      step_interval: iter
+      eta_min: !!float 1e-5
+
+dataset:
+  name:
+  train:
+    type: Dataset_aug_bac
+    # data_root: c:/Users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+
+    img_sz: 1024
+
+  test:
+    type: Dataset_test
+    # data_root: c:/Users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+
+    img_sz: 1024
+
+resume:
+  net_path:
+  state_path:

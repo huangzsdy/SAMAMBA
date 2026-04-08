@@ -1,0 +1,62 @@
+# 更大 SAM2 骨干网络实验配置
+# 使用 SAM2 Hiera Base+ 或 Large 作为骨干网络
+# 注意: config 参数暂时保留，使用默认的 sam2_hiera_s.yaml
+
+exp:
+  name: SAMamba_LargerBackbone
+  save_exp: True
+  bs: 1
+  total_epochs: 400
+  log_interval: 1
+  save_interval: 150
+  test_interval: 1
+  device: 1
+
+model:
+  net:
+    type: SAMamba
+    # 注意: 由于 Hydra 配置问题，暂时使用默认配置
+    # config: sam2_hiera_b+  # 需要先修复 Hydra 问题
+    checkpoint_path: /mnt/c/users/ThinkPad/my_own_files/work/projects/paper/IRSTD/projects/SAMamba-main/models/sam2_hiera_base_plus.pt
+
+  optim:
+    type: AdamW
+    init_lr: !!float 5e-4
+    weight_decay: !!float 1e-4
+    betas: [0.9, 0.999]
+  loss:
+    loss_1:
+      type: SoftIoULoss
+      weight: 1
+    loss_2:
+      type: WeightedDiceLoss
+      weight: 1
+    loss_3:
+      type: FocalLoss
+      weight: 1
+  lr:
+    warmup_iter: -1
+    scheduler:
+      type: CosineAnnealingLR
+      step_interval: iter
+      eta_min: !!float 1e-5
+
+dataset:
+  name:
+  train:
+    type: Dataset_aug_bac
+    # data_root: c:/Users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+
+    img_sz: 1024
+
+  test:
+    type: Dataset_test
+    # data_root: /media/data2/zhengshuchen/code/nudt/test
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+
+    img_sz: 1024
+
+resume:
+  net_path:
+  state_path:

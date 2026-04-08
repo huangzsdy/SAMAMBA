@@ -1,0 +1,75 @@
+2026-04-05 21:41:31,241 INFO: 
+Version Information: 
+	PyTorch: 2.7.1+cu126
+	TorchVision: 0.22.1+cu126
+2026-04-05 21:41:31,242 INFO: 
+  exp:[
+    name: SAMamba_BoundaryLoss
+    save_exp: True
+    bs: 2
+    total_epochs: 400
+    log_interval: 1
+    save_interval: 150
+    test_interval: 1
+    device: 0
+    dist: False
+    num_devices: 1
+    total_iters: 132800
+    exp_root: experiment/SAMamba_BoundaryLoss/20260405_214130
+  ]
+  model:[
+    net:[
+      type: SAMamba
+    ]
+    optim:[
+      type: AdamW
+      init_lr: 0.0005
+      weight_decay: 0.0001
+      betas: [0.9, 0.999]
+    ]
+    loss:[
+      loss_1:[
+        type: SoftIoULoss
+        weight: 1
+      ]
+      loss_2:[
+        type: WeightedDiceLoss
+        weight: 1
+      ]
+      loss_3:[
+        type: FocalLoss
+        weight: 1
+      ]
+      loss_4:[
+        type: BD_loss
+        weight: 0.5
+      ]
+    ]
+    lr:[
+      warmup_iter: -1
+      scheduler:[
+        type: CosineAnnealingLR
+        step_interval: iter
+        eta_min: 1e-05
+      ]
+    ]
+  ]
+  dataset:[
+    name: None
+    train:[
+      type: Dataset_aug_bac
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+      img_sz: 1024
+      bd_loss: True
+    ]
+    test:[
+      type: Dataset_test
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+      img_sz: 1024
+    ]
+  ]
+  resume:[
+    net_path: /mnt/c/users/ThinkPad/my_own_files/work/projects/paper/IRSTD/projects/SAMamba-main/models/net_best_irstd.pth
+    state_path: None
+  ]
+

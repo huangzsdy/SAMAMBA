@@ -1,0 +1,26 @@
+# TTA 测试配置文件
+
+exp:
+  save_dir: ./experiment/output_tta
+  bs: 1
+  device: 0
+  tta:
+    enabled: True
+    transforms: ['original', 'hflip', 'vflip', 'hvflip']
+    merge_mode: 'mean'
+
+model:
+  net:
+    type: SAMamba
+
+dataset:
+  test:
+    type: Dataset_test
+    # data_root: c:/Users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+
+    img_sz: 1024
+    get_name: True
+
+resume:
+  net_path:

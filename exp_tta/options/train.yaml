@@ -1,0 +1,64 @@
+# TTA (Test Time Augmentation) 实验配置
+# 继承自原始 train.yaml，主要修改:
+# 1. 使用测试模式
+# 2. 启用 TTA
+
+exp:
+  name: SAMamba_TTA
+  save_exp: True
+  bs: 1  # TTA 时 batch_size 设为 1
+  total_epochs: 400
+  log_interval: 1
+  save_interval: 150
+  test_interval: 1
+  device: 0
+  # TTA 配置
+  tta:
+    enabled: True
+    transforms: ['original', 'hflip', 'vflip']  # 可添加更多: 'rotate90', 'rotate270'
+    merge_mode: 'mean'  # 'mean' or 'max'
+
+model:
+  net:
+    type: SAMamba
+
+  optim:
+    type: AdamW
+    init_lr: !!float 5e-4
+    weight_decay: !!float 1e-4
+    betas: [0.9, 0.999]
+  loss:
+    loss_1:
+      type: SoftIoULoss
+      weight: 1
+    loss_2:
+      type: WeightedDiceLoss
+      weight: 1
+    loss_3:
+      type: FocalLoss
+      weight: 1
+  lr:
+    warmup_iter: -1
+    scheduler:
+      type: CosineAnnealingLR
+      step_interval: iter
+      eta_min: !!float 1e-5
+
+dataset:
+  name:
+  train:
+    type: Dataset_aug_bac
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+    img_sz: 1024
+
+  test:
+    type: Dataset_test
+    # data_root: /media/data2/zhengshuchen/code/nudt/test
+    data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+
+    img_sz: 1024
+
+resume:
+  # net_path: /media/data2/zhengshuchen/code/SAMamba/weight/net_best_irstd.pth
+  net_path: /mnt/c/users/ThinkPad/my_own_files/work/projects/paper/IRSTD/projects/SAMamba-main/models/net_best_irstd.pth
+  state_path:

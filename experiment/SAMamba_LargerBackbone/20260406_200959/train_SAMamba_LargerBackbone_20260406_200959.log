@@ -1,0 +1,305 @@
+2026-04-06 20:10:01,415 INFO: 
+Version Information: 
+	PyTorch: 2.7.1+cu126
+	TorchVision: 0.22.1+cu126
+2026-04-06 20:10:01,415 INFO: 
+  exp:[
+    name: SAMamba_LargerBackbone
+    save_exp: True
+    bs: 1
+    total_epochs: 400
+    log_interval: 1
+    save_interval: 150
+    test_interval: 1
+    device: 1
+    dist: False
+    num_devices: 1
+    total_iters: 265600
+    exp_root: experiment/SAMamba_LargerBackbone/20260406_200959
+  ]
+  model:[
+    net:[
+      type: SAMamba
+      checkpoint_path: /mnt/c/users/ThinkPad/my_own_files/work/projects/paper/IRSTD/projects/SAMamba-main/models/sam2_hiera_base_plus.pt
+    ]
+    optim:[
+      type: AdamW
+      init_lr: 0.0005
+      weight_decay: 0.0001
+      betas: [0.9, 0.999]
+    ]
+    loss:[
+      loss_1:[
+        type: SoftIoULoss
+        weight: 1
+      ]
+      loss_2:[
+        type: WeightedDiceLoss
+        weight: 1
+      ]
+      loss_3:[
+        type: FocalLoss
+        weight: 1
+      ]
+    ]
+    lr:[
+      warmup_iter: -1
+      scheduler:[
+        type: CosineAnnealingLR
+        step_interval: iter
+        eta_min: 1e-05
+      ]
+    ]
+  ]
+  dataset:[
+    name: None
+    train:[
+      type: Dataset_aug_bac
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+      img_sz: 1024
+    ]
+    test:[
+      type: Dataset_test
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+      img_sz: 1024
+    ]
+  ]
+  resume:[
+    net_path: None
+    state_path: None
+  ]
+
+2026-04-06 20:10:05,764 INFO: load from random initialized network
+2026-04-06 20:10:05,764 INFO: training from epoch: 1
+2026-04-06 21:49:17,451 INFO: [SAMamba_LargerBackbone][epoch:  1, lr:(5.000e-04,)] [eta: 27 days, 11:38:22, time (epoch): 4524.700 ] 
+TrainSet
+SoftIoULoss_0:6.1020e+02  WeightedDiceLoss_0:5.8770e+02  FocalLoss_0:1.5477e+00  
+m_fscore:0.0799  m_iou:0.0416  n_fscore:0.1529  n_iou:0.1082  
+TestSet
+SoftIoULoss_0:6.6400e+02  WeightedDiceLoss_0:6.6399e+02  FocalLoss_0:1.3370e+00  
+m_fscore:0.0000  m_iou:0.0000  n_fscore:0.0000  n_iou:0.0000  
+
+2026-04-06 23:18:07,097 INFO: [SAMamba_LargerBackbone][epoch:  2, lr:(5.000e-04,)] [eta: 25 days, 23:36:20, time (epoch): 4216.713 ] 
+TrainSet
+SoftIoULoss_0:5.0962e+02  WeightedDiceLoss_0:4.5462e+02  FocalLoss_0:1.1199e+00  
+m_fscore:0.3297  m_iou:0.1974  n_fscore:0.3187  n_iou:0.2361  
+TestSet
+SoftIoULoss_0:6.2949e+02  WeightedDiceLoss_0:6.1239e+02  FocalLoss_0:1.4687e+00  
+m_fscore:0.1163  m_iou:0.0617  n_fscore:0.0775  n_iou:0.0520  
+
+2026-04-07 00:46:12,360 INFO: [SAMamba_LargerBackbone][epoch:  3, lr:(4.999e-04,)] [eta: 25 days, 8:58:29, time (epoch): 4161.681 ] 
+TrainSet
+SoftIoULoss_0:4.4484e+02  WeightedDiceLoss_0:3.7688e+02  FocalLoss_0:1.0868e+00  
+m_fscore:0.4504  m_iou:0.2907  n_fscore:0.4340  n_iou:0.3319  
+TestSet
+SoftIoULoss_0:6.2389e+02  WeightedDiceLoss_0:6.0526e+02  FocalLoss_0:1.6441e+00  
+m_fscore:0.1381  m_iou:0.0742  n_fscore:0.0884  n_iou:0.0605  
+
+2026-04-07 02:14:59,074 INFO: [SAMamba_LargerBackbone][epoch:  4, lr:(4.999e-04,)] [eta: 25 days, 2:03:54, time (epoch): 4204.769 ] 
+TrainSet
+SoftIoULoss_0:4.3290e+02  WeightedDiceLoss_0:3.6123e+02  FocalLoss_0:1.2109e+00  
+m_fscore:0.4568  m_iou:0.2960  n_fscore:0.4573  n_iou:0.3495  
+TestSet
+SoftIoULoss_0:6.1674e+02  WeightedDiceLoss_0:5.9619e+02  FocalLoss_0:1.6812e+00  
+m_fscore:0.1507  m_iou:0.0815  n_fscore:0.1020  n_iou:0.0713  
+
+2026-04-07 03:44:53,844 INFO: [SAMamba_LargerBackbone][epoch:  5, lr:(4.998e-04,)] [eta: 24 days, 22:49:15, time (epoch): 4270.134 ] 
+TrainSet
+SoftIoULoss_0:4.2006e+02  WeightedDiceLoss_0:3.4739e+02  FocalLoss_0:1.2665e+00  
+m_fscore:0.4912  m_iou:0.3256  n_fscore:0.4776  n_iou:0.3683  
+TestSet
+SoftIoULoss_0:6.1167e+02  WeightedDiceLoss_0:5.8938e+02  FocalLoss_0:2.0050e+00  
+m_fscore:0.1617  m_iou:0.0880  n_fscore:0.1121  n_iou:0.0789  
+
+2026-04-07 05:13:06,405 INFO: [SAMamba_LargerBackbone][epoch:  6, lr:(4.997e-04,)] [eta: 24 days, 18:17:40, time (epoch): 4217.464 ] 
+TrainSet
+SoftIoULoss_0:3.9981e+02  WeightedDiceLoss_0:3.2257e+02  FocalLoss_0:1.2318e+00  
+m_fscore:0.5178  m_iou:0.3493  n_fscore:0.5148  n_iou:0.3985  
+TestSet
+SoftIoULoss_0:6.2661e+02  WeightedDiceLoss_0:6.0991e+02  FocalLoss_0:1.9459e+00  
+m_fscore:0.1223  m_iou:0.0651  n_fscore:0.0811  n_iou:0.0562  
+
+2026-04-07 06:41:35,748 INFO: [SAMamba_LargerBackbone][epoch:  7, lr:(4.996e-04,)] [eta: 24 days, 14:54:10, time (epoch): 4218.459 ] 
+TrainSet
+SoftIoULoss_0:3.9883e+02  WeightedDiceLoss_0:3.2244e+02  FocalLoss_0:1.3291e+00  
+m_fscore:0.5159  m_iou:0.3476  n_fscore:0.5146  n_iou:0.3996  
+TestSet
+SoftIoULoss_0:6.2316e+02  WeightedDiceLoss_0:6.0582e+02  FocalLoss_0:1.9743e+00  
+m_fscore:0.1320  m_iou:0.0707  n_fscore:0.0873  n_iou:0.0614  
+
+2026-04-07 08:09:46,895 INFO: [SAMamba_LargerBackbone][epoch:  8, lr:(4.995e-04,)] [eta: 24 days, 11:44:33, time (epoch): 4180.365 ] 
+TrainSet
+SoftIoULoss_0:3.9798e+02  WeightedDiceLoss_0:3.2220e+02  FocalLoss_0:1.3022e+00  
+m_fscore:0.5088  m_iou:0.3412  n_fscore:0.5152  n_iou:0.4010  
+TestSet
+SoftIoULoss_0:6.2232e+02  WeightedDiceLoss_0:6.0442e+02  FocalLoss_0:2.1544e+00  
+m_fscore:0.1376  m_iou:0.0739  n_fscore:0.0897  n_iou:0.0628  
+
+2026-04-07 09:43:48,589 INFO: [SAMamba_LargerBackbone][epoch:  9, lr:(4.994e-04,)] [eta: 24 days, 13:11:19, time (epoch): 4330.006 ] 
+TrainSet
+SoftIoULoss_0:3.9195e+02  WeightedDiceLoss_0:3.1589e+02  FocalLoss_0:1.3582e+00  
+m_fscore:0.5252  m_iou:0.3561  n_fscore:0.5248  n_iou:0.4102  
+TestSet
+SoftIoULoss_0:6.2867e+02  WeightedDiceLoss_0:6.1264e+02  FocalLoss_0:2.1957e+00  
+m_fscore:0.1164  m_iou:0.0618  n_fscore:0.0773  n_iou:0.0533  
+
+2026-04-07 11:12:57,936 INFO: [SAMamba_LargerBackbone][epoch: 10, lr:(4.992e-04,)] [eta: 24 days, 10:51:53, time (epoch): 4212.412 ] 
+TrainSet
+SoftIoULoss_0:3.8688e+02  WeightedDiceLoss_0:3.1157e+02  FocalLoss_0:1.2871e+00  
+m_fscore:0.5520  m_iou:0.3812  n_fscore:0.5313  n_iou:0.4178  
+TestSet
+SoftIoULoss_0:6.3356e+02  WeightedDiceLoss_0:6.1988e+02  FocalLoss_0:1.9724e+00  
+m_fscore:0.1020  m_iou:0.0537  n_fscore:0.0662  n_iou:0.0458  
+
+2026-04-07 12:43:43,137 INFO: [SAMamba_LargerBackbone][epoch: 11, lr:(4.991e-04,)] [eta: 24 days, 9:38:06, time (epoch): 4312.760 ] 
+TrainSet
+SoftIoULoss_0:3.7950e+02  WeightedDiceLoss_0:3.0219e+02  FocalLoss_0:1.3430e+00  
+m_fscore:0.5465  m_iou:0.3760  n_fscore:0.5455  n_iou:0.4290  
+TestSet
+SoftIoULoss_0:6.3440e+02  WeightedDiceLoss_0:6.1924e+02  FocalLoss_0:1.8601e+00  
+m_fscore:0.0988  m_iou:0.0520  n_fscore:0.0671  n_iou:0.0444  
+
+2026-04-07 14:14:48,855 INFO: [SAMamba_LargerBackbone][epoch: 12, lr:(4.989e-04,)] [eta: 24 days, 8:32:31, time (epoch): 4287.781 ] 
+TrainSet
+SoftIoULoss_0:3.8173e+02  WeightedDiceLoss_0:3.0584e+02  FocalLoss_0:1.3952e+00  
+m_fscore:0.5372  m_iou:0.3672  n_fscore:0.5400  n_iou:0.4257  
+TestSet
+SoftIoULoss_0:6.2802e+02  WeightedDiceLoss_0:6.1242e+02  FocalLoss_0:2.1131e+00  
+m_fscore:0.1184  m_iou:0.0629  n_fscore:0.0775  n_iou:0.0542  
+
+2026-04-07 15:46:29,861 INFO: [SAMamba_LargerBackbone][epoch: 13, lr:(4.987e-04,)] [eta: 24 days, 7:40:33, time (epoch): 4343.217 ] 
+TrainSet
+SoftIoULoss_0:3.6750e+02  WeightedDiceLoss_0:2.9103e+02  FocalLoss_0:1.4042e+00  
+m_fscore:0.5627  m_iou:0.3915  n_fscore:0.5619  n_iou:0.4468  
+TestSet
+SoftIoULoss_0:6.1362e+02  WeightedDiceLoss_0:5.9566e+02  FocalLoss_0:2.4511e+00  
+m_fscore:0.1674  m_iou:0.0914  n_fscore:0.1026  n_iou:0.0758  
+
+2026-04-07 17:16:49,297 INFO: [SAMamba_LargerBackbone][epoch: 14, lr:(4.985e-04,)] [eta: 24 days, 6:05:25, time (epoch): 4282.763 ] 
+TrainSet
+SoftIoULoss_0:3.8355e+02  WeightedDiceLoss_0:3.0770e+02  FocalLoss_0:1.5127e+00  
+m_fscore:0.5503  m_iou:0.3796  n_fscore:0.5367  n_iou:0.4225  
+TestSet
+SoftIoULoss_0:6.0751e+02  WeightedDiceLoss_0:5.8608e+02  FocalLoss_0:2.1687e+00  
+m_fscore:0.1851  m_iou:0.1020  n_fscore:0.1170  n_iou:0.0850  
+
+2026-04-07 18:50:04,609 INFO: [SAMamba_LargerBackbone][epoch: 15, lr:(4.983e-04,)] [eta: 24 days, 5:46:09, time (epoch): 4414.871 ] 
+TrainSet
+SoftIoULoss_0:3.5964e+02  WeightedDiceLoss_0:2.8371e+02  FocalLoss_0:1.3365e+00  
+m_fscore:0.5848  m_iou:0.4133  n_fscore:0.5730  n_iou:0.4587  
+TestSet
+SoftIoULoss_0:6.2627e+02  WeightedDiceLoss_0:6.1087e+02  FocalLoss_0:2.3915e+00  
+m_fscore:0.1284  m_iou:0.0686  n_fscore:0.0800  n_iou:0.0569  
+
+2026-04-07 20:25:09,630 INFO: [SAMamba_LargerBackbone][epoch: 16, lr:(4.981e-04,)] [eta: 24 days, 6:01:31, time (epoch): 4506.226 ] 
+TrainSet
+SoftIoULoss_0:3.6078e+02  WeightedDiceLoss_0:2.8253e+02  FocalLoss_0:1.4638e+00  
+m_fscore:0.5916  m_iou:0.4201  n_fscore:0.5750  n_iou:0.4570  
+TestSet
+SoftIoULoss_0:6.2965e+02  WeightedDiceLoss_0:6.1647e+02  FocalLoss_0:2.6459e+00  
+m_fscore:0.1164  m_iou:0.0618  n_fscore:0.0711  n_iou:0.0515  
+
+2026-04-07 22:00:07,693 INFO: [SAMamba_LargerBackbone][epoch: 17, lr:(4.978e-04,)] [eta: 24 days, 6:01:17, time (epoch): 4585.125 ] 
+TrainSet
+SoftIoULoss_0:3.5656e+02  WeightedDiceLoss_0:2.8081e+02  FocalLoss_0:1.4538e+00  
+m_fscore:0.5881  m_iou:0.4165  n_fscore:0.5773  n_iou:0.4633  
+TestSet
+SoftIoULoss_0:6.4424e+02  WeightedDiceLoss_0:6.3419e+02  FocalLoss_0:2.4156e+00  
+m_fscore:0.0664  m_iou:0.0344  n_fscore:0.0449  n_iou:0.0298  
+
+2026-04-07 23:28:26,003 INFO: [SAMamba_LargerBackbone][epoch: 18, lr:(4.976e-04,)] [eta: 24 days, 3:29:08, time (epoch): 4162.474 ] 
+TrainSet
+SoftIoULoss_0:3.5433e+02  WeightedDiceLoss_0:2.7719e+02  FocalLoss_0:1.4236e+00  
+m_fscore:0.5902  m_iou:0.4186  n_fscore:0.5830  n_iou:0.4667  
+TestSet
+SoftIoULoss_0:6.3287e+02  WeightedDiceLoss_0:6.1990e+02  FocalLoss_0:2.2098e+00  
+m_fscore:0.1080  m_iou:0.0571  n_fscore:0.0662  n_iou:0.0468  
+
+2026-04-08 00:55:30,634 INFO: [SAMamba_LargerBackbone][epoch: 19, lr:(4.973e-04,)] [eta: 24 days, 0:39:05, time (epoch): 4127.524 ] 
+TrainSet
+SoftIoULoss_0:3.4633e+02  WeightedDiceLoss_0:2.6880e+02  FocalLoss_0:1.4580e+00  
+m_fscore:0.6094  m_iou:0.4382  n_fscore:0.5954  n_iou:0.4787  
+TestSet
+SoftIoULoss_0:6.1519e+02  WeightedDiceLoss_0:5.9427e+02  FocalLoss_0:2.4281e+00  
+m_fscore:0.1641  m_iou:0.0894  n_fscore:0.1050  n_iou:0.0736  
+
+2026-04-08 02:22:19,250 INFO: [SAMamba_LargerBackbone][epoch: 20, lr:(4.970e-04,)] [eta: 23 days, 21:52:15, time (epoch): 4133.378 ] 
+TrainSet
+SoftIoULoss_0:3.4319e+02  WeightedDiceLoss_0:2.6440e+02  FocalLoss_0:1.4371e+00  
+m_fscore:0.6166  m_iou:0.4457  n_fscore:0.6023  n_iou:0.4836  
+TestSet
+SoftIoULoss_0:6.3419e+02  WeightedDiceLoss_0:6.2231e+02  FocalLoss_0:2.8498e+00  
+m_fscore:0.1089  m_iou:0.0576  n_fscore:0.0626  n_iou:0.0448  
+
+2026-04-08 03:49:49,354 INFO: [SAMamba_LargerBackbone][epoch: 21, lr:(4.967e-04,)] [eta: 23 days, 19:25:31, time (epoch): 4122.906 ] 
+TrainSet
+SoftIoULoss_0:3.4196e+02  WeightedDiceLoss_0:2.6538e+02  FocalLoss_0:1.5034e+00  
+m_fscore:0.6121  m_iou:0.4410  n_fscore:0.6006  n_iou:0.4852  
+TestSet
+SoftIoULoss_0:6.1022e+02  WeightedDiceLoss_0:5.9038e+02  FocalLoss_0:2.5265e+00  
+m_fscore:0.1848  m_iou:0.1018  n_fscore:0.1107  n_iou:0.0810  
+
+2026-04-08 05:19:17,398 INFO: [SAMamba_LargerBackbone][epoch: 22, lr:(4.964e-04,)] [eta: 23 days, 17:37:57, time (epoch): 4235.139 ] 
+TrainSet
+SoftIoULoss_0:3.4333e+02  WeightedDiceLoss_0:2.6830e+02  FocalLoss_0:1.5359e+00  
+m_fscore:0.6101  m_iou:0.4390  n_fscore:0.5962  n_iou:0.4832  
+TestSet
+SoftIoULoss_0:6.2618e+02  WeightedDiceLoss_0:6.1345e+02  FocalLoss_0:2.9100e+00  
+m_fscore:0.1358  m_iou:0.0729  n_fscore:0.0760  n_iou:0.0570  
+
+2026-04-08 06:49:28,882 INFO: [SAMamba_LargerBackbone][epoch: 23, lr:(4.960e-04,)] [eta: 23 days, 16:03:49, time (epoch): 4279.356 ] 
+TrainSet
+SoftIoULoss_0:3.3816e+02  WeightedDiceLoss_0:2.6189e+02  FocalLoss_0:1.4525e+00  
+m_fscore:0.6180  m_iou:0.4471  n_fscore:0.6057  n_iou:0.4908  
+TestSet
+SoftIoULoss_0:6.2636e+02  WeightedDiceLoss_0:6.1197e+02  FocalLoss_0:3.2234e+00  
+m_fscore:0.1258  m_iou:0.0671  n_fscore:0.0783  n_iou:0.0567  
+
+2026-04-08 08:19:56,733 INFO: [SAMamba_LargerBackbone][epoch: 24, lr:(4.957e-04,)] [eta: 23 days, 14:34:17, time (epoch): 4285.708 ] 
+TrainSet
+SoftIoULoss_0:3.4576e+02  WeightedDiceLoss_0:2.7017e+02  FocalLoss_0:1.6199e+00  
+m_fscore:0.6103  m_iou:0.4392  n_fscore:0.5936  n_iou:0.4798  
+TestSet
+SoftIoULoss_0:6.3360e+02  WeightedDiceLoss_0:6.2138e+02  FocalLoss_0:3.1334e+00  
+m_fscore:0.0975  m_iou:0.0513  n_fscore:0.0640  n_iou:0.0457  
+
+2026-04-08 09:52:24,333 INFO: [SAMamba_LargerBackbone][epoch: 25, lr:(4.953e-04,)] [eta: 23 days, 13:34:37, time (epoch): 4290.654 ] 
+TrainSet
+SoftIoULoss_0:3.4134e+02  WeightedDiceLoss_0:2.6472e+02  FocalLoss_0:1.4972e+00  
+m_fscore:0.6100  m_iou:0.4388  n_fscore:0.6015  n_iou:0.4862  
+TestSet
+SoftIoULoss_0:6.4407e+02  WeightedDiceLoss_0:6.3427e+02  FocalLoss_0:2.8799e+00  
+m_fscore:0.0683  m_iou:0.0354  n_fscore:0.0445  n_iou:0.0299  
+
+2026-04-08 11:31:19,936 INFO: [SAMamba_LargerBackbone][epoch: 26, lr:(4.949e-04,)] [eta: 23 days, 14:05:27, time (epoch): 4685.904 ] 
+TrainSet
+SoftIoULoss_0:3.4439e+02  WeightedDiceLoss_0:2.7050e+02  FocalLoss_0:1.6266e+00  
+m_fscore:0.6053  m_iou:0.4340  n_fscore:0.5928  n_iou:0.4815  
+TestSet
+SoftIoULoss_0:6.2908e+02  WeightedDiceLoss_0:6.1470e+02  FocalLoss_0:2.6536e+00  
+m_fscore:0.1216  m_iou:0.0647  n_fscore:0.0742  n_iou:0.0526  
+
+2026-04-08 13:13:47,361 INFO: [SAMamba_LargerBackbone][epoch: 27, lr:(4.945e-04,)] [eta: 23 days, 15:15:27, time (epoch): 4793.573 ] 
+TrainSet
+SoftIoULoss_0:3.3192e+02  WeightedDiceLoss_0:2.5526e+02  FocalLoss_0:1.4240e+00  
+m_fscore:0.6355  m_iou:0.4657  n_fscore:0.6158  n_iou:0.5003  
+TestSet
+SoftIoULoss_0:6.2168e+02  WeightedDiceLoss_0:6.0785e+02  FocalLoss_0:3.1479e+00  
+m_fscore:0.1445  m_iou:0.0779  n_fscore:0.0845  n_iou:0.0637  
+
+2026-04-08 15:01:05,420 INFO: [SAMamba_LargerBackbone][epoch: 28, lr:(4.941e-04,)] [eta: 23 days, 17:17:29, time (epoch): 5068.918 ] 
+TrainSet
+SoftIoULoss_0:3.2864e+02  WeightedDiceLoss_0:2.5555e+02  FocalLoss_0:1.5088e+00  
+m_fscore:0.6306  m_iou:0.4605  n_fscore:0.6152  n_iou:0.5051  
+TestSet
+SoftIoULoss_0:6.3168e+02  WeightedDiceLoss_0:6.1918e+02  FocalLoss_0:3.0224e+00  
+m_fscore:0.1056  m_iou:0.0557  n_fscore:0.0673  n_iou:0.0486  
+
+2026-04-08 16:47:55,271 INFO: [SAMamba_LargerBackbone][epoch: 29, lr:(4.937e-04,)] [eta: 23 days, 18:57:41, time (epoch): 5039.858 ] 
+TrainSet
+SoftIoULoss_0:3.3230e+02  WeightedDiceLoss_0:2.5847e+02  FocalLoss_0:1.5176e+00  
+m_fscore:0.6381  m_iou:0.4686  n_fscore:0.6109  n_iou:0.4997  
+TestSet
+SoftIoULoss_0:6.4362e+02  WeightedDiceLoss_0:6.3467e+02  FocalLoss_0:2.6899e+00  
+m_fscore:0.0770  m_iou:0.0400  n_fscore:0.0441  n_iou:0.0307  
+

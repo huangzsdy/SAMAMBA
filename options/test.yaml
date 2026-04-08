@@ -1,0 +1,19 @@
+exp:
+  save_dir: ./experiment/output
+  bs: 2
+  device: 0
+
+model:
+  net:
+    type: SAMamba
+
+
+dataset:
+  test:
+    type: Dataset_test
+    data_root: c:/Users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+    img_sz: 1024
+    get_name: True
+
+resume:
+  net_path:
