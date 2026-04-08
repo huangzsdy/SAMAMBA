@@ -116,13 +116,17 @@ def main():
             logger.info(f'training from epoch: 1')
 
     msg_logger = MessageLogger(opt, start_epoch=cur_epoch, tb_logger=tb_logger)
+    logger.info(f'Start training... Total epochs: {total_epochs}, Total iters: {total_iters}')
     for epoch in range(cur_epoch, total_epochs+1):
         if opt['exp']['dist']:
             train_loader.sampler.set_epoch(epoch)
         epoch_st_time = time.time()
+        logger.info(f'Start epoch {epoch}/{total_epochs}')
         ########## training ##########
         for idx, data in enumerate(train_loader):
             cur_iter += 1
+            if cur_iter % opt['exp'].get('log_interval', 10) == 0:
+                logger.info(f'Epoch {epoch}, Iter {cur_iter}/{total_iters}, Batch {idx}/{len(train_loader)}')
             model.update_learning_rate(cur_iter, idx)
             model.optimize_one_iter(data, epoch)
         epoch_time = time.time() - epoch_st_time
