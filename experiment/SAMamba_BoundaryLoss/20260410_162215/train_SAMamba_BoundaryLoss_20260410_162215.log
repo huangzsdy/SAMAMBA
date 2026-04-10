@@ -1,0 +1,87 @@
+2026-04-10 16:22:16,825 INFO: 
+Version Information: 
+	PyTorch: 2.7.1+cu126
+	TorchVision: 0.22.1+cu126
+2026-04-10 16:22:16,826 INFO: 
+  exp:[
+    name: SAMamba_BoundaryLoss
+    save_exp: True
+    bs: 1
+    total_epochs: 400
+    log_interval: 1
+    save_interval: 150
+    test_interval: 1
+    device: 0
+    use_amp: True
+    accum_steps: 4
+    use_compile: True
+    compile_mode: max-autotune
+    dist: False
+    num_devices: 1
+    total_iters: 265600
+    exp_root: experiment/SAMamba_BoundaryLoss/20260410_162215
+  ]
+  model:[
+    net:[
+      type: SAMamba
+    ]
+    optim:[
+      type: AdamW
+      init_lr: 0.0005
+      weight_decay: 0.0001
+      betas: [0.9, 0.999]
+    ]
+    loss:[
+      loss_1:[
+        type: SoftIoULoss
+        weight: 1
+      ]
+      loss_2:[
+        type: WeightedDiceLoss
+        weight: 1
+      ]
+      loss_3:[
+        type: FocalLoss
+        weight: 1
+      ]
+      loss_4:[
+        type: BD_loss
+        weight: 0.5
+      ]
+    ]
+    lr:[
+      warmup_iter: -1
+      scheduler:[
+        type: CosineAnnealingLR
+        step_interval: iter
+        eta_min: 1e-05
+      ]
+    ]
+  ]
+  dataset:[
+    name: None
+    train:[
+      type: Dataset_aug_bac
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+      img_sz: 1024
+      bd_loss: True
+    ]
+    test:[
+      type: Dataset_test
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+      img_sz: 1024
+      bd_loss: True
+    ]
+  ]
+  resume:[
+    net_path: None
+    state_path: None
+  ]
+
+2026-04-10 16:22:17,903 INFO: Using torch.compile with mode: max-autotune
+2026-04-10 16:25:35,373 INFO: load from random initialized network
+2026-04-10 16:25:35,374 INFO: training from epoch: 1
+2026-04-10 16:25:35,374 INFO: Start training... Total epochs: 400, Total iters: 265600
+2026-04-10 16:25:35,374 INFO: Start epoch 1/400
+2026-04-10 16:25:35,630 INFO: Epoch 1, Iter 1/265600, Batch 0/663
+2026-04-10 16:31:03,781 INFO: Epoch 1, Iter 2/265600, Batch 1/663

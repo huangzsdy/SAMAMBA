@@ -7,11 +7,20 @@ exp:
   name: SAMamba_BoundaryLoss
   save_exp: True
   bs: 1
-  total_epochs: 400
+  total_epochs: 120
   log_interval: 1
-  save_interval: 150
+  save_interval: 60
   test_interval: 1
-  device: 0
+  device: 0                    # 单卡运行 (可改为多卡如 0,1,2,3)
+  nw: 4                    # 数据加载线程数
+
+  # 加速训练配置 (最快稳定模式: AMP + 梯度累积)
+  use_amp: True              # 混合精度训练，减少显存并提速 30-50%
+  accum_steps: 4            # 梯度累积，bs=1时相当于bs=4
+  use_compile: False         # 关闭 compile，兼容 AMP + 梯度累积
+  pin_memory: True           # 锁页内存，加速CPU-GPU传输
+  prefetch_factor: 4         # 数据预取数量
+  channels_last: True        # channels_last 内存格式，提速约10-20%
 
 model:
   net:
@@ -59,6 +68,7 @@ dataset:
     data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
 
     img_sz: 1024
+    bd_loss: True
 
 resume:
   # 不加载预训练模型，从头训练

@@ -26,6 +26,21 @@ class Base_model():
         self.net = build_network(self.opt['model']['net'])
         self.rank, _ = get_dist_info()
         self.device = torch.device(self.rank)
+
+        # torch.compile 加速 (PyTorch 2.0+)
+        use_compile = self.opt['exp'].get('use_compile', False)
+        if use_compile and hasattr(torch, 'compile'):
+            compile_mode = self.opt['exp'].get('compile_mode', 'default')
+            # 禁用 CUDA graphs 以兼容 AMP + 梯度累积
+            compile_options = {'triton.cudagraphs': False}
+            self.net = torch.compile(self.net, mode=compile_mode, options=compile_options)
+            logger.info(f'Using torch.compile with mode: {compile_mode}')
+
+        # 使用 channels_last 内存格式，提升计算速度
+        if self.opt['exp'].get('channels_last', False):
+            self.net = self.net.to(memory_format=torch.channels_last)
+            logger.info('Using channels_last memory format')
+
         if self.opt['exp'].get('dist', False):
             self.total_rank = self.opt['exp']['num_devices']
             self.net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(self.net).to(self.device)

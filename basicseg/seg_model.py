@@ -10,6 +10,12 @@ class Seg_model(Base_model):
     def __init__(self, opt):
         super().__init__()
         self.opt = opt
+        # 混合精度训练和梯度累积配置
+        self.use_amp = opt['exp'].get('use_amp', False)
+        self.accum_steps = opt['exp'].get('accum_steps', 1)
+        self.scaler = None
+        if self.use_amp:
+            self.scaler = torch.cuda.amp.GradScaler()
         self.init_model()
 
     def init_model(self):
@@ -56,49 +62,35 @@ class Seg_model(Base_model):
             return self.dict_wrapper(batch_loss)
 
     def optimize_one_iter(self, data, epoch):
+        # 初始化 global_step
+        if not hasattr(self, 'global_step'):
+            self.global_step = 0
+
         if self.bd_loss:
             img, mask, dist_map = data
             img, mask, dist_map = img.to(self.device), mask.to(self.device), dist_map.to(self.device)
         else:
             img, mask = data
             img, mask = img.to(self.device), mask.to(self.device)
-        # pred, pred_1, pred_2,pred_3,pred_4 = self.net(img)
-        pred = self.net(img)
-        cur_loss = 0.
-        if not isinstance(pred, (list, tuple)):
-            pred = [pred]
-        for idx, pred_ in enumerate(pred):
-            pred_ = F.interpolate(pred_, mask.shape[2:], mode='bilinear', align_corners=False)
-            if idx == 0:
-                pred[0] = pred_
-            for loss_type, loss_criteria in self.loss_fn.items():
-                if loss_type == 'BD_loss':
-                    loss = loss_criteria(pred_, dist_map) * self.loss_weight[loss_type][idx]
-                else:
-                    # loss = loss_criteria(pred_, mask) + loss_criteria(pred_1,mask) * 0.5 + loss_criteria(pred_2, mask) * 0.25
-                    loss = loss_criteria(pred_, mask) * self.loss_weight[loss_type][idx]
-                    # loss = loss_criteria(pred_, mask) * self.loss_weight[loss_type][idx] +loss_criteria(pred_1, mask) * 0.5 +loss_criteria(pred_2, mask) * 0.25+loss_criteria(pred_3, mask) * 0.125+loss_criteria(pred_4, mask) * 0.0625
-                self.epoch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
-                self.batch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
-                cur_loss += loss
 
-        self.optim.zero_grad()
-        cur_loss.backward()
-        self.optim.step()
-        with torch.no_grad():
-            self.metric.update(pred=pred[0], target=mask)
-        # return loss_result
+        # 梯度累积：第一步需要清空梯度
+        if self.accum_steps > 1 and self.global_step % self.accum_steps == 0:
+            self.optim.zero_grad()
 
-    def test_one_iter(self, data):
-        with torch.no_grad():
+        # 使用 channels_last 内存格式提升速度
+        if self.opt['exp'].get('channels_last', False):
+            img = img.to(memory_format=torch.channels_last)
             if self.bd_loss:
-                img, mask, dist_map = data
-                img, mask, dist_map = img.to(self.device), mask.to(self.device), dist_map.to(self.device)
-            else:
-                img, mask = data
-                img, mask = img.to(self.device), mask.to(self.device)
-            # pred,_,_,_,_ = self.net(img)
+                try:
+                    dist_map = dist_map.to(memory_format=torch.channels_last)
+                except RuntimeError:
+                    # 如果转换失败（比如不是4D tensor），跳过
+                    pass
+
+        # pred, pred_1, pred_2,pred_3,pred_4 = self.net(img)
+        with torch.cuda.amp.autocast(enabled=self.use_amp):
             pred = self.net(img)
+            cur_loss = 0.
             if not isinstance(pred, (list, tuple)):
                 pred = [pred]
             for idx, pred_ in enumerate(pred):
@@ -112,5 +104,55 @@ class Seg_model(Base_model):
                         loss = loss_criteria(pred_, mask) * self.loss_weight[loss_type][idx]
                     self.epoch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
                     self.batch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
+                    cur_loss += loss
+
+            # 梯度累积：缩放 loss
+            if self.accum_steps > 1:
+                cur_loss = cur_loss / self.accum_steps
+
+        # 反向传播
+        if self.use_amp and self.scaler is not None:
+            self.scaler.scale(cur_loss).backward()
+        else:
+            cur_loss.backward()
+
+        # 梯度累积：累积到最后一步才更新参数
+        if (self.global_step + 1) % self.accum_steps == 0:
+            if self.use_amp and self.scaler is not None:
+                self.scaler.step(self.optim)
+                self.scaler.update()
+            else:
+                self.optim.step()
+            self.optim.zero_grad()
+
+        self.global_step += 1
+
+        with torch.no_grad():
             self.metric.update(pred=pred[0], target=mask)
+
+    def test_one_iter(self, data):
+        with torch.no_grad():
+            if self.bd_loss:
+                img, mask, dist_map = data
+                img, mask, dist_map = img.to(self.device), mask.to(self.device), dist_map.to(self.device)
+            else:
+                img, mask = data
+                img, mask = img.to(self.device), mask.to(self.device)
+            # pred,_,_,_,_ = self.net(img)
+            with torch.cuda.amp.autocast(enabled=self.use_amp):
+                pred = self.net(img)
+                if not isinstance(pred, (list, tuple)):
+                    pred = [pred]
+                for idx, pred_ in enumerate(pred):
+                    pred_ = F.interpolate(pred_, mask.shape[2:], mode='bilinear', align_corners=False)
+                    if idx == 0:
+                        pred[0] = pred_
+                    for loss_type, loss_criteria in self.loss_fn.items():
+                        if loss_type == 'BD_loss':
+                            loss = loss_criteria(pred_, dist_map) * self.loss_weight[loss_type][idx]
+                        else:
+                            loss = loss_criteria(pred_, mask) * self.loss_weight[loss_type][idx]
+                        self.epoch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
+                        self.batch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
+                self.metric.update(pred=pred[0], target=mask)
 

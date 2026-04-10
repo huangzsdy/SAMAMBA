@@ -8,36 +8,47 @@ exp:
   name: SAMamba_GradualUnfreeze
   save_exp: True
   bs: 1
-  total_epochs: 400
+  total_epochs: 120
   log_interval: 1
-  save_interval: 150
+  save_interval: 60
   test_interval: 1
   device: 1
+  nw: 4                    # 数据加载线程数
+
+  # 加速训练配置 (最快稳定模式: AMP + 梯度累积)
+  use_amp: True
+  accum_steps: 4
+  use_compile: False         # 关闭，兼容 AMP + 梯度累积
+  pin_memory: True           # 锁页内存，加速CPU-GPU传输
+  prefetch_factor: 4         # 数据预取数量
+  channels_last: True        # channels_last 内存格式，提速约10-20%
+  accum_steps: 4
+  use_compile: False         # 关闭，兼容 AMP + 梯度累积
 
 model:
   net:
     type: SAMamba
 
-  # 渐进式解冻配置
+  # 渐进式解冻配置 (120 epoch 版本)
   gradual_unfreeze:
     enabled: True
     # 解冻阶段配置
     stages:
-      - name: stage1_freeze  # 阶段1: 全部冻结
+      - name: stage1_freeze  # 阶段1: 全部冻结 (0-45 epoch)
         start_epoch: 0
-        end_epoch: 150
+        end_epoch: 45
         unfreeze_layers: []  # 不解冻任何层
 
-      - name: stage2_partial  # 阶段2: 解冻后半部分
-        start_epoch: 151
-        end_epoch: 300
+      - name: stage2_partial  # 阶段2: 解冻后半部分 (46-90 epoch)
+        start_epoch: 46
+        end_epoch: 90
         unfreeze_layers: ['encoder.blocks.8', 'encoder.blocks.9', 'encoder.blocks.10',
                           'encoder.blocks.11', 'encoder.blocks.12', 'encoder.blocks.13',
                           'encoder.blocks.14', 'encoder.blocks.15']
 
-      - name: stage3_full  # 阶段3: 完全解冻
-        start_epoch: 301
-        end_epoch: 400
+      - name: stage3_full  # 阶段3: 完全解冻 (91-120 epoch)
+        start_epoch: 91
+        end_epoch: 120
         unfreeze_layers: ['encoder.blocks']  # 解冻所有块
 
     # 阶段2的学习率调整

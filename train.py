@@ -8,6 +8,10 @@ import time
 import logging
 import random
 import copy
+try:
+    import setproctitle
+except ImportError:
+    setproctitle = None
 import numpy as np
 from basicseg.seg_model import Seg_model
 from basicseg.utils.yaml_options import parse_options, dict2str
@@ -28,6 +32,10 @@ def set_seed(seed, cuda_deterministic=False):
         # faster
         torch.backends.cudnn.deterministic = False
         torch.backends.cudnn.benchmark = True
+
+    # 启用 TF32 加速 (Ampere 及以上 GPU)
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.allow_tf32 = True
 
 def init_exp(opt, args):
     exp_name = opt['exp'].get('name')
@@ -57,30 +65,69 @@ def init_dataset(opt):
     return trainset, testset
 
 def init_dataloader(opt, trainset, testset):
+    num_workers = opt['exp'].get('nw', 0)  # default 0 for stability
+    prefetch_factor = opt['exp'].get('prefetch_factor', 2)  # 预取因子
+    pin_memory = opt['exp'].get('pin_memory', True)  # 锁页内存加速传输
+
     if opt['exp']['dist']:
         sampler = Data.DistributedSampler(trainset)
     else:
         sampler = None
+
     train_loader = Data.DataLoader(dataset=trainset, batch_size=opt['exp']['bs'],\
-                                    sampler=sampler, num_workers=opt['exp'].get('nw', 16))
+                                    sampler=sampler, num_workers=num_workers,
+                                    persistent_workers=False if num_workers == 0 else True,
+                                    prefetch_factor=prefetch_factor if num_workers > 0 else None,
+                                    pin_memory=pin_memory)
     test_loader  = Data.DataLoader(dataset=testset, batch_size=opt['exp']['bs'],\
-                                    sampler=None, num_workers=opt['exp'].get('nw', 16))
+                                    sampler=None, num_workers=num_workers,
+                                    persistent_workers=False if num_workers == 0 else True,
+                                    prefetch_factor=prefetch_factor if num_workers > 0 else None,
+                                    pin_memory=pin_memory)
     return train_loader, test_loader
 
 def main():
     opt, args = parse_options()
-    os.environ['CUDA_VISIBLE_DEVICES'] = str(opt['exp']['device']) # not safe there
-    if isinstance(opt['exp']['device'], int):
-        opt['exp']['dist'] = False
-        cur_rank = 0
-        total_device = 1
-        opt['exp']['num_devices'] = total_device
-    elif isinstance(opt['exp']['device'], str):
+
+    import setproctitle
+    setproctitle.setproctitle(opt['exp']['name'])
+    # 自动检测单卡还是多卡模式
+    # 方式1: 使用 torch.distributed.launch (设置 WORLD_SIZE)
+    world_size = int(os.environ.get('WORLD_SIZE', 1))
+
+    if world_size > 1:
+        # 多卡模式 (通过 torch.distributed.launch 启动)
         opt['exp']['dist'] = True
         dist.init_process_group(backend='nccl')
-        total_device = len(opt['exp']['device']) // 2 + 1
+        total_device = world_size
         opt['exp']['num_devices'] = total_device
         cur_rank = dist.get_rank()
+        torch.cuda.set_device(cur_rank)
+    else:
+        # 单卡模式
+        os.environ['CUDA_VISIBLE_DEVICES'] = str(opt['exp']['device'])
+        if isinstance(opt['exp']['device'], int):
+            opt['exp']['dist'] = False
+            cur_rank = 0
+            total_device = 1
+            opt['exp']['num_devices'] = total_device
+        elif isinstance(opt['exp']['device'], str):
+            # 检查是否是逗号分隔的多卡字符串
+            if ',' in opt['exp']['device']:
+                # 多卡字符串 "0,1,2,3"
+                opt['exp']['dist'] = True
+                dist.init_process_group(backend='nccl')
+                device_list = opt['exp']['device'].split(',')
+                total_device = len(device_list)
+                opt['exp']['num_devices'] = total_device
+                cur_rank = dist.get_rank()
+                torch.cuda.set_device(cur_rank)
+            else:
+                # 单卡字符串 "0" 或 "1"
+                opt['exp']['dist'] = False
+                cur_rank = 0
+                total_device = 1
+                opt['exp']['num_devices'] = total_device
 
     # init dataset
     trainset, testset = init_dataset(opt)

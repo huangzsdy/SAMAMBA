@@ -1,0 +1,90 @@
+2026-04-10 17:13:19,203 INFO: 
+Version Information: 
+	PyTorch: 2.7.1+cu126
+	TorchVision: 0.22.1+cu126
+2026-04-10 17:13:19,204 INFO: 
+  exp:[
+    name: SAMamba
+    save_exp: True
+    bs: 2
+    total_epochs: 120
+    log_interval: 1
+    save_interval: 60
+    test_interval: 1
+    device: 1
+    nw: 4
+    use_amp: True
+    accum_steps: 4
+    use_compile: False
+    pin_memory: True
+    prefetch_factor: 4
+    channels_last: True
+    dist: False
+    num_devices: 1
+    total_iters: 39840
+    exp_root: experiment/SAMamba/20260410_171318
+  ]
+  model:[
+    net:[
+      type: SAMamba
+    ]
+    optim:[
+      type: AdamW
+      init_lr: 0.0005
+      weight_decay: 0.0001
+      betas: [0.9, 0.999]
+    ]
+    loss:[
+      loss_1:[
+        type: SoftIoULoss
+        weight: 1
+      ]
+      loss_2:[
+        type: WeightedDiceLoss
+        weight: 1
+      ]
+      loss_3:[
+        type: FocalLoss
+        weight: 1
+      ]
+    ]
+    lr:[
+      warmup_iter: -1
+      scheduler:[
+        type: CosineAnnealingLR
+        step_interval: iter
+        eta_min: 1e-05
+      ]
+    ]
+  ]
+  dataset:[
+    name: None
+    train:[
+      type: Dataset_aug_bac
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+      img_sz: 1024
+    ]
+    test:[
+      type: Dataset_test
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+      img_sz: 1024
+    ]
+  ]
+  resume:[
+    net_path: None
+    state_path: None
+  ]
+
+2026-04-10 17:13:19,318 INFO: Using channels_last memory format
+2026-04-10 17:13:22,818 INFO: load from random initialized network
+2026-04-10 17:13:22,818 INFO: training from epoch: 1
+2026-04-10 17:13:22,818 INFO: Start training... Total epochs: 120, Total iters: 39840
+2026-04-10 17:13:22,819 INFO: Start epoch 1/120
+2026-04-10 17:13:23,269 INFO: Epoch 1, Iter 1/39840, Batch 0/332
+2026-04-10 17:14:06,061 INFO: Epoch 1, Iter 2/39840, Batch 1/332
+2026-04-10 17:14:12,064 INFO: Epoch 1, Iter 3/39840, Batch 2/332
+2026-04-10 17:14:22,066 INFO: Epoch 1, Iter 4/39840, Batch 3/332
+2026-04-10 17:14:31,765 INFO: Epoch 1, Iter 5/39840, Batch 4/332
+2026-04-10 17:14:44,311 INFO: Epoch 1, Iter 6/39840, Batch 5/332
+2026-04-10 17:14:54,036 INFO: Epoch 1, Iter 7/39840, Batch 6/332
+2026-04-10 17:15:04,679 INFO: Epoch 1, Iter 8/39840, Batch 7/332
