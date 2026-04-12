@@ -49,10 +49,11 @@ def main():
     # load model params
     if opt.get('resume'):
         if opt['resume'].get('net_path'):
-            model.load_network(model.net, opt['resume']['net_path'])
+            model.load_network(model.net, opt['resume']['net_path'], strict=False)
             print(f'load pretrained network from: {opt["resume"]["net_path"]}')
 
     model.net.eval()
+    model.reset_metric()  # 重置 metric，确保正确计算
     for idx, data in enumerate(tqdm(test_loader)):
         img, label, img_name = data
         with torch.no_grad():

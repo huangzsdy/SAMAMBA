@@ -49,7 +49,7 @@ def dict2str(opt, indent_level=1):
 def parse_options():
     parser = argparse.ArgumentParser()
     parser.add_argument('--opt', type=str, required = True, help='Path to option YAML file.')
-    parser.add_argument('--local_rank', type=int, default=-1)
+    parser.add_argument('--local_rank', '--local-rank', type=int, default=-1)
     parser.add_argument('--device', default='0')
     parser.add_argument(
         '--force_yml', nargs='+', default=None, help='Force to update yml files. Examples: train:ema_decay=0.999')

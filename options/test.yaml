@@ -16,4 +16,5 @@ dataset:
     get_name: True
 
 resume:
-  net_path:
+  net_path: /mnt/c/Users/ThinkPad/my_own_files/work/projects/paper/IRSTD/projects/SAMamba-main/models/net_best_nudt.pth
+  

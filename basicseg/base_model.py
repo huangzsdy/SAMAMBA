@@ -44,7 +44,12 @@ class Base_model():
         if self.opt['exp'].get('dist', False):
             self.total_rank = self.opt['exp']['num_devices']
             self.net = torch.nn.SyncBatchNorm.convert_sync_batchnorm(self.net).to(self.device)
-            self.net = DistributedDataParallel(self.net, device_ids=[self.rank], output_device=self.rank)
+            self.net = DistributedDataParallel(
+                self.net,
+                device_ids=[self.rank],
+                output_device=self.rank,
+                find_unused_parameters=True  # 处理网络中有未参与loss计算的分支
+            )
         else:
             self.net.to(self.device)
         # self.net.load_from()

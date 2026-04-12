@@ -53,10 +53,10 @@ class Basedataset(Data.Dataset):
         # Ensure mask is 2D array
         if len(mask.shape) == 3:
             mask = mask[:, :, 0]
+        # 归一化一次即可: 0-255 -> 0-1
         mask = (mask / 255.).astype(np.float32)
         if len(mask.shape) == 3:
             mask = mask[:, :, 0]
-        mask = (mask / 255.).astype(np.float32)
 
         transform_fn = self.setup_transform_fn()
         # # 设置保存文件夹路径

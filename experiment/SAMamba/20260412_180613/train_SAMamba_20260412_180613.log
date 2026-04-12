@@ -1,0 +1,1698 @@
+2026-04-12 18:06:14,905 INFO: 
+Version Information: 
+	PyTorch: 2.7.1+cu126
+	TorchVision: 0.22.1+cu126
+2026-04-12 18:06:14,906 INFO: 
+  exp:[
+    name: SAMamba
+    save_exp: True
+    bs: 4
+    total_epochs: 120
+    log_interval: 10
+    save_interval: 1
+    test_interval: 1
+    device: 0
+    nw: 8
+    use_amp: True
+    accum_steps: 1
+    use_compile: False
+    pin_memory: True
+    prefetch_factor: 2
+    channels_last: True
+    dist: False
+    num_devices: 1
+    total_iters: 19920
+    exp_root: experiment/SAMamba/20260412_180613
+  ]
+  model:[
+    net:[
+      type: SAMamba
+    ]
+    optim:[
+      type: AdamW
+      init_lr: 0.0005
+      weight_decay: 0.0001
+      betas: [0.9, 0.999]
+    ]
+    loss:[
+      loss_1:[
+        type: SoftIoULoss
+        weight: 1
+      ]
+      loss_2:[
+        type: WeightedDiceLoss
+        weight: 1
+      ]
+      loss_3:[
+        type: FocalLoss
+        weight: 1
+      ]
+    ]
+    lr:[
+      warmup_iter: -1
+      scheduler:[
+        type: CosineAnnealingLR
+        step_interval: iter
+        eta_min: 1e-05
+      ]
+    ]
+  ]
+  dataset:[
+    name: None
+    train:[
+      type: Dataset_aug_bac
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
+      img_sz: 512
+      bd_loss: False
+    ]
+    test:[
+      type: Dataset_test
+      data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
+      img_sz: 512
+    ]
+  ]
+  resume:[
+    net_path: None
+    state_path: None
+  ]
+
+2026-04-12 18:06:15,071 INFO: Using channels_last memory format
+2026-04-12 18:06:16,662 INFO: load from random initialized network
+2026-04-12 18:06:16,663 INFO: training from epoch: 1
+2026-04-12 18:06:16,664 INFO: Start training... Total epochs: 120, Total iters: 19920
+2026-04-12 18:06:16,664 INFO: Start epoch 1/120
+2026-04-12 18:06:27,087 INFO: Epoch 1, Iter 10, Batch 9, Loss: SoftIoULoss_0: 9.9981, WeightedDiceLoss_0: 9.9962, FocalLoss_0: 0.2803
+2026-04-12 18:06:31,893 INFO: Epoch 1, Iter 20, Batch 19, Loss: SoftIoULoss_0: 9.9966, WeightedDiceLoss_0: 9.9931, FocalLoss_0: 0.0711
+2026-04-12 18:06:36,728 INFO: Epoch 1, Iter 30, Batch 29, Loss: SoftIoULoss_0: 9.9925, WeightedDiceLoss_0: 9.9850, FocalLoss_0: 0.0375
+2026-04-12 18:06:45,150 INFO: Epoch 1, Iter 40, Batch 39, Loss: SoftIoULoss_0: 9.9865, WeightedDiceLoss_0: 9.9730, FocalLoss_0: 0.0270
+2026-04-12 18:06:50,107 INFO: Epoch 1, Iter 50, Batch 49, Loss: SoftIoULoss_0: 9.9923, WeightedDiceLoss_0: 9.9846, FocalLoss_0: 0.0257
+2026-04-12 18:06:55,155 INFO: Epoch 1, Iter 60, Batch 59, Loss: SoftIoULoss_0: 9.9902, WeightedDiceLoss_0: 9.9804, FocalLoss_0: 0.0186
+2026-04-12 18:07:00,249 INFO: Epoch 1, Iter 70, Batch 69, Loss: SoftIoULoss_0: 9.9836, WeightedDiceLoss_0: 9.9672, FocalLoss_0: 0.0223
+2026-04-12 18:07:05,676 INFO: Epoch 1, Iter 80, Batch 79, Loss: SoftIoULoss_0: 9.9871, WeightedDiceLoss_0: 9.9743, FocalLoss_0: 0.0233
+2026-04-12 18:07:10,869 INFO: Epoch 1, Iter 90, Batch 89, Loss: SoftIoULoss_0: 9.9921, WeightedDiceLoss_0: 9.9843, FocalLoss_0: 0.0153
+2026-04-12 18:07:19,603 INFO: Epoch 1, Iter 100, Batch 99, Loss: SoftIoULoss_0: 9.9883, WeightedDiceLoss_0: 9.9767, FocalLoss_0: 0.0173
+2026-04-12 18:07:24,470 INFO: Epoch 1, Iter 110, Batch 109, Loss: SoftIoULoss_0: 9.9887, WeightedDiceLoss_0: 9.9775, FocalLoss_0: 0.0127
+2026-04-12 18:07:29,573 INFO: Epoch 1, Iter 120, Batch 119, Loss: SoftIoULoss_0: 9.9766, WeightedDiceLoss_0: 9.9534, FocalLoss_0: 0.0263
+2026-04-12 18:07:34,883 INFO: Epoch 1, Iter 130, Batch 129, Loss: SoftIoULoss_0: 9.9733, WeightedDiceLoss_0: 9.9468, FocalLoss_0: 0.0214
+2026-04-12 18:07:40,280 INFO: Epoch 1, Iter 140, Batch 139, Loss: SoftIoULoss_0: 9.9647, WeightedDiceLoss_0: 9.9298, FocalLoss_0: 0.0240
+2026-04-12 18:07:45,642 INFO: Epoch 1, Iter 150, Batch 149, Loss: SoftIoULoss_0: 9.9911, WeightedDiceLoss_0: 9.9822, FocalLoss_0: 0.0134
+2026-04-12 18:07:50,877 INFO: Epoch 1, Iter 160, Batch 159, Loss: SoftIoULoss_0: 9.9795, WeightedDiceLoss_0: 9.9593, FocalLoss_0: 0.0104
+2026-04-12 18:08:26,363 INFO: [SAMamba][epoch:  1, lr:(4.999e-04,)] [eta: 4:17:10, time (epoch): 104.240 ] 
+TrainSet
+SoftIoULoss_0:1.6575e+02  WeightedDiceLoss_0:1.6550e+02  FocalLoss_0:6.6510e-01  
+m_fscore:0.0102  m_iou:0.0051  n_fscore:0.0053  n_iou:0.0029  
+TestSet
+SoftIoULoss_0:1.6525e+02  WeightedDiceLoss_0:1.6451e+02  FocalLoss_0:4.0115e-01  
+m_fscore:0.0291  m_iou:0.0148  n_fscore:0.0176  n_iou:0.0101  
+
+2026-04-12 18:08:26,364 INFO: Start epoch 2/120
+2026-04-12 18:08:32,671 INFO: Epoch 2, Iter 170, Batch 3, Loss: SoftIoULoss_0: 175.2172, WeightedDiceLoss_0: 174.4480, FocalLoss_0: 0.4280
+2026-04-12 18:08:38,122 INFO: Epoch 2, Iter 180, Batch 13, Loss: SoftIoULoss_0: 9.9925, WeightedDiceLoss_0: 9.9850, FocalLoss_0: 0.0047
+2026-04-12 18:08:43,621 INFO: Epoch 2, Iter 190, Batch 23, Loss: SoftIoULoss_0: 9.9691, WeightedDiceLoss_0: 9.9385, FocalLoss_0: 0.0146
+2026-04-12 18:08:48,871 INFO: Epoch 2, Iter 200, Batch 33, Loss: SoftIoULoss_0: 9.9027, WeightedDiceLoss_0: 9.8090, FocalLoss_0: 0.0284
+2026-04-12 18:08:54,072 INFO: Epoch 2, Iter 210, Batch 43, Loss: SoftIoULoss_0: 9.8623, WeightedDiceLoss_0: 9.7325, FocalLoss_0: 0.0769
+2026-04-12 18:08:59,342 INFO: Epoch 2, Iter 220, Batch 53, Loss: SoftIoULoss_0: 9.9707, WeightedDiceLoss_0: 9.9428, FocalLoss_0: 0.0134
+2026-04-12 18:09:08,194 INFO: Epoch 2, Iter 230, Batch 63, Loss: SoftIoULoss_0: 9.9418, WeightedDiceLoss_0: 9.8853, FocalLoss_0: 0.0118
+2026-04-12 18:09:13,577 INFO: Epoch 2, Iter 240, Batch 73, Loss: SoftIoULoss_0: 9.8602, WeightedDiceLoss_0: 9.7298, FocalLoss_0: 0.0440
+2026-04-12 18:09:18,702 INFO: Epoch 2, Iter 250, Batch 83, Loss: SoftIoULoss_0: 9.8938, WeightedDiceLoss_0: 9.7940, FocalLoss_0: 0.0264
+2026-04-12 18:09:23,944 INFO: Epoch 2, Iter 260, Batch 93, Loss: SoftIoULoss_0: 9.7297, WeightedDiceLoss_0: 9.5065, FocalLoss_0: 0.0720
+2026-04-12 18:09:29,025 INFO: Epoch 2, Iter 270, Batch 103, Loss: SoftIoULoss_0: 9.7642, WeightedDiceLoss_0: 9.5659, FocalLoss_0: 0.0530
+2026-04-12 18:09:34,000 INFO: Epoch 2, Iter 280, Batch 113, Loss: SoftIoULoss_0: 9.2809, WeightedDiceLoss_0: 8.8109, FocalLoss_0: 0.0804
+2026-04-12 18:09:43,085 INFO: Epoch 2, Iter 290, Batch 123, Loss: SoftIoULoss_0: 9.5532, WeightedDiceLoss_0: 9.2264, FocalLoss_0: 0.0826
+2026-04-12 18:09:48,692 INFO: Epoch 2, Iter 300, Batch 133, Loss: SoftIoULoss_0: 8.9498, WeightedDiceLoss_0: 8.3581, FocalLoss_0: 0.0132
+2026-04-12 18:09:54,271 INFO: Epoch 2, Iter 310, Batch 143, Loss: SoftIoULoss_0: 8.7827, WeightedDiceLoss_0: 8.1382, FocalLoss_0: 0.0330
+2026-04-12 18:09:59,834 INFO: Epoch 2, Iter 320, Batch 153, Loss: SoftIoULoss_0: 8.9946, WeightedDiceLoss_0: 8.4729, FocalLoss_0: 0.0114
+2026-04-12 18:10:05,460 INFO: Epoch 2, Iter 330, Batch 163, Loss: SoftIoULoss_0: 9.4178, WeightedDiceLoss_0: 9.0931, FocalLoss_0: 0.0362
+2026-04-12 18:10:37,349 INFO: [SAMamba][epoch:  2, lr:(4.997e-04,)] [eta: 4:16:18, time (epoch): 100.086 ] 
+TrainSet
+SoftIoULoss_0:1.5976e+02  WeightedDiceLoss_0:1.5580e+02  FocalLoss_0:6.1269e-01  
+m_fscore:0.0177  m_iou:0.0089  n_fscore:0.0118  n_iou:0.0065  
+TestSet
+SoftIoULoss_0:1.3438e+02  WeightedDiceLoss_0:1.1939e+02  FocalLoss_0:4.1882e-01  
+m_fscore:0.1135  m_iou:0.0602  n_fscore:0.0762  n_iou:0.0511  
+
+2026-04-12 18:10:37,350 INFO: Start epoch 3/120
+2026-04-12 18:10:42,259 INFO: Epoch 3, Iter 340, Batch 7, Loss: SoftIoULoss_0: 143.9948, WeightedDiceLoss_0: 128.7116, FocalLoss_0: 0.4248
+2026-04-12 18:10:47,801 INFO: Epoch 3, Iter 350, Batch 17, Loss: SoftIoULoss_0: 8.5949, WeightedDiceLoss_0: 8.0333, FocalLoss_0: 0.0119
+2026-04-12 18:10:56,938 INFO: Epoch 3, Iter 360, Batch 27, Loss: SoftIoULoss_0: 7.3714, WeightedDiceLoss_0: 6.4064, FocalLoss_0: 0.0089
+2026-04-12 18:11:02,521 INFO: Epoch 3, Iter 370, Batch 37, Loss: SoftIoULoss_0: 8.1161, WeightedDiceLoss_0: 7.3438, FocalLoss_0: 0.0298
+2026-04-12 18:11:08,105 INFO: Epoch 3, Iter 380, Batch 47, Loss: SoftIoULoss_0: 8.4847, WeightedDiceLoss_0: 7.7495, FocalLoss_0: 0.0346
+2026-04-12 18:11:13,797 INFO: Epoch 3, Iter 390, Batch 57, Loss: SoftIoULoss_0: 9.5983, WeightedDiceLoss_0: 9.2987, FocalLoss_0: 0.0547
+2026-04-12 18:11:19,583 INFO: Epoch 3, Iter 400, Batch 67, Loss: SoftIoULoss_0: 9.1257, WeightedDiceLoss_0: 8.5998, FocalLoss_0: 0.0650
+2026-04-12 18:11:25,340 INFO: Epoch 3, Iter 410, Batch 77, Loss: SoftIoULoss_0: 9.0346, WeightedDiceLoss_0: 8.5421, FocalLoss_0: 0.0801
+2026-04-12 18:11:35,182 INFO: Epoch 3, Iter 420, Batch 87, Loss: SoftIoULoss_0: 8.1057, WeightedDiceLoss_0: 7.2801, FocalLoss_0: 0.0456
+2026-04-12 18:11:41,168 INFO: Epoch 3, Iter 430, Batch 97, Loss: SoftIoULoss_0: 7.1372, WeightedDiceLoss_0: 6.0541, FocalLoss_0: 0.0102
+2026-04-12 18:11:47,044 INFO: Epoch 3, Iter 440, Batch 107, Loss: SoftIoULoss_0: 7.2212, WeightedDiceLoss_0: 6.2276, FocalLoss_0: 0.0075
+2026-04-12 18:11:52,739 INFO: Epoch 3, Iter 450, Batch 117, Loss: SoftIoULoss_0: 8.4666, WeightedDiceLoss_0: 7.8314, FocalLoss_0: 0.0176
+2026-04-12 18:11:58,408 INFO: Epoch 3, Iter 460, Batch 127, Loss: SoftIoULoss_0: 8.4540, WeightedDiceLoss_0: 7.8055, FocalLoss_0: 0.0278
+2026-04-12 18:12:07,677 INFO: Epoch 3, Iter 470, Batch 137, Loss: SoftIoULoss_0: 7.2993, WeightedDiceLoss_0: 6.3584, FocalLoss_0: 0.0177
+2026-04-12 18:12:13,534 INFO: Epoch 3, Iter 480, Batch 147, Loss: SoftIoULoss_0: 7.7133, WeightedDiceLoss_0: 6.9437, FocalLoss_0: 0.0074
+2026-04-12 18:12:19,258 INFO: Epoch 3, Iter 490, Batch 157, Loss: SoftIoULoss_0: 7.5099, WeightedDiceLoss_0: 6.8599, FocalLoss_0: 0.0071
+2026-04-12 18:12:54,652 INFO: [SAMamba][epoch:  3, lr:(4.992e-04,)] [eta: 4:18:40, time (epoch): 106.343 ] 
+TrainSet
+SoftIoULoss_0:1.3627e+02  WeightedDiceLoss_0:1.2451e+02  FocalLoss_0:4.4111e-01  
+m_fscore:0.1389  m_iou:0.0746  n_fscore:0.0591  n_iou:0.0375  
+TestSet
+SoftIoULoss_0:1.3250e+02  WeightedDiceLoss_0:1.1725e+02  FocalLoss_0:3.8255e-01  
+m_fscore:0.1961  m_iou:0.1087  n_fscore:0.0736  n_iou:0.0466  
+
+2026-04-12 18:12:54,653 INFO: Start epoch 4/120
+2026-04-12 18:12:56,138 INFO: Epoch 4, Iter 500, Batch 1, Loss: SoftIoULoss_0: 140.7499, WeightedDiceLoss_0: 124.7878, FocalLoss_0: 0.3948
+2026-04-12 18:13:01,885 INFO: Epoch 4, Iter 510, Batch 11, Loss: SoftIoULoss_0: 8.9453, WeightedDiceLoss_0: 8.4537, FocalLoss_0: 0.0062
+2026-04-12 18:13:07,604 INFO: Epoch 4, Iter 520, Batch 21, Loss: SoftIoULoss_0: 7.5956, WeightedDiceLoss_0: 6.7206, FocalLoss_0: 0.0078
+2026-04-12 18:13:13,463 INFO: Epoch 4, Iter 530, Batch 31, Loss: SoftIoULoss_0: 6.3471, WeightedDiceLoss_0: 5.2784, FocalLoss_0: 0.0109
+2026-04-12 18:13:22,715 INFO: Epoch 4, Iter 540, Batch 41, Loss: SoftIoULoss_0: 7.8996, WeightedDiceLoss_0: 7.0744, FocalLoss_0: 0.0310
+2026-04-12 18:13:28,445 INFO: Epoch 4, Iter 550, Batch 51, Loss: SoftIoULoss_0: 9.5926, WeightedDiceLoss_0: 9.3896, FocalLoss_0: 0.0923
+2026-04-12 18:13:34,185 INFO: Epoch 4, Iter 560, Batch 61, Loss: SoftIoULoss_0: 9.7692, WeightedDiceLoss_0: 9.5660, FocalLoss_0: 0.1451
+2026-04-12 18:13:39,949 INFO: Epoch 4, Iter 570, Batch 71, Loss: SoftIoULoss_0: 9.4863, WeightedDiceLoss_0: 9.1231, FocalLoss_0: 0.0565
+2026-04-12 18:13:45,678 INFO: Epoch 4, Iter 580, Batch 81, Loss: SoftIoULoss_0: 7.9755, WeightedDiceLoss_0: 7.0865, FocalLoss_0: 0.0141
+2026-04-12 18:13:54,957 INFO: Epoch 4, Iter 590, Batch 91, Loss: SoftIoULoss_0: 6.1904, WeightedDiceLoss_0: 4.9211, FocalLoss_0: 0.0099
+2026-04-12 18:14:00,663 INFO: Epoch 4, Iter 600, Batch 101, Loss: SoftIoULoss_0: 7.5840, WeightedDiceLoss_0: 6.6676, FocalLoss_0: 0.0132
+2026-04-12 18:14:06,345 INFO: Epoch 4, Iter 610, Batch 111, Loss: SoftIoULoss_0: 6.9299, WeightedDiceLoss_0: 6.0295, FocalLoss_0: 0.0133
+2026-04-12 18:14:12,249 INFO: Epoch 4, Iter 620, Batch 121, Loss: SoftIoULoss_0: 8.2965, WeightedDiceLoss_0: 7.5142, FocalLoss_0: 0.0232
+2026-04-12 18:14:17,974 INFO: Epoch 4, Iter 630, Batch 131, Loss: SoftIoULoss_0: 7.1679, WeightedDiceLoss_0: 6.2698, FocalLoss_0: 0.0182
+2026-04-12 18:14:23,672 INFO: Epoch 4, Iter 640, Batch 141, Loss: SoftIoULoss_0: 7.1982, WeightedDiceLoss_0: 6.2656, FocalLoss_0: 0.0225
+2026-04-12 18:14:33,008 INFO: Epoch 4, Iter 650, Batch 151, Loss: SoftIoULoss_0: 5.3457, WeightedDiceLoss_0: 4.3925, FocalLoss_0: 0.0021
+2026-04-12 18:14:38,790 INFO: Epoch 4, Iter 660, Batch 161, Loss: SoftIoULoss_0: 6.1546, WeightedDiceLoss_0: 5.2896, FocalLoss_0: 0.0136
+2026-04-12 18:15:12,166 INFO: [SAMamba][epoch:  4, lr:(4.987e-04,)] [eta: 4:18:48, time (epoch): 106.322 ] 
+TrainSet
+SoftIoULoss_0:1.2773e+02  WeightedDiceLoss_0:1.1491e+02  FocalLoss_0:4.9360e-01  
+m_fscore:0.1665  m_iou:0.0908  n_fscore:0.0756  n_iou:0.0505  
+TestSet
+SoftIoULoss_0:1.2742e+02  WeightedDiceLoss_0:1.1217e+02  FocalLoss_0:1.4052e+00  
+m_fscore:0.1068  m_iou:0.0564  n_fscore:0.0737  n_iou:0.0487  
+
+2026-04-12 18:15:12,167 INFO: Start epoch 5/120
+2026-04-12 18:15:16,033 INFO: Epoch 5, Iter 670, Batch 5, Loss: SoftIoULoss_0: 135.2864, WeightedDiceLoss_0: 119.4819, FocalLoss_0: 1.4241
+2026-04-12 18:15:21,797 INFO: Epoch 5, Iter 680, Batch 15, Loss: SoftIoULoss_0: 6.4549, WeightedDiceLoss_0: 5.4839, FocalLoss_0: 0.0063
+2026-04-12 18:15:27,486 INFO: Epoch 5, Iter 690, Batch 25, Loss: SoftIoULoss_0: 7.3898, WeightedDiceLoss_0: 6.4233, FocalLoss_0: 0.0160
+2026-04-12 18:15:33,181 INFO: Epoch 5, Iter 700, Batch 35, Loss: SoftIoULoss_0: 6.4332, WeightedDiceLoss_0: 5.2575, FocalLoss_0: 0.0181
+2026-04-12 18:15:42,486 INFO: Epoch 5, Iter 710, Batch 45, Loss: SoftIoULoss_0: 7.7894, WeightedDiceLoss_0: 6.9318, FocalLoss_0: 0.0342
+2026-04-12 18:15:48,264 INFO: Epoch 5, Iter 720, Batch 55, Loss: SoftIoULoss_0: 9.4687, WeightedDiceLoss_0: 9.0905, FocalLoss_0: 0.0368
+2026-04-12 18:15:53,983 INFO: Epoch 5, Iter 730, Batch 65, Loss: SoftIoULoss_0: 9.3233, WeightedDiceLoss_0: 8.8744, FocalLoss_0: 0.0411
+2026-04-12 18:15:59,665 INFO: Epoch 5, Iter 740, Batch 75, Loss: SoftIoULoss_0: 9.0436, WeightedDiceLoss_0: 8.6131, FocalLoss_0: 0.0550
+2026-04-12 18:16:05,423 INFO: Epoch 5, Iter 750, Batch 85, Loss: SoftIoULoss_0: 7.6000, WeightedDiceLoss_0: 6.5524, FocalLoss_0: 0.0290
+2026-04-12 18:16:11,410 INFO: Epoch 5, Iter 760, Batch 95, Loss: SoftIoULoss_0: 7.3166, WeightedDiceLoss_0: 6.3111, FocalLoss_0: 0.0152
+2026-04-12 18:16:20,721 INFO: Epoch 5, Iter 770, Batch 105, Loss: SoftIoULoss_0: 6.8662, WeightedDiceLoss_0: 5.9392, FocalLoss_0: 0.0076
+2026-04-12 18:16:26,461 INFO: Epoch 5, Iter 780, Batch 115, Loss: SoftIoULoss_0: 6.9989, WeightedDiceLoss_0: 6.0313, FocalLoss_0: 0.0147
+2026-04-12 18:16:32,228 INFO: Epoch 5, Iter 790, Batch 125, Loss: SoftIoULoss_0: 8.3179, WeightedDiceLoss_0: 7.5923, FocalLoss_0: 0.0202
+2026-04-12 18:16:37,901 INFO: Epoch 5, Iter 800, Batch 135, Loss: SoftIoULoss_0: 7.3686, WeightedDiceLoss_0: 6.4896, FocalLoss_0: 0.0212
+2026-04-12 18:16:43,580 INFO: Epoch 5, Iter 810, Batch 145, Loss: SoftIoULoss_0: 6.3234, WeightedDiceLoss_0: 5.5086, FocalLoss_0: 0.0087
+2026-04-12 18:16:52,889 INFO: Epoch 5, Iter 820, Batch 155, Loss: SoftIoULoss_0: 6.4909, WeightedDiceLoss_0: 5.8568, FocalLoss_0: 0.0031
+2026-04-12 18:16:58,398 INFO: Epoch 5, Iter 830, Batch 165, Loss: SoftIoULoss_0: 8.0682, WeightedDiceLoss_0: 7.2634, FocalLoss_0: 0.0182
+2026-04-12 18:17:29,802 INFO: [SAMamba][epoch:  5, lr:(4.979e-04,)] [eta: 4:18:01, time (epoch): 106.232 ] 
+TrainSet
+SoftIoULoss_0:1.2580e+02  WeightedDiceLoss_0:1.1254e+02  FocalLoss_0:3.5135e-01  
+m_fscore:0.2695  m_iou:0.1557  n_fscore:0.0804  n_iou:0.0531  
+TestSet
+SoftIoULoss_0:1.1798e+02  WeightedDiceLoss_0:1.0056e+02  FocalLoss_0:6.5242e-01  
+m_fscore:0.1770  m_iou:0.0971  n_fscore:0.0940  n_iou:0.0646  
+
+2026-04-12 18:17:29,802 INFO: Start epoch 6/120
+2026-04-12 18:17:36,150 INFO: Epoch 6, Iter 840, Batch 9, Loss: SoftIoULoss_0: 124.7700, WeightedDiceLoss_0: 106.4988, FocalLoss_0: 0.6558
+2026-04-12 18:17:41,562 INFO: Epoch 6, Iter 850, Batch 19, Loss: SoftIoULoss_0: 7.0611, WeightedDiceLoss_0: 6.1531, FocalLoss_0: 0.0071
+2026-04-12 18:17:47,243 INFO: Epoch 6, Iter 860, Batch 29, Loss: SoftIoULoss_0: 6.5806, WeightedDiceLoss_0: 5.5634, FocalLoss_0: 0.0148
+2026-04-12 18:17:52,822 INFO: Epoch 6, Iter 870, Batch 39, Loss: SoftIoULoss_0: 7.8658, WeightedDiceLoss_0: 7.0997, FocalLoss_0: 0.0282
+2026-04-12 18:17:58,884 INFO: Epoch 6, Iter 880, Batch 49, Loss: SoftIoULoss_0: 9.2395, WeightedDiceLoss_0: 8.8426, FocalLoss_0: 0.0335
+2026-04-12 18:18:08,913 INFO: Epoch 6, Iter 890, Batch 59, Loss: SoftIoULoss_0: 8.8152, WeightedDiceLoss_0: 8.1316, FocalLoss_0: 0.0319
+2026-04-12 18:18:14,405 INFO: Epoch 6, Iter 900, Batch 69, Loss: SoftIoULoss_0: 9.5958, WeightedDiceLoss_0: 9.2844, FocalLoss_0: 0.0466
+2026-04-12 18:18:19,672 INFO: Epoch 6, Iter 910, Batch 79, Loss: SoftIoULoss_0: 8.3260, WeightedDiceLoss_0: 7.5537, FocalLoss_0: 0.0294
+2026-04-12 18:18:24,985 INFO: Epoch 6, Iter 920, Batch 89, Loss: SoftIoULoss_0: 6.7938, WeightedDiceLoss_0: 5.7158, FocalLoss_0: 0.0148
+2026-04-12 18:18:30,196 INFO: Epoch 6, Iter 930, Batch 99, Loss: SoftIoULoss_0: 7.2104, WeightedDiceLoss_0: 6.2488, FocalLoss_0: 0.0142
+2026-04-12 18:18:35,424 INFO: Epoch 6, Iter 940, Batch 109, Loss: SoftIoULoss_0: 5.2937, WeightedDiceLoss_0: 4.1726, FocalLoss_0: 0.0090
+2026-04-12 18:18:44,243 INFO: Epoch 6, Iter 950, Batch 119, Loss: SoftIoULoss_0: 7.4001, WeightedDiceLoss_0: 6.4985, FocalLoss_0: 0.0209
+2026-04-12 18:18:49,555 INFO: Epoch 6, Iter 960, Batch 129, Loss: SoftIoULoss_0: 7.7355, WeightedDiceLoss_0: 6.8528, FocalLoss_0: 0.0219
+2026-04-12 18:18:54,839 INFO: Epoch 6, Iter 970, Batch 139, Loss: SoftIoULoss_0: 6.5097, WeightedDiceLoss_0: 5.5332, FocalLoss_0: 0.0177
+2026-04-12 18:19:00,085 INFO: Epoch 6, Iter 980, Batch 149, Loss: SoftIoULoss_0: 5.5836, WeightedDiceLoss_0: 4.6934, FocalLoss_0: 0.0075
+2026-04-12 18:19:05,292 INFO: Epoch 6, Iter 990, Batch 159, Loss: SoftIoULoss_0: 6.7348, WeightedDiceLoss_0: 6.0345, FocalLoss_0: 0.0108
+2026-04-12 18:19:36,970 INFO: [SAMamba][epoch:  6, lr:(4.970e-04,)] [eta: 4:13:24, time (epoch): 98.474 ] 
+TrainSet
+SoftIoULoss_0:1.2210e+02  WeightedDiceLoss_0:1.0829e+02  FocalLoss_0:3.2190e-01  
+m_fscore:0.2900  m_iou:0.1696  n_fscore:0.0865  n_iou:0.0578  
+TestSet
+SoftIoULoss_0:1.1687e+02  WeightedDiceLoss_0:9.9300e+01  FocalLoss_0:4.3301e-01  
+m_fscore:0.2523  m_iou:0.1444  n_fscore:0.1024  n_iou:0.0704  
+
+2026-04-12 18:19:36,971 INFO: Start epoch 7/120
+2026-04-12 18:19:39,428 INFO: Epoch 7, Iter 1000, Batch 3, Loss: SoftIoULoss_0: 124.9650, WeightedDiceLoss_0: 106.5994, FocalLoss_0: 0.4462
+2026-04-12 18:19:44,740 INFO: Epoch 7, Iter 1010, Batch 13, Loss: SoftIoULoss_0: 6.2840, WeightedDiceLoss_0: 5.6110, FocalLoss_0: 0.0035
+2026-04-12 18:19:53,572 INFO: Epoch 7, Iter 1020, Batch 23, Loss: SoftIoULoss_0: 7.0288, WeightedDiceLoss_0: 6.1044, FocalLoss_0: 0.0098
+2026-04-12 18:19:58,769 INFO: Epoch 7, Iter 1030, Batch 33, Loss: SoftIoULoss_0: 5.3800, WeightedDiceLoss_0: 4.1235, FocalLoss_0: 0.0142
+2026-04-12 18:20:03,964 INFO: Epoch 7, Iter 1040, Batch 43, Loss: SoftIoULoss_0: 6.9742, WeightedDiceLoss_0: 5.9460, FocalLoss_0: 0.0308
+2026-04-12 18:20:09,201 INFO: Epoch 7, Iter 1050, Batch 53, Loss: SoftIoULoss_0: 9.1834, WeightedDiceLoss_0: 8.7475, FocalLoss_0: 0.0448
+2026-04-12 18:20:15,099 INFO: Epoch 7, Iter 1060, Batch 63, Loss: SoftIoULoss_0: 8.9012, WeightedDiceLoss_0: 8.2071, FocalLoss_0: 0.0435
+2026-04-12 18:20:21,269 INFO: Epoch 7, Iter 1070, Batch 73, Loss: SoftIoULoss_0: 8.8553, WeightedDiceLoss_0: 8.2456, FocalLoss_0: 0.0537
+2026-04-12 18:20:31,028 INFO: Epoch 7, Iter 1080, Batch 83, Loss: SoftIoULoss_0: 7.5707, WeightedDiceLoss_0: 6.6111, FocalLoss_0: 0.0332
+2026-04-12 18:20:36,704 INFO: Epoch 7, Iter 1090, Batch 93, Loss: SoftIoULoss_0: 6.3441, WeightedDiceLoss_0: 5.2455, FocalLoss_0: 0.0126
+2026-04-12 18:20:41,986 INFO: Epoch 7, Iter 1100, Batch 103, Loss: SoftIoULoss_0: 6.3991, WeightedDiceLoss_0: 5.3288, FocalLoss_0: 0.0097
+2026-04-12 18:20:47,290 INFO: Epoch 7, Iter 1110, Batch 113, Loss: SoftIoULoss_0: 5.9080, WeightedDiceLoss_0: 4.7588, FocalLoss_0: 0.0107
+2026-04-12 18:20:52,435 INFO: Epoch 7, Iter 1120, Batch 123, Loss: SoftIoULoss_0: 7.1413, WeightedDiceLoss_0: 6.0341, FocalLoss_0: 0.0254
+2026-04-12 18:20:57,532 INFO: Epoch 7, Iter 1130, Batch 133, Loss: SoftIoULoss_0: 7.5542, WeightedDiceLoss_0: 6.7341, FocalLoss_0: 0.0197
+2026-04-12 18:21:06,243 INFO: Epoch 7, Iter 1140, Batch 143, Loss: SoftIoULoss_0: 6.2548, WeightedDiceLoss_0: 5.2677, FocalLoss_0: 0.0176
+2026-04-12 18:21:11,431 INFO: Epoch 7, Iter 1150, Batch 153, Loss: SoftIoULoss_0: 4.9498, WeightedDiceLoss_0: 3.9764, FocalLoss_0: 0.0030
+2026-04-12 18:21:16,598 INFO: Epoch 7, Iter 1160, Batch 163, Loss: SoftIoULoss_0: 7.3514, WeightedDiceLoss_0: 6.5417, FocalLoss_0: 0.0203
+2026-04-12 18:21:46,804 INFO: [SAMamba][epoch:  7, lr:(4.959e-04,)] [eta: 4:10:14, time (epoch): 100.580 ] 
+TrainSet
+SoftIoULoss_0:1.1683e+02  WeightedDiceLoss_0:1.0177e+02  FocalLoss_0:3.5861e-01  
+m_fscore:0.3149  m_iou:0.1868  n_fscore:0.0957  n_iou:0.0649  
+TestSet
+SoftIoULoss_0:1.1108e+02  WeightedDiceLoss_0:9.2831e+01  FocalLoss_0:5.6537e-01  
+m_fscore:0.2386  m_iou:0.1355  n_fscore:0.1093  n_iou:0.0768  
+
+2026-04-12 18:21:46,805 INFO: Start epoch 8/120
+2026-04-12 18:21:51,679 INFO: Epoch 8, Iter 1170, Batch 7, Loss: SoftIoULoss_0: 117.8579, WeightedDiceLoss_0: 98.8526, FocalLoss_0: 0.5789
+2026-04-12 18:21:57,274 INFO: Epoch 8, Iter 1180, Batch 17, Loss: SoftIoULoss_0: 6.7102, WeightedDiceLoss_0: 6.0389, FocalLoss_0: 0.0061
+2026-04-12 18:22:02,845 INFO: Epoch 8, Iter 1190, Batch 27, Loss: SoftIoULoss_0: 6.3354, WeightedDiceLoss_0: 5.2174, FocalLoss_0: 0.0123
+2026-04-12 18:22:08,385 INFO: Epoch 8, Iter 1200, Batch 37, Loss: SoftIoULoss_0: 7.3393, WeightedDiceLoss_0: 6.5131, FocalLoss_0: 0.0262
+2026-04-12 18:22:17,643 INFO: Epoch 8, Iter 1210, Batch 47, Loss: SoftIoULoss_0: 8.5717, WeightedDiceLoss_0: 7.9612, FocalLoss_0: 0.0351
+2026-04-12 18:22:23,158 INFO: Epoch 8, Iter 1220, Batch 57, Loss: SoftIoULoss_0: 9.0109, WeightedDiceLoss_0: 8.4277, FocalLoss_0: 0.0367
+2026-04-12 18:22:28,786 INFO: Epoch 8, Iter 1230, Batch 67, Loss: SoftIoULoss_0: 9.3761, WeightedDiceLoss_0: 8.9350, FocalLoss_0: 0.0537
+2026-04-12 18:22:34,389 INFO: Epoch 8, Iter 1240, Batch 77, Loss: SoftIoULoss_0: 8.4572, WeightedDiceLoss_0: 7.6913, FocalLoss_0: 0.0318
+2026-04-12 18:22:40,032 INFO: Epoch 8, Iter 1250, Batch 87, Loss: SoftIoULoss_0: 6.6741, WeightedDiceLoss_0: 5.5329, FocalLoss_0: 0.0122
+2026-04-12 18:22:45,584 INFO: Epoch 8, Iter 1260, Batch 97, Loss: SoftIoULoss_0: 6.9837, WeightedDiceLoss_0: 5.9199, FocalLoss_0: 0.0140
+2026-04-12 18:22:54,733 INFO: Epoch 8, Iter 1270, Batch 107, Loss: SoftIoULoss_0: 6.1040, WeightedDiceLoss_0: 4.9978, FocalLoss_0: 0.0095
+2026-04-12 18:23:00,282 INFO: Epoch 8, Iter 1280, Batch 117, Loss: SoftIoULoss_0: 7.3514, WeightedDiceLoss_0: 6.5839, FocalLoss_0: 0.0193
+2026-04-12 18:23:05,863 INFO: Epoch 8, Iter 1290, Batch 127, Loss: SoftIoULoss_0: 7.6821, WeightedDiceLoss_0: 6.9204, FocalLoss_0: 0.0233
+2026-04-12 18:23:11,601 INFO: Epoch 8, Iter 1300, Batch 137, Loss: SoftIoULoss_0: 6.4340, WeightedDiceLoss_0: 5.3552, FocalLoss_0: 0.0182
+2026-04-12 18:23:17,175 INFO: Epoch 8, Iter 1310, Batch 147, Loss: SoftIoULoss_0: 6.0637, WeightedDiceLoss_0: 5.1961, FocalLoss_0: 0.0084
+2026-04-12 18:23:26,324 INFO: Epoch 8, Iter 1320, Batch 157, Loss: SoftIoULoss_0: 5.7499, WeightedDiceLoss_0: 5.0186, FocalLoss_0: 0.0071
+2026-04-12 18:23:57,428 INFO: [SAMamba][epoch:  8, lr:(4.947e-04,)] [eta: 4:07:30, time (epoch): 103.835 ] 
+TrainSet
+SoftIoULoss_0:1.2006e+02  WeightedDiceLoss_0:1.0617e+02  FocalLoss_0:3.3491e-01  
+m_fscore:0.3184  m_iou:0.1894  n_fscore:0.0897  n_iou:0.0605  
+TestSet
+SoftIoULoss_0:1.1381e+02  WeightedDiceLoss_0:9.5146e+01  FocalLoss_0:3.3537e-01  
+m_fscore:0.2879  m_iou:0.1682  n_fscore:0.1098  n_iou:0.0767  
+
+2026-04-12 18:23:57,429 INFO: Start epoch 9/120
+2026-04-12 18:24:02,476 INFO: Epoch 9, Iter 1330, Batch 1, Loss: SoftIoULoss_0: 120.9445, WeightedDiceLoss_0: 101.3441, FocalLoss_0: 0.3472
+2026-04-12 18:24:07,698 INFO: Epoch 9, Iter 1340, Batch 11, Loss: SoftIoULoss_0: 6.7258, WeightedDiceLoss_0: 6.0922, FocalLoss_0: 0.0035
+2026-04-12 18:24:13,258 INFO: Epoch 9, Iter 1350, Batch 21, Loss: SoftIoULoss_0: 6.3472, WeightedDiceLoss_0: 5.3378, FocalLoss_0: 0.0081
+2026-04-12 18:24:18,583 INFO: Epoch 9, Iter 1360, Batch 31, Loss: SoftIoULoss_0: 6.2031, WeightedDiceLoss_0: 5.1285, FocalLoss_0: 0.0156
+2026-04-12 18:24:23,867 INFO: Epoch 9, Iter 1370, Batch 41, Loss: SoftIoULoss_0: 6.6693, WeightedDiceLoss_0: 5.6638, FocalLoss_0: 0.0313
+2026-04-12 18:24:29,084 INFO: Epoch 9, Iter 1380, Batch 51, Loss: SoftIoULoss_0: 9.0695, WeightedDiceLoss_0: 8.5388, FocalLoss_0: 0.0371
+2026-04-12 18:24:34,236 INFO: Epoch 9, Iter 1390, Batch 61, Loss: SoftIoULoss_0: 8.7465, WeightedDiceLoss_0: 8.0172, FocalLoss_0: 0.0399
+2026-04-12 18:24:42,874 INFO: Epoch 9, Iter 1400, Batch 71, Loss: SoftIoULoss_0: 8.6871, WeightedDiceLoss_0: 8.0562, FocalLoss_0: 0.0545
+2026-04-12 18:24:47,988 INFO: Epoch 9, Iter 1410, Batch 81, Loss: SoftIoULoss_0: 7.5723, WeightedDiceLoss_0: 6.5968, FocalLoss_0: 0.0401
+2026-04-12 18:24:53,229 INFO: Epoch 9, Iter 1420, Batch 91, Loss: SoftIoULoss_0: 6.3428, WeightedDiceLoss_0: 5.1252, FocalLoss_0: 0.0119
+2026-04-12 18:24:58,358 INFO: Epoch 9, Iter 1430, Batch 101, Loss: SoftIoULoss_0: 7.1143, WeightedDiceLoss_0: 6.0081, FocalLoss_0: 0.0142
+2026-04-12 18:25:03,562 INFO: Epoch 9, Iter 1440, Batch 111, Loss: SoftIoULoss_0: 5.7686, WeightedDiceLoss_0: 4.6577, FocalLoss_0: 0.0134
+2026-04-12 18:25:08,865 INFO: Epoch 9, Iter 1450, Batch 121, Loss: SoftIoULoss_0: 6.8632, WeightedDiceLoss_0: 5.7086, FocalLoss_0: 0.0173
+2026-04-12 18:25:17,572 INFO: Epoch 9, Iter 1460, Batch 131, Loss: SoftIoULoss_0: 6.6321, WeightedDiceLoss_0: 5.7709, FocalLoss_0: 0.0154
+2026-04-12 18:25:22,714 INFO: Epoch 9, Iter 1470, Batch 141, Loss: SoftIoULoss_0: 5.7578, WeightedDiceLoss_0: 4.5948, FocalLoss_0: 0.0147
+2026-04-12 18:25:27,851 INFO: Epoch 9, Iter 1480, Batch 151, Loss: SoftIoULoss_0: 5.0445, WeightedDiceLoss_0: 4.0596, FocalLoss_0: 0.0026
+2026-04-12 18:25:33,079 INFO: Epoch 9, Iter 1490, Batch 161, Loss: SoftIoULoss_0: 6.5785, WeightedDiceLoss_0: 5.7397, FocalLoss_0: 0.0130
+2026-04-12 18:26:03,548 INFO: [SAMamba][epoch:  9, lr:(4.932e-04,)] [eta: 4:03:57, time (epoch): 97.592 ] 
+TrainSet
+SoftIoULoss_0:1.1411e+02  WeightedDiceLoss_0:9.8506e+01  FocalLoss_0:3.3825e-01  
+m_fscore:0.3487  m_iou:0.2112  n_fscore:0.1044  n_iou:0.0720  
+TestSet
+SoftIoULoss_0:1.2006e+02  WeightedDiceLoss_0:1.0277e+02  FocalLoss_0:4.2801e-01  
+m_fscore:0.2563  m_iou:0.1470  n_fscore:0.0978  n_iou:0.0656  
+
+2026-04-12 18:26:03,549 INFO: Start epoch 10/120
+2026-04-12 18:26:07,115 INFO: Epoch 10, Iter 1500, Batch 5, Loss: SoftIoULoss_0: 126.8710, WeightedDiceLoss_0: 108.6475, FocalLoss_0: 0.4355
+2026-04-12 18:26:12,468 INFO: Epoch 10, Iter 1510, Batch 15, Loss: SoftIoULoss_0: 7.0380, WeightedDiceLoss_0: 6.3061, FocalLoss_0: 0.0054
+2026-04-12 18:26:17,670 INFO: Epoch 10, Iter 1520, Batch 25, Loss: SoftIoULoss_0: 7.4126, WeightedDiceLoss_0: 6.5839, FocalLoss_0: 0.0126
+2026-04-12 18:26:26,399 INFO: Epoch 10, Iter 1530, Batch 35, Loss: SoftIoULoss_0: 7.0146, WeightedDiceLoss_0: 6.0926, FocalLoss_0: 0.0260
+2026-04-12 18:26:31,619 INFO: Epoch 10, Iter 1540, Batch 45, Loss: SoftIoULoss_0: 7.0566, WeightedDiceLoss_0: 6.0760, FocalLoss_0: 0.0346
+2026-04-12 18:26:36,769 INFO: Epoch 10, Iter 1550, Batch 55, Loss: SoftIoULoss_0: 9.5588, WeightedDiceLoss_0: 9.2206, FocalLoss_0: 0.0440
+2026-04-12 18:26:41,962 INFO: Epoch 10, Iter 1560, Batch 65, Loss: SoftIoULoss_0: 8.5107, WeightedDiceLoss_0: 7.6657, FocalLoss_0: 0.0523
+2026-04-12 18:26:47,113 INFO: Epoch 10, Iter 1570, Batch 75, Loss: SoftIoULoss_0: 8.0623, WeightedDiceLoss_0: 7.4197, FocalLoss_0: 0.0597
+2026-04-12 18:26:52,350 INFO: Epoch 10, Iter 1580, Batch 85, Loss: SoftIoULoss_0: 6.8144, WeightedDiceLoss_0: 5.6868, FocalLoss_0: 0.0190
+2026-04-12 18:26:57,459 INFO: Epoch 10, Iter 1590, Batch 95, Loss: SoftIoULoss_0: 7.0437, WeightedDiceLoss_0: 5.9435, FocalLoss_0: 0.0144
+2026-04-12 18:27:06,256 INFO: Epoch 10, Iter 1600, Batch 105, Loss: SoftIoULoss_0: 6.3981, WeightedDiceLoss_0: 5.3015, FocalLoss_0: 0.0098
+2026-04-12 18:27:11,637 INFO: Epoch 10, Iter 1610, Batch 115, Loss: SoftIoULoss_0: 6.6101, WeightedDiceLoss_0: 5.5886, FocalLoss_0: 0.0171
+2026-04-12 18:27:16,795 INFO: Epoch 10, Iter 1620, Batch 125, Loss: SoftIoULoss_0: 7.1129, WeightedDiceLoss_0: 6.0735, FocalLoss_0: 0.0229
+2026-04-12 18:27:21,948 INFO: Epoch 10, Iter 1630, Batch 135, Loss: SoftIoULoss_0: 6.2929, WeightedDiceLoss_0: 5.3028, FocalLoss_0: 0.0204
+2026-04-12 18:27:27,143 INFO: Epoch 10, Iter 1640, Batch 145, Loss: SoftIoULoss_0: 5.4432, WeightedDiceLoss_0: 4.4119, FocalLoss_0: 0.0079
+2026-04-12 18:27:32,625 INFO: Epoch 10, Iter 1650, Batch 155, Loss: SoftIoULoss_0: 6.0496, WeightedDiceLoss_0: 5.3284, FocalLoss_0: 0.0048
+2026-04-12 18:27:41,323 INFO: Epoch 10, Iter 1660, Batch 165, Loss: SoftIoULoss_0: 6.9333, WeightedDiceLoss_0: 5.8869, FocalLoss_0: 0.0169
+2026-04-12 18:28:13,300 INFO: [SAMamba][epoch: 10, lr:(4.917e-04,)] [eta: 4:01:22, time (epoch): 97.775 ] 
+TrainSet
+SoftIoULoss_0:1.1767e+02  WeightedDiceLoss_0:1.0276e+02  FocalLoss_0:3.7073e-01  
+m_fscore:0.3337  m_iou:0.2003  n_fscore:0.0967  n_iou:0.0652  
+TestSet
+SoftIoULoss_0:1.0956e+02  WeightedDiceLoss_0:9.1567e+01  FocalLoss_0:4.3358e-01  
+m_fscore:0.2877  m_iou:0.1680  n_fscore:0.1137  n_iou:0.0817  
+
+2026-04-12 18:28:13,301 INFO: Start epoch 11/120
+2026-04-12 18:28:19,541 INFO: Epoch 11, Iter 1670, Batch 9, Loss: SoftIoULoss_0: 115.4039, WeightedDiceLoss_0: 96.5788, FocalLoss_0: 0.4417
+2026-04-12 18:28:24,951 INFO: Epoch 11, Iter 1680, Batch 19, Loss: SoftIoULoss_0: 6.4535, WeightedDiceLoss_0: 5.4313, FocalLoss_0: 0.0075
+2026-04-12 18:28:30,107 INFO: Epoch 11, Iter 1690, Batch 29, Loss: SoftIoULoss_0: 5.9166, WeightedDiceLoss_0: 4.7820, FocalLoss_0: 0.0136
+2026-04-12 18:28:35,413 INFO: Epoch 11, Iter 1700, Batch 39, Loss: SoftIoULoss_0: 7.3721, WeightedDiceLoss_0: 6.3882, FocalLoss_0: 0.0332
+2026-04-12 18:28:40,607 INFO: Epoch 11, Iter 1710, Batch 49, Loss: SoftIoULoss_0: 8.2777, WeightedDiceLoss_0: 7.5406, FocalLoss_0: 0.0393
+2026-04-12 18:28:49,554 INFO: Epoch 11, Iter 1720, Batch 59, Loss: SoftIoULoss_0: 8.7303, WeightedDiceLoss_0: 8.0712, FocalLoss_0: 0.0423
+2026-04-12 18:28:54,754 INFO: Epoch 11, Iter 1730, Batch 69, Loss: SoftIoULoss_0: 8.7121, WeightedDiceLoss_0: 8.0222, FocalLoss_0: 0.0654
+2026-04-12 18:29:00,035 INFO: Epoch 11, Iter 1740, Batch 79, Loss: SoftIoULoss_0: 7.9096, WeightedDiceLoss_0: 7.0292, FocalLoss_0: 0.0513
+2026-04-12 18:29:05,311 INFO: Epoch 11, Iter 1750, Batch 89, Loss: SoftIoULoss_0: 6.2316, WeightedDiceLoss_0: 5.0327, FocalLoss_0: 0.0212
+2026-04-12 18:29:11,011 INFO: Epoch 11, Iter 1760, Batch 99, Loss: SoftIoULoss_0: 6.3395, WeightedDiceLoss_0: 5.1321, FocalLoss_0: 0.0121
+2026-04-12 18:29:16,177 INFO: Epoch 11, Iter 1770, Batch 109, Loss: SoftIoULoss_0: 5.4647, WeightedDiceLoss_0: 4.2182, FocalLoss_0: 0.0113
+2026-04-12 18:29:25,014 INFO: Epoch 11, Iter 1780, Batch 119, Loss: SoftIoULoss_0: 6.8389, WeightedDiceLoss_0: 5.8855, FocalLoss_0: 0.0213
+2026-04-12 18:29:30,173 INFO: Epoch 11, Iter 1790, Batch 129, Loss: SoftIoULoss_0: 6.8750, WeightedDiceLoss_0: 5.9127, FocalLoss_0: 0.0192
+2026-04-12 18:29:35,357 INFO: Epoch 11, Iter 1800, Batch 139, Loss: SoftIoULoss_0: 6.4059, WeightedDiceLoss_0: 5.3521, FocalLoss_0: 0.0197
+2026-04-12 18:29:40,585 INFO: Epoch 11, Iter 1810, Batch 149, Loss: SoftIoULoss_0: 5.6013, WeightedDiceLoss_0: 4.6948, FocalLoss_0: 0.0129
+2026-04-12 18:29:45,678 INFO: Epoch 11, Iter 1820, Batch 159, Loss: SoftIoULoss_0: 5.0576, WeightedDiceLoss_0: 4.3904, FocalLoss_0: 0.0120
+2026-04-12 18:30:17,634 INFO: [SAMamba][epoch: 11, lr:(4.899e-04,)] [eta: 3:57:58, time (epoch): 95.332 ] 
+TrainSet
+SoftIoULoss_0:1.1183e+02  WeightedDiceLoss_0:9.5951e+01  FocalLoss_0:3.9744e-01  
+m_fscore:0.3212  m_iou:0.1913  n_fscore:0.0969  n_iou:0.0667  
+TestSet
+SoftIoULoss_0:1.2030e+02  WeightedDiceLoss_0:1.0378e+02  FocalLoss_0:3.5430e-01  
+m_fscore:0.3010  m_iou:0.1772  n_fscore:0.0973  n_iou:0.0661  
+
+2026-04-12 18:30:17,635 INFO: Start epoch 12/120
+2026-04-12 18:30:20,017 INFO: Epoch 12, Iter 1830, Batch 3, Loss: SoftIoULoss_0: 127.5412, WeightedDiceLoss_0: 110.1720, FocalLoss_0: 0.3651
+2026-04-12 18:30:25,282 INFO: Epoch 12, Iter 1840, Batch 13, Loss: SoftIoULoss_0: 5.9447, WeightedDiceLoss_0: 5.0680, FocalLoss_0: 0.0049
+2026-04-12 18:30:30,399 INFO: Epoch 12, Iter 1850, Batch 23, Loss: SoftIoULoss_0: 6.9175, WeightedDiceLoss_0: 5.9454, FocalLoss_0: 0.0130
+2026-04-12 18:30:39,178 INFO: Epoch 12, Iter 1860, Batch 33, Loss: SoftIoULoss_0: 5.5979, WeightedDiceLoss_0: 4.4961, FocalLoss_0: 0.0172
+2026-04-12 18:30:44,328 INFO: Epoch 12, Iter 1870, Batch 43, Loss: SoftIoULoss_0: 6.7503, WeightedDiceLoss_0: 5.7569, FocalLoss_0: 0.0312
+2026-04-12 18:30:49,565 INFO: Epoch 12, Iter 1880, Batch 53, Loss: SoftIoULoss_0: 9.3492, WeightedDiceLoss_0: 8.8853, FocalLoss_0: 0.0301
+2026-04-12 18:30:54,703 INFO: Epoch 12, Iter 1890, Batch 63, Loss: SoftIoULoss_0: 8.6297, WeightedDiceLoss_0: 7.7724, FocalLoss_0: 0.0376
+2026-04-12 18:30:59,854 INFO: Epoch 12, Iter 1900, Batch 73, Loss: SoftIoULoss_0: 8.4562, WeightedDiceLoss_0: 7.6913, FocalLoss_0: 0.0416
+2026-04-12 18:31:05,022 INFO: Epoch 12, Iter 1910, Batch 83, Loss: SoftIoULoss_0: 7.9592, WeightedDiceLoss_0: 7.1112, FocalLoss_0: 0.0308
+2026-04-12 18:31:14,021 INFO: Epoch 12, Iter 1920, Batch 93, Loss: SoftIoULoss_0: 6.3335, WeightedDiceLoss_0: 5.1018, FocalLoss_0: 0.0173
+2026-04-12 18:31:19,298 INFO: Epoch 12, Iter 1930, Batch 103, Loss: SoftIoULoss_0: 6.6227, WeightedDiceLoss_0: 5.6025, FocalLoss_0: 0.0124
+2026-04-12 18:31:24,411 INFO: Epoch 12, Iter 1940, Batch 113, Loss: SoftIoULoss_0: 5.3861, WeightedDiceLoss_0: 4.2083, FocalLoss_0: 0.0127
+2026-04-12 18:31:29,573 INFO: Epoch 12, Iter 1950, Batch 123, Loss: SoftIoULoss_0: 6.7644, WeightedDiceLoss_0: 5.7680, FocalLoss_0: 0.0205
+2026-04-12 18:31:34,792 INFO: Epoch 12, Iter 1960, Batch 133, Loss: SoftIoULoss_0: 6.1053, WeightedDiceLoss_0: 4.9357, FocalLoss_0: 0.0173
+2026-04-12 18:31:39,982 INFO: Epoch 12, Iter 1970, Batch 143, Loss: SoftIoULoss_0: 6.3524, WeightedDiceLoss_0: 5.4843, FocalLoss_0: 0.0133
+2026-04-12 18:31:48,669 INFO: Epoch 12, Iter 1980, Batch 153, Loss: SoftIoULoss_0: 5.2065, WeightedDiceLoss_0: 4.4680, FocalLoss_0: 0.0028
+2026-04-12 18:31:53,761 INFO: Epoch 12, Iter 1990, Batch 163, Loss: SoftIoULoss_0: 7.0075, WeightedDiceLoss_0: 6.1441, FocalLoss_0: 0.0166
+2026-04-12 18:32:19,912 INFO: [SAMamba][epoch: 12, lr:(4.880e-04,)] [eta: 3:54:28, time (epoch): 97.034 ] 
+TrainSet
+SoftIoULoss_0:1.1391e+02  WeightedDiceLoss_0:9.8568e+01  FocalLoss_0:3.2551e-01  
+m_fscore:0.3702  m_iou:0.2271  n_fscore:0.0991  n_iou:0.0683  
+TestSet
+SoftIoULoss_0:1.1661e+02  WeightedDiceLoss_0:9.8663e+01  FocalLoss_0:5.3701e-01  
+m_fscore:0.2653  m_iou:0.1530  n_fscore:0.1035  n_iou:0.0705  
+
+2026-04-12 18:32:19,912 INFO: Start epoch 13/120
+2026-04-12 18:32:28,173 INFO: Epoch 13, Iter 2000, Batch 7, Loss: SoftIoULoss_0: 122.9256, WeightedDiceLoss_0: 104.0710, FocalLoss_0: 0.5473
+2026-04-12 18:32:33,311 INFO: Epoch 13, Iter 2010, Batch 17, Loss: SoftIoULoss_0: 6.3926, WeightedDiceLoss_0: 5.6114, FocalLoss_0: 0.0057
+2026-04-12 18:32:38,456 INFO: Epoch 13, Iter 2020, Batch 27, Loss: SoftIoULoss_0: 6.0850, WeightedDiceLoss_0: 4.9515, FocalLoss_0: 0.0138
+2026-04-12 18:32:43,666 INFO: Epoch 13, Iter 2030, Batch 37, Loss: SoftIoULoss_0: 6.0185, WeightedDiceLoss_0: 4.9847, FocalLoss_0: 0.0225
+2026-04-12 18:32:48,864 INFO: Epoch 13, Iter 2040, Batch 47, Loss: SoftIoULoss_0: 8.2772, WeightedDiceLoss_0: 7.4867, FocalLoss_0: 0.0372
+2026-04-12 18:32:54,060 INFO: Epoch 13, Iter 2050, Batch 57, Loss: SoftIoULoss_0: 8.6745, WeightedDiceLoss_0: 7.9471, FocalLoss_0: 0.0356
+2026-04-12 18:33:02,820 INFO: Epoch 13, Iter 2060, Batch 67, Loss: SoftIoULoss_0: 8.8607, WeightedDiceLoss_0: 8.1692, FocalLoss_0: 0.0530
+2026-04-12 18:33:07,917 INFO: Epoch 13, Iter 2070, Batch 77, Loss: SoftIoULoss_0: 8.1711, WeightedDiceLoss_0: 7.3219, FocalLoss_0: 0.0382
+2026-04-12 18:33:13,374 INFO: Epoch 13, Iter 2080, Batch 87, Loss: SoftIoULoss_0: 6.3099, WeightedDiceLoss_0: 5.0645, FocalLoss_0: 0.0163
+2026-04-12 18:33:18,697 INFO: Epoch 13, Iter 2090, Batch 97, Loss: SoftIoULoss_0: 6.3989, WeightedDiceLoss_0: 5.1868, FocalLoss_0: 0.0154
+2026-04-12 18:33:23,937 INFO: Epoch 13, Iter 2100, Batch 107, Loss: SoftIoULoss_0: 5.5082, WeightedDiceLoss_0: 4.4342, FocalLoss_0: 0.0090
+2026-04-12 18:33:29,089 INFO: Epoch 13, Iter 2110, Batch 117, Loss: SoftIoULoss_0: 5.9014, WeightedDiceLoss_0: 4.7240, FocalLoss_0: 0.0204
+2026-04-12 18:33:37,822 INFO: Epoch 13, Iter 2120, Batch 127, Loss: SoftIoULoss_0: 6.7756, WeightedDiceLoss_0: 5.9391, FocalLoss_0: 0.0221
+2026-04-12 18:33:42,986 INFO: Epoch 13, Iter 2130, Batch 137, Loss: SoftIoULoss_0: 5.3539, WeightedDiceLoss_0: 4.1886, FocalLoss_0: 0.0136
+2026-04-12 18:33:48,196 INFO: Epoch 13, Iter 2140, Batch 147, Loss: SoftIoULoss_0: 5.9217, WeightedDiceLoss_0: 5.0376, FocalLoss_0: 0.0068
+2026-04-12 18:33:53,482 INFO: Epoch 13, Iter 2150, Batch 157, Loss: SoftIoULoss_0: 5.6104, WeightedDiceLoss_0: 4.8098, FocalLoss_0: 0.0085
+2026-04-12 18:34:28,910 INFO: [SAMamba][epoch: 13, lr:(4.860e-04,)] [eta: 3:52:08, time (epoch): 97.624 ] 
+TrainSet
+SoftIoULoss_0:1.1086e+02  WeightedDiceLoss_0:9.4992e+01  FocalLoss_0:3.4100e-01  
+m_fscore:0.3734  m_iou:0.2295  n_fscore:0.1016  n_iou:0.0703  
+TestSet
+SoftIoULoss_0:1.1139e+02  WeightedDiceLoss_0:9.3890e+01  FocalLoss_0:3.1612e-01  
+m_fscore:0.3451  m_iou:0.2085  n_fscore:0.1140  n_iou:0.0814  
+
+2026-04-12 18:34:28,911 INFO: Start epoch 14/120
+2026-04-12 18:34:30,621 INFO: Epoch 14, Iter 2160, Batch 1, Loss: SoftIoULoss_0: 117.6785, WeightedDiceLoss_0: 99.2111, FocalLoss_0: 0.3382
+2026-04-12 18:34:36,544 INFO: Epoch 14, Iter 2170, Batch 11, Loss: SoftIoULoss_0: 5.9588, WeightedDiceLoss_0: 5.1963, FocalLoss_0: 0.0056
+2026-04-12 18:34:42,635 INFO: Epoch 14, Iter 2180, Batch 21, Loss: SoftIoULoss_0: 6.8444, WeightedDiceLoss_0: 5.9675, FocalLoss_0: 0.0111
+2026-04-12 18:34:52,063 INFO: Epoch 14, Iter 2190, Batch 31, Loss: SoftIoULoss_0: 5.8461, WeightedDiceLoss_0: 4.7947, FocalLoss_0: 0.0148
+2026-04-12 18:34:58,133 INFO: Epoch 14, Iter 2200, Batch 41, Loss: SoftIoULoss_0: 6.8109, WeightedDiceLoss_0: 5.8055, FocalLoss_0: 0.0303
+2026-04-12 18:35:04,125 INFO: Epoch 14, Iter 2210, Batch 51, Loss: SoftIoULoss_0: 8.6801, WeightedDiceLoss_0: 8.1479, FocalLoss_0: 0.0380
+2026-04-12 18:35:10,119 INFO: Epoch 14, Iter 2220, Batch 61, Loss: SoftIoULoss_0: 8.9083, WeightedDiceLoss_0: 8.2358, FocalLoss_0: 0.0418
+2026-04-12 18:35:16,188 INFO: Epoch 14, Iter 2230, Batch 71, Loss: SoftIoULoss_0: 8.7311, WeightedDiceLoss_0: 8.1727, FocalLoss_0: 0.0539
+2026-04-12 18:35:25,639 INFO: Epoch 14, Iter 2240, Batch 81, Loss: SoftIoULoss_0: 7.3805, WeightedDiceLoss_0: 6.3226, FocalLoss_0: 0.0237
+2026-04-12 18:35:31,524 INFO: Epoch 14, Iter 2250, Batch 91, Loss: SoftIoULoss_0: 6.6603, WeightedDiceLoss_0: 5.4675, FocalLoss_0: 0.0140
+2026-04-12 18:35:37,357 INFO: Epoch 14, Iter 2260, Batch 101, Loss: SoftIoULoss_0: 5.9319, WeightedDiceLoss_0: 4.6640, FocalLoss_0: 0.0133
+2026-04-12 18:35:43,164 INFO: Epoch 14, Iter 2270, Batch 111, Loss: SoftIoULoss_0: 6.4937, WeightedDiceLoss_0: 5.4121, FocalLoss_0: 0.0158
+2026-04-12 18:35:48,983 INFO: Epoch 14, Iter 2280, Batch 121, Loss: SoftIoULoss_0: 6.4394, WeightedDiceLoss_0: 5.3118, FocalLoss_0: 0.0217
+2026-04-12 18:35:54,993 INFO: Epoch 14, Iter 2290, Batch 131, Loss: SoftIoULoss_0: 7.3016, WeightedDiceLoss_0: 6.3694, FocalLoss_0: 0.0209
+2026-04-12 18:36:04,510 INFO: Epoch 14, Iter 2300, Batch 141, Loss: SoftIoULoss_0: 6.3271, WeightedDiceLoss_0: 5.2654, FocalLoss_0: 0.0181
+2026-04-12 18:36:10,357 INFO: Epoch 14, Iter 2310, Batch 151, Loss: SoftIoULoss_0: 5.9715, WeightedDiceLoss_0: 5.3288, FocalLoss_0: 0.0076
+2026-04-12 18:36:16,349 INFO: Epoch 14, Iter 2320, Batch 161, Loss: SoftIoULoss_0: 5.8199, WeightedDiceLoss_0: 4.9316, FocalLoss_0: 0.0142
+2026-04-12 18:36:50,780 INFO: [SAMamba][epoch: 14, lr:(4.837e-04,)] [eta: 3:51:26, time (epoch): 109.730 ] 
+TrainSet
+SoftIoULoss_0:1.1341e+02  WeightedDiceLoss_0:9.8028e+01  FocalLoss_0:3.5799e-01  
+m_fscore:0.3478  m_iou:0.2105  n_fscore:0.0951  n_iou:0.0639  
+TestSet
+SoftIoULoss_0:1.1232e+02  WeightedDiceLoss_0:9.5016e+01  FocalLoss_0:3.4548e-01  
+m_fscore:0.3366  m_iou:0.2023  n_fscore:0.1108  n_iou:0.0783  
+
+2026-04-12 18:36:50,781 INFO: Start epoch 15/120
+2026-04-12 18:36:54,726 INFO: Epoch 15, Iter 2330, Batch 5, Loss: SoftIoULoss_0: 118.9900, WeightedDiceLoss_0: 100.7912, FocalLoss_0: 0.3549
+2026-04-12 18:37:00,571 INFO: Epoch 15, Iter 2340, Batch 15, Loss: SoftIoULoss_0: 5.4766, WeightedDiceLoss_0: 4.8098, FocalLoss_0: 0.0048
+2026-04-12 18:37:06,442 INFO: Epoch 15, Iter 2350, Batch 25, Loss: SoftIoULoss_0: 7.1789, WeightedDiceLoss_0: 6.1527, FocalLoss_0: 0.0148
+2026-04-12 18:37:16,145 INFO: Epoch 15, Iter 2360, Batch 35, Loss: SoftIoULoss_0: 6.0827, WeightedDiceLoss_0: 4.9587, FocalLoss_0: 0.0218
+2026-04-12 18:37:21,942 INFO: Epoch 15, Iter 2370, Batch 45, Loss: SoftIoULoss_0: 7.3336, WeightedDiceLoss_0: 6.5152, FocalLoss_0: 0.0322
+2026-04-12 18:37:27,783 INFO: Epoch 15, Iter 2380, Batch 55, Loss: SoftIoULoss_0: 9.1821, WeightedDiceLoss_0: 8.6370, FocalLoss_0: 0.0332
+2026-04-12 18:37:33,648 INFO: Epoch 15, Iter 2390, Batch 65, Loss: SoftIoULoss_0: 8.5443, WeightedDiceLoss_0: 7.7051, FocalLoss_0: 0.0479
+2026-04-12 18:37:39,543 INFO: Epoch 15, Iter 2400, Batch 75, Loss: SoftIoULoss_0: 8.3721, WeightedDiceLoss_0: 7.6486, FocalLoss_0: 0.0627
+2026-04-12 18:37:48,990 INFO: Epoch 15, Iter 2410, Batch 85, Loss: SoftIoULoss_0: 6.5548, WeightedDiceLoss_0: 5.4241, FocalLoss_0: 0.0239
+2026-04-12 18:37:54,837 INFO: Epoch 15, Iter 2420, Batch 95, Loss: SoftIoULoss_0: 6.5774, WeightedDiceLoss_0: 5.4511, FocalLoss_0: 0.0147
+2026-04-12 18:38:00,738 INFO: Epoch 15, Iter 2430, Batch 105, Loss: SoftIoULoss_0: 5.4056, WeightedDiceLoss_0: 4.2649, FocalLoss_0: 0.0087
+2026-04-12 18:38:06,589 INFO: Epoch 15, Iter 2440, Batch 115, Loss: SoftIoULoss_0: 5.4700, WeightedDiceLoss_0: 4.3319, FocalLoss_0: 0.0171
+2026-04-12 18:38:12,686 INFO: Epoch 15, Iter 2450, Batch 125, Loss: SoftIoULoss_0: 7.6876, WeightedDiceLoss_0: 6.8549, FocalLoss_0: 0.0226
+2026-04-12 18:38:22,184 INFO: Epoch 15, Iter 2460, Batch 135, Loss: SoftIoULoss_0: 6.7037, WeightedDiceLoss_0: 5.7194, FocalLoss_0: 0.0219
+2026-04-12 18:38:28,378 INFO: Epoch 15, Iter 2470, Batch 145, Loss: SoftIoULoss_0: 6.5860, WeightedDiceLoss_0: 5.5677, FocalLoss_0: 0.0145
+2026-04-12 18:38:34,359 INFO: Epoch 15, Iter 2480, Batch 155, Loss: SoftIoULoss_0: 5.1910, WeightedDiceLoss_0: 4.4748, FocalLoss_0: 0.0038
+2026-04-12 18:38:40,138 INFO: Epoch 15, Iter 2490, Batch 165, Loss: SoftIoULoss_0: 6.9267, WeightedDiceLoss_0: 5.8136, FocalLoss_0: 0.0183
+2026-04-12 18:39:10,695 INFO: [SAMamba][epoch: 15, lr:(4.814e-04,)] [eta: 3:50:17, time (epoch): 109.359 ] 
+TrainSet
+SoftIoULoss_0:1.1357e+02  WeightedDiceLoss_0:9.8271e+01  FocalLoss_0:3.6614e-01  
+m_fscore:0.3512  m_iou:0.2130  n_fscore:0.1025  n_iou:0.0707  
+TestSet
+SoftIoULoss_0:1.0806e+02  WeightedDiceLoss_0:8.9027e+01  FocalLoss_0:3.2771e-01  
+m_fscore:0.3471  m_iou:0.2100  n_fscore:0.1189  n_iou:0.0844  
+
+2026-04-12 18:39:10,696 INFO: Start epoch 16/120
+2026-04-12 18:39:16,513 INFO: Epoch 16, Iter 2500, Batch 9, Loss: SoftIoULoss_0: 113.8929, WeightedDiceLoss_0: 94.3801, FocalLoss_0: 0.3335
+2026-04-12 18:39:21,914 INFO: Epoch 16, Iter 2510, Batch 19, Loss: SoftIoULoss_0: 5.9266, WeightedDiceLoss_0: 4.9584, FocalLoss_0: 0.0076
+2026-04-12 18:39:27,421 INFO: Epoch 16, Iter 2520, Batch 29, Loss: SoftIoULoss_0: 5.7237, WeightedDiceLoss_0: 4.5552, FocalLoss_0: 0.0138
+2026-04-12 18:39:36,500 INFO: Epoch 16, Iter 2530, Batch 39, Loss: SoftIoULoss_0: 6.8203, WeightedDiceLoss_0: 5.7290, FocalLoss_0: 0.0344
+2026-04-12 18:39:42,200 INFO: Epoch 16, Iter 2540, Batch 49, Loss: SoftIoULoss_0: 8.2771, WeightedDiceLoss_0: 7.6505, FocalLoss_0: 0.0285
+2026-04-12 18:39:47,998 INFO: Epoch 16, Iter 2550, Batch 59, Loss: SoftIoULoss_0: 8.4915, WeightedDiceLoss_0: 7.7367, FocalLoss_0: 0.0280
+2026-04-12 18:39:54,054 INFO: Epoch 16, Iter 2560, Batch 69, Loss: SoftIoULoss_0: 8.7981, WeightedDiceLoss_0: 8.2505, FocalLoss_0: 0.0548
+2026-04-12 18:39:59,789 INFO: Epoch 16, Iter 2570, Batch 79, Loss: SoftIoULoss_0: 7.3207, WeightedDiceLoss_0: 6.2568, FocalLoss_0: 0.0330
+2026-04-12 18:40:05,556 INFO: Epoch 16, Iter 2580, Batch 89, Loss: SoftIoULoss_0: 6.4271, WeightedDiceLoss_0: 5.3103, FocalLoss_0: 0.0171
+2026-04-12 18:40:14,923 INFO: Epoch 16, Iter 2590, Batch 99, Loss: SoftIoULoss_0: 6.5236, WeightedDiceLoss_0: 5.4452, FocalLoss_0: 0.0120
+2026-04-12 18:40:20,504 INFO: Epoch 16, Iter 2600, Batch 109, Loss: SoftIoULoss_0: 5.5651, WeightedDiceLoss_0: 4.3621, FocalLoss_0: 0.0122
+2026-04-12 18:40:25,764 INFO: Epoch 16, Iter 2610, Batch 119, Loss: SoftIoULoss_0: 7.0473, WeightedDiceLoss_0: 6.1212, FocalLoss_0: 0.0199
+2026-04-12 18:40:31,593 INFO: Epoch 16, Iter 2620, Batch 129, Loss: SoftIoULoss_0: 6.9359, WeightedDiceLoss_0: 5.9226, FocalLoss_0: 0.0217
+2026-04-12 18:40:37,266 INFO: Epoch 16, Iter 2630, Batch 139, Loss: SoftIoULoss_0: 6.3121, WeightedDiceLoss_0: 5.2970, FocalLoss_0: 0.0230
+2026-04-12 18:40:46,306 INFO: Epoch 16, Iter 2640, Batch 149, Loss: SoftIoULoss_0: 5.5317, WeightedDiceLoss_0: 4.7307, FocalLoss_0: 0.0082
+2026-04-12 18:40:51,736 INFO: Epoch 16, Iter 2650, Batch 159, Loss: SoftIoULoss_0: 4.6445, WeightedDiceLoss_0: 3.9110, FocalLoss_0: 0.0120
+2026-04-12 18:41:24,960 INFO: [SAMamba][epoch: 16, lr:(4.788e-04,)] [eta: 3:48:23, time (epoch): 104.224 ] 
+TrainSet
+SoftIoULoss_0:1.0932e+02  WeightedDiceLoss_0:9.3989e+01  FocalLoss_0:3.3739e-01  
+m_fscore:0.3780  m_iou:0.2330  n_fscore:0.1055  n_iou:0.0735  
+TestSet
+SoftIoULoss_0:1.2197e+02  WeightedDiceLoss_0:1.0515e+02  FocalLoss_0:2.9664e-01  
+m_fscore:0.3406  m_iou:0.2052  n_fscore:0.0974  n_iou:0.0653  
+
+2026-04-12 18:41:24,961 INFO: Start epoch 17/120
+2026-04-12 18:41:27,635 INFO: Epoch 17, Iter 2660, Batch 3, Loss: SoftIoULoss_0: 127.3570, WeightedDiceLoss_0: 109.5489, FocalLoss_0: 0.3054
+2026-04-12 18:41:33,040 INFO: Epoch 17, Iter 2670, Batch 13, Loss: SoftIoULoss_0: 5.4157, WeightedDiceLoss_0: 4.4625, FocalLoss_0: 0.0049
+2026-04-12 18:41:38,381 INFO: Epoch 17, Iter 2680, Batch 23, Loss: SoftIoULoss_0: 7.3664, WeightedDiceLoss_0: 6.4636, FocalLoss_0: 0.0126
+2026-04-12 18:41:44,135 INFO: Epoch 17, Iter 2690, Batch 33, Loss: SoftIoULoss_0: 5.0824, WeightedDiceLoss_0: 3.8222, FocalLoss_0: 0.0160
+2026-04-12 18:41:49,553 INFO: Epoch 17, Iter 2700, Batch 43, Loss: SoftIoULoss_0: 7.3666, WeightedDiceLoss_0: 6.5227, FocalLoss_0: 0.0434
+2026-04-12 18:41:58,965 INFO: Epoch 17, Iter 2710, Batch 53, Loss: SoftIoULoss_0: 9.2941, WeightedDiceLoss_0: 8.9005, FocalLoss_0: 0.0544
+2026-04-12 18:42:04,666 INFO: Epoch 17, Iter 2720, Batch 63, Loss: SoftIoULoss_0: 8.5514, WeightedDiceLoss_0: 7.6714, FocalLoss_0: 0.0556
+2026-04-12 18:42:10,368 INFO: Epoch 17, Iter 2730, Batch 73, Loss: SoftIoULoss_0: 8.8575, WeightedDiceLoss_0: 8.2017, FocalLoss_0: 0.0571
+2026-04-12 18:42:15,923 INFO: Epoch 17, Iter 2740, Batch 83, Loss: SoftIoULoss_0: 7.1139, WeightedDiceLoss_0: 6.0002, FocalLoss_0: 0.0332
+2026-04-12 18:42:21,259 INFO: Epoch 17, Iter 2750, Batch 93, Loss: SoftIoULoss_0: 5.8449, WeightedDiceLoss_0: 4.6388, FocalLoss_0: 0.0134
+2026-04-12 18:42:26,640 INFO: Epoch 17, Iter 2760, Batch 103, Loss: SoftIoULoss_0: 5.5386, WeightedDiceLoss_0: 4.3449, FocalLoss_0: 0.0093
+2026-04-12 18:42:35,513 INFO: Epoch 17, Iter 2770, Batch 113, Loss: SoftIoULoss_0: 6.6526, WeightedDiceLoss_0: 5.5687, FocalLoss_0: 0.0175
+2026-04-12 18:42:40,897 INFO: Epoch 17, Iter 2780, Batch 123, Loss: SoftIoULoss_0: 7.2473, WeightedDiceLoss_0: 6.2153, FocalLoss_0: 0.0219
+2026-04-12 18:42:46,339 INFO: Epoch 17, Iter 2790, Batch 133, Loss: SoftIoULoss_0: 6.3951, WeightedDiceLoss_0: 5.4052, FocalLoss_0: 0.0194
+2026-04-12 18:42:51,849 INFO: Epoch 17, Iter 2800, Batch 143, Loss: SoftIoULoss_0: 6.2450, WeightedDiceLoss_0: 5.2326, FocalLoss_0: 0.0144
+2026-04-12 18:42:57,354 INFO: Epoch 17, Iter 2810, Batch 153, Loss: SoftIoULoss_0: 4.8498, WeightedDiceLoss_0: 4.0090, FocalLoss_0: 0.0042
+2026-04-12 18:43:02,702 INFO: Epoch 17, Iter 2820, Batch 163, Loss: SoftIoULoss_0: 6.1439, WeightedDiceLoss_0: 5.3080, FocalLoss_0: 0.0133
+2026-04-12 18:43:33,446 INFO: [SAMamba][epoch: 17, lr:(4.762e-04,)] [eta: 3:45:52, time (epoch): 98.672 ] 
+TrainSet
+SoftIoULoss_0:1.1121e+02  WeightedDiceLoss_0:9.5529e+01  FocalLoss_0:3.9578e-01  
+m_fscore:0.3419  m_iou:0.2062  n_fscore:0.1038  n_iou:0.0720  
+TestSet
+SoftIoULoss_0:1.1417e+02  WeightedDiceLoss_0:9.6710e+01  FocalLoss_0:3.1082e-01  
+m_fscore:0.3621  m_iou:0.2211  n_fscore:0.1098  n_iou:0.0754  
+
+2026-04-12 18:43:33,448 INFO: Start epoch 18/120
+2026-04-12 18:43:38,021 INFO: Epoch 18, Iter 2830, Batch 7, Loss: SoftIoULoss_0: 119.7984, WeightedDiceLoss_0: 101.4216, FocalLoss_0: 0.3194
+2026-04-12 18:43:46,890 INFO: Epoch 18, Iter 2840, Batch 17, Loss: SoftIoULoss_0: 5.9028, WeightedDiceLoss_0: 5.0108, FocalLoss_0: 0.0078
+2026-04-12 18:43:52,560 INFO: Epoch 18, Iter 2850, Batch 27, Loss: SoftIoULoss_0: 5.5318, WeightedDiceLoss_0: 4.3717, FocalLoss_0: 0.0112
+2026-04-12 18:43:58,546 INFO: Epoch 18, Iter 2860, Batch 37, Loss: SoftIoULoss_0: 5.5241, WeightedDiceLoss_0: 4.2493, FocalLoss_0: 0.0246
+2026-04-12 18:44:04,213 INFO: Epoch 18, Iter 2870, Batch 47, Loss: SoftIoULoss_0: 7.3043, WeightedDiceLoss_0: 6.3860, FocalLoss_0: 0.0292
+2026-04-12 18:44:09,931 INFO: Epoch 18, Iter 2880, Batch 57, Loss: SoftIoULoss_0: 8.7555, WeightedDiceLoss_0: 8.0749, FocalLoss_0: 0.0372
+2026-04-12 18:44:15,688 INFO: Epoch 18, Iter 2890, Batch 67, Loss: SoftIoULoss_0: 8.7569, WeightedDiceLoss_0: 8.1266, FocalLoss_0: 0.0485
+2026-04-12 18:44:24,809 INFO: Epoch 18, Iter 2900, Batch 77, Loss: SoftIoULoss_0: 7.7077, WeightedDiceLoss_0: 6.8704, FocalLoss_0: 0.0344
+2026-04-12 18:44:30,394 INFO: Epoch 18, Iter 2910, Batch 87, Loss: SoftIoULoss_0: 5.9176, WeightedDiceLoss_0: 4.5999, FocalLoss_0: 0.0140
+2026-04-12 18:44:36,091 INFO: Epoch 18, Iter 2920, Batch 97, Loss: SoftIoULoss_0: 6.5283, WeightedDiceLoss_0: 5.4727, FocalLoss_0: 0.0118
+2026-04-12 18:44:41,780 INFO: Epoch 18, Iter 2930, Batch 107, Loss: SoftIoULoss_0: 5.4430, WeightedDiceLoss_0: 4.3123, FocalLoss_0: 0.0102
+2026-04-12 18:44:47,456 INFO: Epoch 18, Iter 2940, Batch 117, Loss: SoftIoULoss_0: 6.0745, WeightedDiceLoss_0: 4.9326, FocalLoss_0: 0.0200
+2026-04-12 18:44:56,532 INFO: Epoch 18, Iter 2950, Batch 127, Loss: SoftIoULoss_0: 6.7042, WeightedDiceLoss_0: 5.6480, FocalLoss_0: 0.0207
+2026-04-12 18:45:01,922 INFO: Epoch 18, Iter 2960, Batch 137, Loss: SoftIoULoss_0: 5.7874, WeightedDiceLoss_0: 4.8177, FocalLoss_0: 0.0173
+2026-04-12 18:45:07,395 INFO: Epoch 18, Iter 2970, Batch 147, Loss: SoftIoULoss_0: 6.5603, WeightedDiceLoss_0: 5.9099, FocalLoss_0: 0.0105
+2026-04-12 18:45:12,956 INFO: Epoch 18, Iter 2980, Batch 157, Loss: SoftIoULoss_0: 5.5142, WeightedDiceLoss_0: 4.8488, FocalLoss_0: 0.0067
+2026-04-12 18:45:46,769 INFO: [SAMamba][epoch: 18, lr:(4.733e-04,)] [eta: 3:43:50, time (epoch): 103.573 ] 
+TrainSet
+SoftIoULoss_0:1.0786e+02  WeightedDiceLoss_0:9.1909e+01  FocalLoss_0:3.2184e-01  
+m_fscore:0.4213  m_iou:0.2669  n_fscore:0.1130  n_iou:0.0804  
+TestSet
+SoftIoULoss_0:1.1783e+02  WeightedDiceLoss_0:1.0038e+02  FocalLoss_0:3.2850e-01  
+m_fscore:0.3417  m_iou:0.2060  n_fscore:0.1031  n_iou:0.0694  
+
+2026-04-12 18:45:46,770 INFO: Start epoch 19/120
+2026-04-12 18:45:48,423 INFO: Epoch 19, Iter 2990, Batch 1, Loss: SoftIoULoss_0: 124.5942, WeightedDiceLoss_0: 106.1606, FocalLoss_0: 0.3413
+2026-04-12 18:45:53,739 INFO: Epoch 19, Iter 3000, Batch 11, Loss: SoftIoULoss_0: 6.3240, WeightedDiceLoss_0: 5.6803, FocalLoss_0: 0.0088
+2026-04-12 18:45:59,154 INFO: Epoch 19, Iter 3010, Batch 21, Loss: SoftIoULoss_0: 6.5113, WeightedDiceLoss_0: 5.6129, FocalLoss_0: 0.0123
+2026-04-12 18:46:08,074 INFO: Epoch 19, Iter 3020, Batch 31, Loss: SoftIoULoss_0: 5.5135, WeightedDiceLoss_0: 4.3636, FocalLoss_0: 0.0150
+2026-04-12 18:46:13,655 INFO: Epoch 19, Iter 3030, Batch 41, Loss: SoftIoULoss_0: 6.9123, WeightedDiceLoss_0: 5.9254, FocalLoss_0: 0.0353
+2026-04-12 18:46:20,901 INFO: Epoch 19, Iter 3040, Batch 51, Loss: SoftIoULoss_0: 8.7249, WeightedDiceLoss_0: 8.1593, FocalLoss_0: 0.0387
+2026-04-12 18:46:26,749 INFO: Epoch 19, Iter 3050, Batch 61, Loss: SoftIoULoss_0: 8.3236, WeightedDiceLoss_0: 7.5759, FocalLoss_0: 0.0451
+2026-04-12 18:46:33,265 INFO: Epoch 19, Iter 3060, Batch 71, Loss: SoftIoULoss_0: 8.6399, WeightedDiceLoss_0: 7.9232, FocalLoss_0: 0.0553
+2026-04-12 18:46:44,204 INFO: Epoch 19, Iter 3070, Batch 81, Loss: SoftIoULoss_0: 6.6914, WeightedDiceLoss_0: 5.5640, FocalLoss_0: 0.0305
+2026-04-12 18:46:49,855 INFO: Epoch 19, Iter 3080, Batch 91, Loss: SoftIoULoss_0: 6.3432, WeightedDiceLoss_0: 5.1180, FocalLoss_0: 0.0148
+2026-04-12 18:46:55,447 INFO: Epoch 19, Iter 3090, Batch 101, Loss: SoftIoULoss_0: 6.4171, WeightedDiceLoss_0: 5.3506, FocalLoss_0: 0.0116
+2026-04-12 18:47:01,607 INFO: Epoch 19, Iter 3100, Batch 111, Loss: SoftIoULoss_0: 5.4294, WeightedDiceLoss_0: 4.1745, FocalLoss_0: 0.0132
+2026-04-12 18:47:07,368 INFO: Epoch 19, Iter 3110, Batch 121, Loss: SoftIoULoss_0: 7.1407, WeightedDiceLoss_0: 6.0878, FocalLoss_0: 0.0234
+2026-04-12 18:47:13,224 INFO: Epoch 19, Iter 3120, Batch 131, Loss: SoftIoULoss_0: 6.1691, WeightedDiceLoss_0: 5.0479, FocalLoss_0: 0.0187
+2026-04-12 18:47:22,731 INFO: Epoch 19, Iter 3130, Batch 141, Loss: SoftIoULoss_0: 5.8882, WeightedDiceLoss_0: 4.8806, FocalLoss_0: 0.0153
+2026-04-12 18:47:28,652 INFO: Epoch 19, Iter 3140, Batch 151, Loss: SoftIoULoss_0: 4.4898, WeightedDiceLoss_0: 3.8114, FocalLoss_0: 0.0041
+2026-04-12 18:47:34,556 INFO: Epoch 19, Iter 3150, Batch 161, Loss: SoftIoULoss_0: 5.9954, WeightedDiceLoss_0: 5.2362, FocalLoss_0: 0.0124
+2026-04-12 18:48:08,449 INFO: [SAMamba][epoch: 19, lr:(4.703e-04,)] [eta: 3:42:31, time (epoch): 109.827 ] 
+TrainSet
+SoftIoULoss_0:1.0926e+02  WeightedDiceLoss_0:9.3732e+01  FocalLoss_0:3.6012e-01  
+m_fscore:0.4001  m_iou:0.2501  n_fscore:0.1055  n_iou:0.0735  
+TestSet
+SoftIoULoss_0:1.0231e+02  WeightedDiceLoss_0:8.4649e+01  FocalLoss_0:2.7614e-01  
+m_fscore:0.4291  m_iou:0.2732  n_fscore:0.1284  n_iou:0.0944  
+
+2026-04-12 18:48:08,450 INFO: Start epoch 20/120
+2026-04-12 18:48:12,106 INFO: Epoch 20, Iter 3160, Batch 5, Loss: SoftIoULoss_0: 108.2857, WeightedDiceLoss_0: 90.0817, FocalLoss_0: 0.2851
+2026-04-12 18:48:17,671 INFO: Epoch 20, Iter 3170, Batch 15, Loss: SoftIoULoss_0: 5.6972, WeightedDiceLoss_0: 5.1466, FocalLoss_0: 0.0067
+2026-04-12 18:48:22,987 INFO: Epoch 20, Iter 3180, Batch 25, Loss: SoftIoULoss_0: 6.5088, WeightedDiceLoss_0: 5.5204, FocalLoss_0: 0.0149
+2026-04-12 18:48:31,962 INFO: Epoch 20, Iter 3190, Batch 35, Loss: SoftIoULoss_0: 5.6553, WeightedDiceLoss_0: 4.4655, FocalLoss_0: 0.0216
+2026-04-12 18:48:37,252 INFO: Epoch 20, Iter 3200, Batch 45, Loss: SoftIoULoss_0: 6.3424, WeightedDiceLoss_0: 5.3184, FocalLoss_0: 0.0283
+2026-04-12 18:48:42,500 INFO: Epoch 20, Iter 3210, Batch 55, Loss: SoftIoULoss_0: 8.7760, WeightedDiceLoss_0: 8.1118, FocalLoss_0: 0.0179
+2026-04-12 18:48:47,743 INFO: Epoch 20, Iter 3220, Batch 65, Loss: SoftIoULoss_0: 9.2125, WeightedDiceLoss_0: 8.7064, FocalLoss_0: 0.0496
+2026-04-12 18:48:52,969 INFO: Epoch 20, Iter 3230, Batch 75, Loss: SoftIoULoss_0: 8.2196, WeightedDiceLoss_0: 7.3995, FocalLoss_0: 0.0387
+2026-04-12 18:48:58,186 INFO: Epoch 20, Iter 3240, Batch 85, Loss: SoftIoULoss_0: 6.4496, WeightedDiceLoss_0: 5.3061, FocalLoss_0: 0.0253
+2026-04-12 18:49:03,313 INFO: Epoch 20, Iter 3250, Batch 95, Loss: SoftIoULoss_0: 6.7940, WeightedDiceLoss_0: 5.6314, FocalLoss_0: 0.0210
+2026-04-12 18:49:12,364 INFO: Epoch 20, Iter 3260, Batch 105, Loss: SoftIoULoss_0: 5.4585, WeightedDiceLoss_0: 4.2688, FocalLoss_0: 0.0098
+2026-04-12 18:49:17,486 INFO: Epoch 20, Iter 3270, Batch 115, Loss: SoftIoULoss_0: 6.0521, WeightedDiceLoss_0: 4.9629, FocalLoss_0: 0.0190
+2026-04-12 18:49:22,700 INFO: Epoch 20, Iter 3280, Batch 125, Loss: SoftIoULoss_0: 6.1203, WeightedDiceLoss_0: 4.9807, FocalLoss_0: 0.0180
+2026-04-12 18:49:28,149 INFO: Epoch 20, Iter 3290, Batch 135, Loss: SoftIoULoss_0: 6.6654, WeightedDiceLoss_0: 5.6973, FocalLoss_0: 0.0218
+2026-04-12 18:49:33,441 INFO: Epoch 20, Iter 3300, Batch 145, Loss: SoftIoULoss_0: 6.3647, WeightedDiceLoss_0: 5.3377, FocalLoss_0: 0.0141
+2026-04-12 18:49:38,706 INFO: Epoch 20, Iter 3310, Batch 155, Loss: SoftIoULoss_0: 4.7838, WeightedDiceLoss_0: 4.2241, FocalLoss_0: 0.0052
+2026-04-12 18:49:47,288 INFO: Epoch 20, Iter 3320, Batch 165, Loss: SoftIoULoss_0: 5.3472, WeightedDiceLoss_0: 4.1458, FocalLoss_0: 0.0124
+2026-04-12 18:50:12,912 INFO: [SAMamba][epoch: 20, lr:(4.672e-04,)] [eta: 3:39:41, time (epoch): 98.839 ] 
+TrainSet
+SoftIoULoss_0:1.0823e+02  WeightedDiceLoss_0:9.2890e+01  FocalLoss_0:3.2909e-01  
+m_fscore:0.4189  m_iou:0.2649  n_fscore:0.1047  n_iou:0.0723  
+TestSet
+SoftIoULoss_0:1.1128e+02  WeightedDiceLoss_0:9.4081e+01  FocalLoss_0:2.7081e-01  
+m_fscore:0.3999  m_iou:0.2499  n_fscore:0.1153  n_iou:0.0810  
+
+2026-04-12 18:50:12,913 INFO: Start epoch 21/120
+2026-04-12 18:50:22,125 INFO: Epoch 21, Iter 3330, Batch 9, Loss: SoftIoULoss_0: 116.9882, WeightedDiceLoss_0: 99.0401, FocalLoss_0: 0.2801
+2026-04-12 18:50:27,310 INFO: Epoch 21, Iter 3340, Batch 19, Loss: SoftIoULoss_0: 6.4082, WeightedDiceLoss_0: 5.5712, FocalLoss_0: 0.0087
+2026-04-12 18:50:32,458 INFO: Epoch 21, Iter 3350, Batch 29, Loss: SoftIoULoss_0: 5.0295, WeightedDiceLoss_0: 3.8051, FocalLoss_0: 0.0129
+2026-04-12 18:50:37,653 INFO: Epoch 21, Iter 3360, Batch 39, Loss: SoftIoULoss_0: 6.5475, WeightedDiceLoss_0: 5.5098, FocalLoss_0: 0.0295
+2026-04-12 18:50:42,868 INFO: Epoch 21, Iter 3370, Batch 49, Loss: SoftIoULoss_0: 8.5777, WeightedDiceLoss_0: 7.9389, FocalLoss_0: 0.0434
+2026-04-12 18:50:48,068 INFO: Epoch 21, Iter 3380, Batch 59, Loss: SoftIoULoss_0: 8.7677, WeightedDiceLoss_0: 8.0247, FocalLoss_0: 0.0487
+2026-04-12 18:50:56,908 INFO: Epoch 21, Iter 3390, Batch 69, Loss: SoftIoULoss_0: 8.3539, WeightedDiceLoss_0: 7.5927, FocalLoss_0: 0.0575
+2026-04-12 18:51:02,122 INFO: Epoch 21, Iter 3400, Batch 79, Loss: SoftIoULoss_0: 7.3270, WeightedDiceLoss_0: 6.3813, FocalLoss_0: 0.0222
+2026-04-12 18:51:07,341 INFO: Epoch 21, Iter 3410, Batch 89, Loss: SoftIoULoss_0: 5.9571, WeightedDiceLoss_0: 4.6929, FocalLoss_0: 0.0134
+2026-04-12 18:51:12,712 INFO: Epoch 21, Iter 3420, Batch 99, Loss: SoftIoULoss_0: 6.2896, WeightedDiceLoss_0: 5.1730, FocalLoss_0: 0.0150
+2026-04-12 18:51:18,011 INFO: Epoch 21, Iter 3430, Batch 109, Loss: SoftIoULoss_0: 5.8044, WeightedDiceLoss_0: 4.6540, FocalLoss_0: 0.0139
+2026-04-12 18:51:23,357 INFO: Epoch 21, Iter 3440, Batch 119, Loss: SoftIoULoss_0: 6.9056, WeightedDiceLoss_0: 5.9498, FocalLoss_0: 0.0222
+2026-04-12 18:51:32,199 INFO: Epoch 21, Iter 3450, Batch 129, Loss: SoftIoULoss_0: 6.3400, WeightedDiceLoss_0: 5.3204, FocalLoss_0: 0.0208
+2026-04-12 18:51:37,474 INFO: Epoch 21, Iter 3460, Batch 139, Loss: SoftIoULoss_0: 5.9077, WeightedDiceLoss_0: 4.8052, FocalLoss_0: 0.0220
+2026-04-12 18:51:42,728 INFO: Epoch 21, Iter 3470, Batch 149, Loss: SoftIoULoss_0: 4.7760, WeightedDiceLoss_0: 4.0010, FocalLoss_0: 0.0043
+2026-04-12 18:51:47,896 INFO: Epoch 21, Iter 3480, Batch 159, Loss: SoftIoULoss_0: 5.3674, WeightedDiceLoss_0: 4.7471, FocalLoss_0: 0.0128
+2026-04-12 18:52:20,017 INFO: [SAMamba][epoch: 21, lr:(4.639e-04,)] [eta: 3:37:07, time (epoch): 97.998 ] 
+TrainSet
+SoftIoULoss_0:1.0775e+02  WeightedDiceLoss_0:9.2094e+01  FocalLoss_0:3.6721e-01  
+m_fscore:0.3863  m_iou:0.2394  n_fscore:0.1087  n_iou:0.0761  
+TestSet
+SoftIoULoss_0:1.1114e+02  WeightedDiceLoss_0:9.3381e+01  FocalLoss_0:3.3384e-01  
+m_fscore:0.3879  m_iou:0.2406  n_fscore:0.1152  n_iou:0.0808  
+
+2026-04-12 18:52:20,018 INFO: Start epoch 22/120
+2026-04-12 18:52:22,561 INFO: Epoch 22, Iter 3490, Batch 3, Loss: SoftIoULoss_0: 117.3151, WeightedDiceLoss_0: 98.5573, FocalLoss_0: 0.3484
+2026-04-12 18:52:27,673 INFO: Epoch 22, Iter 3500, Batch 13, Loss: SoftIoULoss_0: 4.6654, WeightedDiceLoss_0: 4.1630, FocalLoss_0: 0.0044
+2026-04-12 18:52:32,837 INFO: Epoch 22, Iter 3510, Batch 23, Loss: SoftIoULoss_0: 6.8399, WeightedDiceLoss_0: 5.8507, FocalLoss_0: 0.0168
+2026-04-12 18:52:38,052 INFO: Epoch 22, Iter 3520, Batch 33, Loss: SoftIoULoss_0: 6.0463, WeightedDiceLoss_0: 4.9271, FocalLoss_0: 0.0218
+2026-04-12 18:52:46,820 INFO: Epoch 22, Iter 3530, Batch 43, Loss: SoftIoULoss_0: 6.2493, WeightedDiceLoss_0: 5.1124, FocalLoss_0: 0.0299
+2026-04-12 18:52:51,900 INFO: Epoch 22, Iter 3540, Batch 53, Loss: SoftIoULoss_0: 9.3596, WeightedDiceLoss_0: 8.9359, FocalLoss_0: 0.0275
+2026-04-12 18:52:56,992 INFO: Epoch 22, Iter 3550, Batch 63, Loss: SoftIoULoss_0: 7.9601, WeightedDiceLoss_0: 7.0478, FocalLoss_0: 0.0397
+2026-04-12 18:53:02,200 INFO: Epoch 22, Iter 3560, Batch 73, Loss: SoftIoULoss_0: 7.8952, WeightedDiceLoss_0: 7.1498, FocalLoss_0: 0.0427
+2026-04-12 18:53:07,306 INFO: Epoch 22, Iter 3570, Batch 83, Loss: SoftIoULoss_0: 7.3569, WeightedDiceLoss_0: 6.4597, FocalLoss_0: 0.0270
+2026-04-12 18:53:12,589 INFO: Epoch 22, Iter 3580, Batch 93, Loss: SoftIoULoss_0: 5.6075, WeightedDiceLoss_0: 4.2640, FocalLoss_0: 0.0141
+2026-04-12 18:53:21,287 INFO: Epoch 22, Iter 3590, Batch 103, Loss: SoftIoULoss_0: 6.0287, WeightedDiceLoss_0: 5.0073, FocalLoss_0: 0.0112
+2026-04-12 18:53:26,408 INFO: Epoch 22, Iter 3600, Batch 113, Loss: SoftIoULoss_0: 6.2970, WeightedDiceLoss_0: 5.2447, FocalLoss_0: 0.0189
+2026-04-12 18:53:31,529 INFO: Epoch 22, Iter 3610, Batch 123, Loss: SoftIoULoss_0: 6.2054, WeightedDiceLoss_0: 5.0849, FocalLoss_0: 0.0198
+2026-04-12 18:53:36,740 INFO: Epoch 22, Iter 3620, Batch 133, Loss: SoftIoULoss_0: 6.3707, WeightedDiceLoss_0: 5.2665, FocalLoss_0: 0.0226
+2026-04-12 18:53:41,854 INFO: Epoch 22, Iter 3630, Batch 143, Loss: SoftIoULoss_0: 5.8910, WeightedDiceLoss_0: 4.9307, FocalLoss_0: 0.0153
+2026-04-12 18:53:47,104 INFO: Epoch 22, Iter 3640, Batch 153, Loss: SoftIoULoss_0: 5.1725, WeightedDiceLoss_0: 4.5297, FocalLoss_0: 0.0052
+2026-04-12 18:53:55,758 INFO: Epoch 22, Iter 3650, Batch 163, Loss: SoftIoULoss_0: 6.1636, WeightedDiceLoss_0: 5.2149, FocalLoss_0: 0.0175
+2026-04-12 18:54:21,992 INFO: [SAMamba][epoch: 22, lr:(4.605e-04,)] [eta: 3:34:12, time (epoch): 96.633 ] 
+TrainSet
+SoftIoULoss_0:1.0766e+02  WeightedDiceLoss_0:9.2223e+01  FocalLoss_0:3.4063e-01  
+m_fscore:0.4239  m_iou:0.2690  n_fscore:0.1090  n_iou:0.0761  
+TestSet
+SoftIoULoss_0:1.0065e+02  WeightedDiceLoss_0:8.2296e+01  FocalLoss_0:3.6759e-01  
+m_fscore:0.3878  m_iou:0.2406  n_fscore:0.1288  n_iou:0.0950  
+
+2026-04-12 18:54:21,993 INFO: Start epoch 23/120
+2026-04-12 18:54:30,146 INFO: Epoch 23, Iter 3660, Batch 7, Loss: SoftIoULoss_0: 106.3301, WeightedDiceLoss_0: 87.3007, FocalLoss_0: 0.3751
+2026-04-12 18:54:35,301 INFO: Epoch 23, Iter 3670, Batch 17, Loss: SoftIoULoss_0: 6.6715, WeightedDiceLoss_0: 6.0289, FocalLoss_0: 0.0075
+2026-04-12 18:54:40,389 INFO: Epoch 23, Iter 3680, Batch 27, Loss: SoftIoULoss_0: 5.6115, WeightedDiceLoss_0: 4.4678, FocalLoss_0: 0.0131
+2026-04-12 18:54:45,481 INFO: Epoch 23, Iter 3690, Batch 37, Loss: SoftIoULoss_0: 5.5589, WeightedDiceLoss_0: 4.3418, FocalLoss_0: 0.0237
+2026-04-12 18:54:50,645 INFO: Epoch 23, Iter 3700, Batch 47, Loss: SoftIoULoss_0: 7.6745, WeightedDiceLoss_0: 6.8824, FocalLoss_0: 0.0413
+2026-04-12 18:54:55,788 INFO: Epoch 23, Iter 3710, Batch 57, Loss: SoftIoULoss_0: 8.8246, WeightedDiceLoss_0: 8.1928, FocalLoss_0: 0.0487
+2026-04-12 18:55:00,962 INFO: Epoch 23, Iter 3720, Batch 67, Loss: SoftIoULoss_0: 8.4229, WeightedDiceLoss_0: 7.6064, FocalLoss_0: 0.0555
+2026-04-12 18:55:09,627 INFO: Epoch 23, Iter 3730, Batch 77, Loss: SoftIoULoss_0: 7.2324, WeightedDiceLoss_0: 6.2746, FocalLoss_0: 0.0329
+2026-04-12 18:55:14,951 INFO: Epoch 23, Iter 3740, Batch 87, Loss: SoftIoULoss_0: 6.0412, WeightedDiceLoss_0: 4.7183, FocalLoss_0: 0.0175
+2026-04-12 18:55:20,139 INFO: Epoch 23, Iter 3750, Batch 97, Loss: SoftIoULoss_0: 6.4371, WeightedDiceLoss_0: 5.3208, FocalLoss_0: 0.0163
+2026-04-12 18:55:25,222 INFO: Epoch 23, Iter 3760, Batch 107, Loss: SoftIoULoss_0: 5.4977, WeightedDiceLoss_0: 4.2747, FocalLoss_0: 0.0119
+2026-04-12 18:55:30,399 INFO: Epoch 23, Iter 3770, Batch 117, Loss: SoftIoULoss_0: 5.9380, WeightedDiceLoss_0: 4.9324, FocalLoss_0: 0.0196
+2026-04-12 18:55:35,486 INFO: Epoch 23, Iter 3780, Batch 127, Loss: SoftIoULoss_0: 6.0275, WeightedDiceLoss_0: 4.9150, FocalLoss_0: 0.0181
+2026-04-12 18:55:44,206 INFO: Epoch 23, Iter 3790, Batch 137, Loss: SoftIoULoss_0: 5.4211, WeightedDiceLoss_0: 4.2723, FocalLoss_0: 0.0171
+2026-04-12 18:55:49,349 INFO: Epoch 23, Iter 3800, Batch 147, Loss: SoftIoULoss_0: 5.3075, WeightedDiceLoss_0: 4.4889, FocalLoss_0: 0.0062
+2026-04-12 18:55:54,450 INFO: Epoch 23, Iter 3810, Batch 157, Loss: SoftIoULoss_0: 4.5440, WeightedDiceLoss_0: 3.9898, FocalLoss_0: 0.0062
+2026-04-12 18:56:27,098 INFO: [SAMamba][epoch: 23, lr:(4.569e-04,)] [eta: 3:31:35, time (epoch): 96.429 ] 
+TrainSet
+SoftIoULoss_0:1.0401e+02  WeightedDiceLoss_0:8.8053e+01  FocalLoss_0:3.4987e-01  
+m_fscore:0.4234  m_iou:0.2686  n_fscore:0.1173  n_iou:0.0835  
+TestSet
+SoftIoULoss_0:1.0461e+02  WeightedDiceLoss_0:8.7748e+01  FocalLoss_0:3.1270e-01  
+m_fscore:0.4072  m_iou:0.2557  n_fscore:0.1235  n_iou:0.0898  
+
+2026-04-12 18:56:27,099 INFO: Start epoch 24/120
+2026-04-12 18:56:28,521 INFO: Epoch 24, Iter 3820, Batch 1, Loss: SoftIoULoss_0: 110.1555, WeightedDiceLoss_0: 92.1709, FocalLoss_0: 0.3240
+2026-04-12 18:56:33,672 INFO: Epoch 24, Iter 3830, Batch 11, Loss: SoftIoULoss_0: 5.9165, WeightedDiceLoss_0: 5.3578, FocalLoss_0: 0.0055
+2026-04-12 18:56:38,995 INFO: Epoch 24, Iter 3840, Batch 21, Loss: SoftIoULoss_0: 5.6697, WeightedDiceLoss_0: 4.5479, FocalLoss_0: 0.0128
+2026-04-12 18:56:44,143 INFO: Epoch 24, Iter 3850, Batch 31, Loss: SoftIoULoss_0: 5.4243, WeightedDiceLoss_0: 4.2880, FocalLoss_0: 0.0166
+2026-04-12 18:56:49,251 INFO: Epoch 24, Iter 3860, Batch 41, Loss: SoftIoULoss_0: 6.6614, WeightedDiceLoss_0: 5.6959, FocalLoss_0: 0.0342
+2026-04-12 18:56:57,970 INFO: Epoch 24, Iter 3870, Batch 51, Loss: SoftIoULoss_0: 8.3577, WeightedDiceLoss_0: 7.6391, FocalLoss_0: 0.0340
+2026-04-12 18:57:03,099 INFO: Epoch 24, Iter 3880, Batch 61, Loss: SoftIoULoss_0: 8.2347, WeightedDiceLoss_0: 7.3222, FocalLoss_0: 0.0419
+2026-04-12 18:57:08,273 INFO: Epoch 24, Iter 3890, Batch 71, Loss: SoftIoULoss_0: 7.7344, WeightedDiceLoss_0: 6.9867, FocalLoss_0: 0.0488
+2026-04-12 18:57:13,563 INFO: Epoch 24, Iter 3900, Batch 81, Loss: SoftIoULoss_0: 6.9897, WeightedDiceLoss_0: 5.9208, FocalLoss_0: 0.0228
+2026-04-12 18:57:18,707 INFO: Epoch 24, Iter 3910, Batch 91, Loss: SoftIoULoss_0: 6.0712, WeightedDiceLoss_0: 4.8571, FocalLoss_0: 0.0160
+2026-04-12 18:57:23,832 INFO: Epoch 24, Iter 3920, Batch 101, Loss: SoftIoULoss_0: 6.2661, WeightedDiceLoss_0: 5.1612, FocalLoss_0: 0.0114
+2026-04-12 18:57:32,544 INFO: Epoch 24, Iter 3930, Batch 111, Loss: SoftIoULoss_0: 4.8342, WeightedDiceLoss_0: 3.5960, FocalLoss_0: 0.0132
+2026-04-12 18:57:37,668 INFO: Epoch 24, Iter 3940, Batch 121, Loss: SoftIoULoss_0: 6.8239, WeightedDiceLoss_0: 5.8562, FocalLoss_0: 0.0250
+2026-04-12 18:57:42,779 INFO: Epoch 24, Iter 3950, Batch 131, Loss: SoftIoULoss_0: 6.0800, WeightedDiceLoss_0: 5.0321, FocalLoss_0: 0.0213
+2026-04-12 18:57:47,899 INFO: Epoch 24, Iter 3960, Batch 141, Loss: SoftIoULoss_0: 5.0280, WeightedDiceLoss_0: 3.9177, FocalLoss_0: 0.0155
+2026-04-12 18:57:53,029 INFO: Epoch 24, Iter 3970, Batch 151, Loss: SoftIoULoss_0: 4.8957, WeightedDiceLoss_0: 4.4953, FocalLoss_0: 0.0045
+2026-04-12 18:57:58,125 INFO: Epoch 24, Iter 3980, Batch 161, Loss: SoftIoULoss_0: 4.9825, WeightedDiceLoss_0: 4.1954, FocalLoss_0: 0.0102
+2026-04-12 18:58:28,672 INFO: [SAMamba][epoch: 24, lr:(4.532e-04,)] [eta: 3:28:47, time (epoch): 92.969 ] 
+TrainSet
+SoftIoULoss_0:1.0336e+02  WeightedDiceLoss_0:8.7651e+01  FocalLoss_0:3.4032e-01  
+m_fscore:0.4372  m_iou:0.2798  n_fscore:0.1177  n_iou:0.0833  
+TestSet
+SoftIoULoss_0:1.0850e+02  WeightedDiceLoss_0:9.1650e+01  FocalLoss_0:2.7799e-01  
+m_fscore:0.4448  m_iou:0.2860  n_fscore:0.1216  n_iou:0.0884  
+
+2026-04-12 18:58:28,672 INFO: Start epoch 25/120
+2026-04-12 18:58:32,173 INFO: Epoch 25, Iter 3990, Batch 5, Loss: SoftIoULoss_0: 113.5781, WeightedDiceLoss_0: 95.8261, FocalLoss_0: 0.2851
+2026-04-12 18:58:40,906 INFO: Epoch 25, Iter 4000, Batch 15, Loss: SoftIoULoss_0: 5.6682, WeightedDiceLoss_0: 5.2099, FocalLoss_0: 0.0079
+2026-04-12 18:58:46,051 INFO: Epoch 25, Iter 4010, Batch 25, Loss: SoftIoULoss_0: 6.2174, WeightedDiceLoss_0: 5.1677, FocalLoss_0: 0.0141
+2026-04-12 18:58:51,235 INFO: Epoch 25, Iter 4020, Batch 35, Loss: SoftIoULoss_0: 4.8077, WeightedDiceLoss_0: 3.5396, FocalLoss_0: 0.0207
+2026-04-12 18:58:56,410 INFO: Epoch 25, Iter 4030, Batch 45, Loss: SoftIoULoss_0: 7.0042, WeightedDiceLoss_0: 6.0964, FocalLoss_0: 0.0343
+2026-04-12 18:59:01,629 INFO: Epoch 25, Iter 4040, Batch 55, Loss: SoftIoULoss_0: 8.7348, WeightedDiceLoss_0: 8.0346, FocalLoss_0: 0.0307
+2026-04-12 18:59:06,712 INFO: Epoch 25, Iter 4050, Batch 65, Loss: SoftIoULoss_0: 8.2965, WeightedDiceLoss_0: 7.4352, FocalLoss_0: 0.0556
+2026-04-12 18:59:12,001 INFO: Epoch 25, Iter 4060, Batch 75, Loss: SoftIoULoss_0: 7.8984, WeightedDiceLoss_0: 7.1436, FocalLoss_0: 0.0507
+2026-04-12 18:59:20,767 INFO: Epoch 25, Iter 4070, Batch 85, Loss: SoftIoULoss_0: 6.7199, WeightedDiceLoss_0: 5.6315, FocalLoss_0: 0.0223
+2026-04-12 18:59:25,893 INFO: Epoch 25, Iter 4080, Batch 95, Loss: SoftIoULoss_0: 6.5654, WeightedDiceLoss_0: 5.4680, FocalLoss_0: 0.0183
+2026-04-12 18:59:31,091 INFO: Epoch 25, Iter 4090, Batch 105, Loss: SoftIoULoss_0: 4.7727, WeightedDiceLoss_0: 3.5865, FocalLoss_0: 0.0101
+2026-04-12 18:59:36,180 INFO: Epoch 25, Iter 4100, Batch 115, Loss: SoftIoULoss_0: 6.3705, WeightedDiceLoss_0: 5.4105, FocalLoss_0: 0.0202
+2026-04-12 18:59:41,291 INFO: Epoch 25, Iter 4110, Batch 125, Loss: SoftIoULoss_0: 6.8528, WeightedDiceLoss_0: 5.8174, FocalLoss_0: 0.0258
+2026-04-12 18:59:46,381 INFO: Epoch 25, Iter 4120, Batch 135, Loss: SoftIoULoss_0: 5.5079, WeightedDiceLoss_0: 4.5073, FocalLoss_0: 0.0228
+2026-04-12 18:59:55,015 INFO: Epoch 25, Iter 4130, Batch 145, Loss: SoftIoULoss_0: 6.5066, WeightedDiceLoss_0: 5.7221, FocalLoss_0: 0.0163
+2026-04-12 19:00:00,114 INFO: Epoch 25, Iter 4140, Batch 155, Loss: SoftIoULoss_0: 4.3852, WeightedDiceLoss_0: 3.8108, FocalLoss_0: 0.0049
+2026-04-12 19:00:05,154 INFO: Epoch 25, Iter 4150, Batch 165, Loss: SoftIoULoss_0: 5.7934, WeightedDiceLoss_0: 4.6544, FocalLoss_0: 0.0147
+2026-04-12 19:00:33,825 INFO: [SAMamba][epoch: 25, lr:(4.494e-04,)] [eta: 3:26:17, time (epoch): 96.483 ] 
+TrainSet
+SoftIoULoss_0:1.0515e+02  WeightedDiceLoss_0:8.9888e+01  FocalLoss_0:3.7212e-01  
+m_fscore:0.4158  m_iou:0.2625  n_fscore:0.1123  n_iou:0.0799  
+TestSet
+SoftIoULoss_0:1.1610e+02  WeightedDiceLoss_0:9.9061e+01  FocalLoss_0:3.0385e-01  
+m_fscore:0.4082  m_iou:0.2564  n_fscore:0.1084  n_iou:0.0745  
+
+2026-04-12 19:00:33,826 INFO: Start epoch 26/120
+2026-04-12 19:00:39,280 INFO: Epoch 26, Iter 4160, Batch 9, Loss: SoftIoULoss_0: 120.9949, WeightedDiceLoss_0: 103.3870, FocalLoss_0: 0.3141
+2026-04-12 19:00:44,484 INFO: Epoch 26, Iter 4170, Batch 19, Loss: SoftIoULoss_0: 6.0020, WeightedDiceLoss_0: 4.8805, FocalLoss_0: 0.0093
+2026-04-12 19:00:49,555 INFO: Epoch 26, Iter 4180, Batch 29, Loss: SoftIoULoss_0: 5.5623, WeightedDiceLoss_0: 4.3542, FocalLoss_0: 0.0148
+2026-04-12 19:00:54,700 INFO: Epoch 26, Iter 4190, Batch 39, Loss: SoftIoULoss_0: 6.8419, WeightedDiceLoss_0: 5.7841, FocalLoss_0: 0.0371
+2026-04-12 19:00:59,943 INFO: Epoch 26, Iter 4200, Batch 49, Loss: SoftIoULoss_0: 8.3938, WeightedDiceLoss_0: 7.7845, FocalLoss_0: 0.0406
+2026-04-12 19:01:08,689 INFO: Epoch 26, Iter 4210, Batch 59, Loss: SoftIoULoss_0: 8.4317, WeightedDiceLoss_0: 7.5937, FocalLoss_0: 0.0354
+2026-04-12 19:01:14,045 INFO: Epoch 26, Iter 4220, Batch 69, Loss: SoftIoULoss_0: 8.3920, WeightedDiceLoss_0: 7.6992, FocalLoss_0: 0.0566
+2026-04-12 19:01:19,196 INFO: Epoch 26, Iter 4230, Batch 79, Loss: SoftIoULoss_0: 7.2390, WeightedDiceLoss_0: 6.2313, FocalLoss_0: 0.0302
+2026-04-12 19:01:24,252 INFO: Epoch 26, Iter 4240, Batch 89, Loss: SoftIoULoss_0: 5.4135, WeightedDiceLoss_0: 4.1312, FocalLoss_0: 0.0163
+2026-04-12 19:01:29,396 INFO: Epoch 26, Iter 4250, Batch 99, Loss: SoftIoULoss_0: 6.8513, WeightedDiceLoss_0: 5.7220, FocalLoss_0: 0.0166
+2026-04-12 19:01:34,511 INFO: Epoch 26, Iter 4260, Batch 109, Loss: SoftIoULoss_0: 5.4601, WeightedDiceLoss_0: 4.3394, FocalLoss_0: 0.0136
+2026-04-12 19:01:43,233 INFO: Epoch 26, Iter 4270, Batch 119, Loss: SoftIoULoss_0: 6.6069, WeightedDiceLoss_0: 5.5431, FocalLoss_0: 0.0211
+2026-04-12 19:01:48,334 INFO: Epoch 26, Iter 4280, Batch 129, Loss: SoftIoULoss_0: 6.3421, WeightedDiceLoss_0: 5.1645, FocalLoss_0: 0.0208
+2026-04-12 19:01:53,409 INFO: Epoch 26, Iter 4290, Batch 139, Loss: SoftIoULoss_0: 5.4254, WeightedDiceLoss_0: 4.2748, FocalLoss_0: 0.0186
+2026-04-12 19:01:58,566 INFO: Epoch 26, Iter 4300, Batch 149, Loss: SoftIoULoss_0: 5.7658, WeightedDiceLoss_0: 5.0345, FocalLoss_0: 0.0109
+2026-04-12 19:02:03,653 INFO: Epoch 26, Iter 4310, Batch 159, Loss: SoftIoULoss_0: 5.0257, WeightedDiceLoss_0: 4.4476, FocalLoss_0: 0.0134
+2026-04-12 19:02:35,433 INFO: [SAMamba][epoch: 26, lr:(4.454e-04,)] [eta: 3:23:35, time (epoch): 92.748 ] 
+TrainSet
+SoftIoULoss_0:1.0591e+02  WeightedDiceLoss_0:8.9812e+01  FocalLoss_0:3.7355e-01  
+m_fscore:0.4015  m_iou:0.2511  n_fscore:0.1120  n_iou:0.0786  
+TestSet
+SoftIoULoss_0:1.1279e+02  WeightedDiceLoss_0:9.3766e+01  FocalLoss_0:3.1913e-01  
+m_fscore:0.4173  m_iou:0.2636  n_fscore:0.1155  n_iou:0.0796  
+
+2026-04-12 19:02:35,434 INFO: Start epoch 27/120
+2026-04-12 19:02:37,907 INFO: Epoch 27, Iter 4320, Batch 3, Loss: SoftIoULoss_0: 118.4764, WeightedDiceLoss_0: 98.4306, FocalLoss_0: 0.3296
+2026-04-12 19:02:43,195 INFO: Epoch 27, Iter 4330, Batch 13, Loss: SoftIoULoss_0: 5.2959, WeightedDiceLoss_0: 4.7489, FocalLoss_0: 0.0051
+2026-04-12 19:02:52,030 INFO: Epoch 27, Iter 4340, Batch 23, Loss: SoftIoULoss_0: 6.5883, WeightedDiceLoss_0: 5.4800, FocalLoss_0: 0.0158
+2026-04-12 19:02:57,357 INFO: Epoch 27, Iter 4350, Batch 33, Loss: SoftIoULoss_0: 5.3845, WeightedDiceLoss_0: 4.2311, FocalLoss_0: 0.0196
+2026-04-12 19:03:02,675 INFO: Epoch 27, Iter 4360, Batch 43, Loss: SoftIoULoss_0: 6.5536, WeightedDiceLoss_0: 5.5736, FocalLoss_0: 0.0318
+2026-04-12 19:03:07,958 INFO: Epoch 27, Iter 4370, Batch 53, Loss: SoftIoULoss_0: 9.1264, WeightedDiceLoss_0: 8.6058, FocalLoss_0: 0.0368
+2026-04-12 19:03:13,395 INFO: Epoch 27, Iter 4380, Batch 63, Loss: SoftIoULoss_0: 7.8093, WeightedDiceLoss_0: 6.8584, FocalLoss_0: 0.0446
+2026-04-12 19:03:19,485 INFO: Epoch 27, Iter 4390, Batch 73, Loss: SoftIoULoss_0: 8.0608, WeightedDiceLoss_0: 7.1819, FocalLoss_0: 0.0478
+2026-04-12 19:03:28,777 INFO: Epoch 27, Iter 4400, Batch 83, Loss: SoftIoULoss_0: 7.1931, WeightedDiceLoss_0: 6.1695, FocalLoss_0: 0.0301
+2026-04-12 19:03:34,490 INFO: Epoch 27, Iter 4410, Batch 93, Loss: SoftIoULoss_0: 4.9084, WeightedDiceLoss_0: 3.6238, FocalLoss_0: 0.0142
+2026-04-12 19:03:40,186 INFO: Epoch 27, Iter 4420, Batch 103, Loss: SoftIoULoss_0: 5.7753, WeightedDiceLoss_0: 4.7130, FocalLoss_0: 0.0122
+2026-04-12 19:03:45,643 INFO: Epoch 27, Iter 4430, Batch 113, Loss: SoftIoULoss_0: 5.7935, WeightedDiceLoss_0: 4.5317, FocalLoss_0: 0.0148
+2026-04-12 19:03:51,140 INFO: Epoch 27, Iter 4440, Batch 123, Loss: SoftIoULoss_0: 6.4738, WeightedDiceLoss_0: 5.4031, FocalLoss_0: 0.0251
+2026-04-12 19:03:56,567 INFO: Epoch 27, Iter 4450, Batch 133, Loss: SoftIoULoss_0: 6.1776, WeightedDiceLoss_0: 5.0698, FocalLoss_0: 0.0240
+2026-04-12 19:04:06,193 INFO: Epoch 27, Iter 4460, Batch 143, Loss: SoftIoULoss_0: 6.2024, WeightedDiceLoss_0: 5.2655, FocalLoss_0: 0.0154
+2026-04-12 19:04:12,264 INFO: Epoch 27, Iter 4470, Batch 153, Loss: SoftIoULoss_0: 4.4975, WeightedDiceLoss_0: 4.0118, FocalLoss_0: 0.0039
+2026-04-12 19:04:18,117 INFO: Epoch 27, Iter 4480, Batch 163, Loss: SoftIoULoss_0: 4.9980, WeightedDiceLoss_0: 4.0815, FocalLoss_0: 0.0131
+2026-04-12 19:04:50,940 INFO: [SAMamba][epoch: 27, lr:(4.413e-04,)] [eta: 3:21:44, time (epoch): 103.725 ] 
+TrainSet
+SoftIoULoss_0:1.0470e+02  WeightedDiceLoss_0:8.8962e+01  FocalLoss_0:3.5949e-01  
+m_fscore:0.4248  m_iou:0.2697  n_fscore:0.1166  n_iou:0.0833  
+TestSet
+SoftIoULoss_0:1.0291e+02  WeightedDiceLoss_0:8.5975e+01  FocalLoss_0:2.7799e-01  
+m_fscore:0.4437  m_iou:0.2851  n_fscore:0.1275  n_iou:0.0939  
+
+2026-04-12 19:04:50,941 INFO: Start epoch 28/120
+2026-04-12 19:04:56,036 INFO: Epoch 28, Iter 4490, Batch 7, Loss: SoftIoULoss_0: 108.9780, WeightedDiceLoss_0: 91.4843, FocalLoss_0: 0.2859
+2026-04-12 19:05:01,652 INFO: Epoch 28, Iter 4500, Batch 17, Loss: SoftIoULoss_0: 5.2640, WeightedDiceLoss_0: 4.3448, FocalLoss_0: 0.0085
+2026-04-12 19:05:07,043 INFO: Epoch 28, Iter 4510, Batch 27, Loss: SoftIoULoss_0: 6.0896, WeightedDiceLoss_0: 4.9806, FocalLoss_0: 0.0153
+2026-04-12 19:05:16,596 INFO: Epoch 28, Iter 4520, Batch 37, Loss: SoftIoULoss_0: 5.9599, WeightedDiceLoss_0: 4.8626, FocalLoss_0: 0.0295
+2026-04-12 19:05:22,773 INFO: Epoch 28, Iter 4530, Batch 47, Loss: SoftIoULoss_0: 7.0025, WeightedDiceLoss_0: 6.1190, FocalLoss_0: 0.0355
+2026-04-12 19:05:28,506 INFO: Epoch 28, Iter 4540, Batch 57, Loss: SoftIoULoss_0: 8.4959, WeightedDiceLoss_0: 7.8155, FocalLoss_0: 0.0473
+2026-04-12 19:05:34,351 INFO: Epoch 28, Iter 4550, Batch 67, Loss: SoftIoULoss_0: 8.4154, WeightedDiceLoss_0: 7.7521, FocalLoss_0: 0.0649
+2026-04-12 19:05:40,453 INFO: Epoch 28, Iter 4560, Batch 77, Loss: SoftIoULoss_0: 6.6685, WeightedDiceLoss_0: 5.5738, FocalLoss_0: 0.0278
+2026-04-12 19:05:46,514 INFO: Epoch 28, Iter 4570, Batch 87, Loss: SoftIoULoss_0: 5.7728, WeightedDiceLoss_0: 4.5116, FocalLoss_0: 0.0150
+2026-04-12 19:05:56,101 INFO: Epoch 28, Iter 4580, Batch 97, Loss: SoftIoULoss_0: 5.8667, WeightedDiceLoss_0: 4.5638, FocalLoss_0: 0.0161
+2026-04-12 19:06:02,874 INFO: Epoch 28, Iter 4590, Batch 107, Loss: SoftIoULoss_0: 5.1011, WeightedDiceLoss_0: 3.9800, FocalLoss_0: 0.0126
+2026-04-12 19:06:08,718 INFO: Epoch 28, Iter 4600, Batch 117, Loss: SoftIoULoss_0: 5.1441, WeightedDiceLoss_0: 3.9482, FocalLoss_0: 0.0165
+2026-04-12 19:06:14,596 INFO: Epoch 28, Iter 4610, Batch 127, Loss: SoftIoULoss_0: 5.9853, WeightedDiceLoss_0: 4.9888, FocalLoss_0: 0.0226
+2026-04-12 19:06:20,295 INFO: Epoch 28, Iter 4620, Batch 137, Loss: SoftIoULoss_0: 5.3977, WeightedDiceLoss_0: 4.1671, FocalLoss_0: 0.0199
+2026-04-12 19:06:29,513 INFO: Epoch 28, Iter 4630, Batch 147, Loss: SoftIoULoss_0: 5.8204, WeightedDiceLoss_0: 5.0591, FocalLoss_0: 0.0102
+2026-04-12 19:06:35,137 INFO: Epoch 28, Iter 4640, Batch 157, Loss: SoftIoULoss_0: 5.3122, WeightedDiceLoss_0: 4.4797, FocalLoss_0: 0.0087
+2026-04-12 19:07:10,433 INFO: [SAMamba][epoch: 28, lr:(4.371e-04,)] [eta: 3:20:05, time (epoch): 108.553 ] 
+TrainSet
+SoftIoULoss_0:1.0106e+02  WeightedDiceLoss_0:8.4543e+01  FocalLoss_0:3.6650e-01  
+m_fscore:0.4486  m_iou:0.2892  n_fscore:0.1204  n_iou:0.0868  
+TestSet
+SoftIoULoss_0:9.5774e+01  WeightedDiceLoss_0:7.8358e+01  FocalLoss_0:2.7758e-01  
+m_fscore:0.4966  m_iou:0.3303  n_fscore:0.1387  n_iou:0.1045  
+
+2026-04-12 19:07:10,434 INFO: Start epoch 29/120
+2026-04-12 19:07:12,219 INFO: Epoch 29, Iter 4650, Batch 1, Loss: SoftIoULoss_0: 100.8275, WeightedDiceLoss_0: 82.2234, FocalLoss_0: 0.2891
+2026-04-12 19:07:17,919 INFO: Epoch 29, Iter 4660, Batch 11, Loss: SoftIoULoss_0: 4.8236, WeightedDiceLoss_0: 4.5045, FocalLoss_0: 0.0041
+2026-04-12 19:07:23,570 INFO: Epoch 29, Iter 4670, Batch 21, Loss: SoftIoULoss_0: 6.3005, WeightedDiceLoss_0: 5.2851, FocalLoss_0: 0.0118
+2026-04-12 19:07:29,341 INFO: Epoch 29, Iter 4680, Batch 31, Loss: SoftIoULoss_0: 5.1726, WeightedDiceLoss_0: 4.0404, FocalLoss_0: 0.0166
+2026-04-12 19:07:38,555 INFO: Epoch 29, Iter 4690, Batch 41, Loss: SoftIoULoss_0: 6.9301, WeightedDiceLoss_0: 6.0955, FocalLoss_0: 0.0374
+2026-04-12 19:07:44,229 INFO: Epoch 29, Iter 4700, Batch 51, Loss: SoftIoULoss_0: 8.5852, WeightedDiceLoss_0: 8.0123, FocalLoss_0: 0.0384
+2026-04-12 19:07:49,850 INFO: Epoch 29, Iter 4710, Batch 61, Loss: SoftIoULoss_0: 8.2862, WeightedDiceLoss_0: 7.5143, FocalLoss_0: 0.0491
+2026-04-12 19:07:55,491 INFO: Epoch 29, Iter 4720, Batch 71, Loss: SoftIoULoss_0: 8.3679, WeightedDiceLoss_0: 7.5775, FocalLoss_0: 0.0554
+2026-04-12 19:08:01,077 INFO: Epoch 29, Iter 4730, Batch 81, Loss: SoftIoULoss_0: 6.4541, WeightedDiceLoss_0: 5.2937, FocalLoss_0: 0.0234
+2026-04-12 19:08:06,793 INFO: Epoch 29, Iter 4740, Batch 91, Loss: SoftIoULoss_0: 5.3181, WeightedDiceLoss_0: 4.0499, FocalLoss_0: 0.0142
+2026-04-12 19:08:16,197 INFO: Epoch 29, Iter 4750, Batch 101, Loss: SoftIoULoss_0: 6.2606, WeightedDiceLoss_0: 5.1335, FocalLoss_0: 0.0121
+2026-04-12 19:08:21,794 INFO: Epoch 29, Iter 4760, Batch 111, Loss: SoftIoULoss_0: 5.9204, WeightedDiceLoss_0: 4.7475, FocalLoss_0: 0.0165
+2026-04-12 19:08:27,484 INFO: Epoch 29, Iter 4770, Batch 121, Loss: SoftIoULoss_0: 5.8219, WeightedDiceLoss_0: 4.6851, FocalLoss_0: 0.0212
+2026-04-12 19:08:33,043 INFO: Epoch 29, Iter 4780, Batch 131, Loss: SoftIoULoss_0: 6.1169, WeightedDiceLoss_0: 5.0891, FocalLoss_0: 0.0232
+2026-04-12 19:08:38,302 INFO: Epoch 29, Iter 4790, Batch 141, Loss: SoftIoULoss_0: 5.3346, WeightedDiceLoss_0: 4.2114, FocalLoss_0: 0.0160
+2026-04-12 19:08:43,491 INFO: Epoch 29, Iter 4800, Batch 151, Loss: SoftIoULoss_0: 5.1202, WeightedDiceLoss_0: 4.4547, FocalLoss_0: 0.0049
+2026-04-12 19:08:52,182 INFO: Epoch 29, Iter 4810, Batch 161, Loss: SoftIoULoss_0: 5.6385, WeightedDiceLoss_0: 4.8548, FocalLoss_0: 0.0119
+2026-04-12 19:09:25,589 INFO: [SAMamba][epoch: 29, lr:(4.327e-04,)] [eta: 3:18:09, time (epoch): 103.680 ] 
+TrainSet
+SoftIoULoss_0:1.0331e+02  WeightedDiceLoss_0:8.7713e+01  FocalLoss_0:3.6114e-01  
+m_fscore:0.4465  m_iou:0.2874  n_fscore:0.1219  n_iou:0.0872  
+TestSet
+SoftIoULoss_0:9.9101e+01  WeightedDiceLoss_0:8.0764e+01  FocalLoss_0:3.1728e-01  
+m_fscore:0.4614  m_iou:0.2999  n_fscore:0.1334  n_iou:0.0979  
+
+2026-04-12 19:09:25,589 INFO: Start epoch 30/120
+2026-04-12 19:09:29,567 INFO: Epoch 30, Iter 4820, Batch 5, Loss: SoftIoULoss_0: 104.1739, WeightedDiceLoss_0: 85.0202, FocalLoss_0: 0.3263
+2026-04-12 19:09:35,407 INFO: Epoch 30, Iter 4830, Batch 15, Loss: SoftIoULoss_0: 5.5685, WeightedDiceLoss_0: 4.8202, FocalLoss_0: 0.0078
+2026-04-12 19:09:41,235 INFO: Epoch 30, Iter 4840, Batch 25, Loss: SoftIoULoss_0: 6.1107, WeightedDiceLoss_0: 4.9798, FocalLoss_0: 0.0163
+2026-04-12 19:09:47,092 INFO: Epoch 30, Iter 4850, Batch 35, Loss: SoftIoULoss_0: 5.4939, WeightedDiceLoss_0: 4.2317, FocalLoss_0: 0.0248
+2026-04-12 19:09:52,912 INFO: Epoch 30, Iter 4860, Batch 45, Loss: SoftIoULoss_0: 6.2830, WeightedDiceLoss_0: 5.2709, FocalLoss_0: 0.0334
+2026-04-12 19:10:02,296 INFO: Epoch 30, Iter 4870, Batch 55, Loss: SoftIoULoss_0: 9.0463, WeightedDiceLoss_0: 8.4678, FocalLoss_0: 0.0281
+2026-04-12 19:10:08,087 INFO: Epoch 30, Iter 4880, Batch 65, Loss: SoftIoULoss_0: 7.8996, WeightedDiceLoss_0: 6.8443, FocalLoss_0: 0.0453
+2026-04-12 19:10:14,110 INFO: Epoch 30, Iter 4890, Batch 75, Loss: SoftIoULoss_0: 7.6920, WeightedDiceLoss_0: 6.8794, FocalLoss_0: 0.0476
+2026-04-12 19:10:19,998 INFO: Epoch 30, Iter 4900, Batch 85, Loss: SoftIoULoss_0: 5.7516, WeightedDiceLoss_0: 4.4561, FocalLoss_0: 0.0234
+2026-04-12 19:10:25,936 INFO: Epoch 30, Iter 4910, Batch 95, Loss: SoftIoULoss_0: 6.3578, WeightedDiceLoss_0: 5.2015, FocalLoss_0: 0.0198
+2026-04-12 19:10:31,757 INFO: Epoch 30, Iter 4920, Batch 105, Loss: SoftIoULoss_0: 5.5232, WeightedDiceLoss_0: 4.4228, FocalLoss_0: 0.0117
+2026-04-12 19:10:41,203 INFO: Epoch 30, Iter 4930, Batch 115, Loss: SoftIoULoss_0: 5.2571, WeightedDiceLoss_0: 3.9768, FocalLoss_0: 0.0169
+2026-04-12 19:10:46,996 INFO: Epoch 30, Iter 4940, Batch 125, Loss: SoftIoULoss_0: 5.9032, WeightedDiceLoss_0: 4.8470, FocalLoss_0: 0.0236
+2026-04-12 19:10:52,864 INFO: Epoch 30, Iter 4950, Batch 135, Loss: SoftIoULoss_0: 5.2322, WeightedDiceLoss_0: 4.2205, FocalLoss_0: 0.0209
+2026-04-12 19:10:58,699 INFO: Epoch 30, Iter 4960, Batch 145, Loss: SoftIoULoss_0: 4.5241, WeightedDiceLoss_0: 3.6781, FocalLoss_0: 0.0097
+2026-04-12 19:11:04,441 INFO: Epoch 30, Iter 4970, Batch 155, Loss: SoftIoULoss_0: 4.8456, WeightedDiceLoss_0: 4.4896, FocalLoss_0: 0.0039
+2026-04-12 19:11:13,785 INFO: Epoch 30, Iter 4980, Batch 165, Loss: SoftIoULoss_0: 5.8531, WeightedDiceLoss_0: 4.7720, FocalLoss_0: 0.0169
+2026-04-12 19:11:41,778 INFO: [SAMamba][epoch: 30, lr:(4.283e-04,)] [eta: 3:16:15, time (epoch): 108.197 ] 
+TrainSet
+SoftIoULoss_0:1.0048e+02  WeightedDiceLoss_0:8.4381e+01  FocalLoss_0:3.5481e-01  
+m_fscore:0.4569  m_iou:0.2961  n_fscore:0.1204  n_iou:0.0869  
+TestSet
+SoftIoULoss_0:1.0145e+02  WeightedDiceLoss_0:8.4299e+01  FocalLoss_0:2.7811e-01  
+m_fscore:0.4788  m_iou:0.3147  n_fscore:0.1308  n_iou:0.0957  
+
+2026-04-12 19:11:41,779 INFO: Start epoch 31/120
+2026-04-12 19:11:51,697 INFO: Epoch 31, Iter 4990, Batch 9, Loss: SoftIoULoss_0: 105.1547, WeightedDiceLoss_0: 87.5091, FocalLoss_0: 0.2811
+2026-04-12 19:11:57,519 INFO: Epoch 31, Iter 5000, Batch 19, Loss: SoftIoULoss_0: 5.4084, WeightedDiceLoss_0: 4.3584, FocalLoss_0: 0.0091
+2026-04-12 19:12:03,313 INFO: Epoch 31, Iter 5010, Batch 29, Loss: SoftIoULoss_0: 5.6925, WeightedDiceLoss_0: 4.5180, FocalLoss_0: 0.0188
+2026-04-12 19:12:09,139 INFO: Epoch 31, Iter 5020, Batch 39, Loss: SoftIoULoss_0: 6.3798, WeightedDiceLoss_0: 5.3690, FocalLoss_0: 0.0368
+2026-04-12 19:12:15,090 INFO: Epoch 31, Iter 5030, Batch 49, Loss: SoftIoULoss_0: 7.4618, WeightedDiceLoss_0: 6.6809, FocalLoss_0: 0.0342
+2026-04-12 19:12:20,965 INFO: Epoch 31, Iter 5040, Batch 59, Loss: SoftIoULoss_0: 8.1535, WeightedDiceLoss_0: 7.2967, FocalLoss_0: 0.0315
+2026-04-12 19:12:30,395 INFO: Epoch 31, Iter 5050, Batch 69, Loss: SoftIoULoss_0: 8.2816, WeightedDiceLoss_0: 7.5385, FocalLoss_0: 0.0582
+2026-04-12 19:12:36,186 INFO: Epoch 31, Iter 5060, Batch 79, Loss: SoftIoULoss_0: 6.7358, WeightedDiceLoss_0: 5.7188, FocalLoss_0: 0.0274
+2026-04-12 19:12:42,011 INFO: Epoch 31, Iter 5070, Batch 89, Loss: SoftIoULoss_0: 5.2981, WeightedDiceLoss_0: 3.9294, FocalLoss_0: 0.0115
+2026-04-12 19:12:47,873 INFO: Epoch 31, Iter 5080, Batch 99, Loss: SoftIoULoss_0: 5.5802, WeightedDiceLoss_0: 4.3206, FocalLoss_0: 0.0132
+2026-04-12 19:12:53,711 INFO: Epoch 31, Iter 5090, Batch 109, Loss: SoftIoULoss_0: 6.2571, WeightedDiceLoss_0: 5.2533, FocalLoss_0: 0.0158
+2026-04-12 19:13:03,077 INFO: Epoch 31, Iter 5100, Batch 119, Loss: SoftIoULoss_0: 5.7956, WeightedDiceLoss_0: 4.6876, FocalLoss_0: 0.0209
+2026-04-12 19:13:08,940 INFO: Epoch 31, Iter 5110, Batch 129, Loss: SoftIoULoss_0: 6.1218, WeightedDiceLoss_0: 5.1618, FocalLoss_0: 0.0224
+2026-04-12 19:13:14,925 INFO: Epoch 31, Iter 5120, Batch 139, Loss: SoftIoULoss_0: 5.7261, WeightedDiceLoss_0: 4.7515, FocalLoss_0: 0.0224
+2026-04-12 19:13:20,710 INFO: Epoch 31, Iter 5130, Batch 149, Loss: SoftIoULoss_0: 5.3630, WeightedDiceLoss_0: 4.6894, FocalLoss_0: 0.0052
+2026-04-12 19:13:26,531 INFO: Epoch 31, Iter 5140, Batch 159, Loss: SoftIoULoss_0: 4.9581, WeightedDiceLoss_0: 4.3734, FocalLoss_0: 0.0112
+2026-04-12 19:14:01,543 INFO: [SAMamba][epoch: 31, lr:(4.237e-04,)] [eta: 3:14:30, time (epoch): 108.108 ] 
+TrainSet
+SoftIoULoss_0:1.0030e+02  WeightedDiceLoss_0:8.4541e+01  FocalLoss_0:3.4749e-01  
+m_fscore:0.4645  m_iou:0.3025  n_fscore:0.1265  n_iou:0.0921  
+TestSet
+SoftIoULoss_0:9.8205e+01  WeightedDiceLoss_0:8.0914e+01  FocalLoss_0:3.2099e-01  
+m_fscore:0.4540  m_iou:0.2937  n_fscore:0.1326  n_iou:0.0982  
+
+2026-04-12 19:14:01,544 INFO: Start epoch 32/120
+2026-04-12 19:14:04,263 INFO: Epoch 32, Iter 5150, Batch 3, Loss: SoftIoULoss_0: 104.3726, WeightedDiceLoss_0: 86.1541, FocalLoss_0: 0.3312
+2026-04-12 19:14:13,849 INFO: Epoch 32, Iter 5160, Batch 13, Loss: SoftIoULoss_0: 5.3795, WeightedDiceLoss_0: 4.8302, FocalLoss_0: 0.0047
+2026-04-12 19:14:19,434 INFO: Epoch 32, Iter 5170, Batch 23, Loss: SoftIoULoss_0: 6.0926, WeightedDiceLoss_0: 4.9714, FocalLoss_0: 0.0146
+2026-04-12 19:14:25,122 INFO: Epoch 32, Iter 5180, Batch 33, Loss: SoftIoULoss_0: 5.8833, WeightedDiceLoss_0: 4.7137, FocalLoss_0: 0.0249
+2026-04-12 19:14:30,822 INFO: Epoch 32, Iter 5190, Batch 43, Loss: SoftIoULoss_0: 5.9465, WeightedDiceLoss_0: 4.8321, FocalLoss_0: 0.0325
+2026-04-12 19:14:36,470 INFO: Epoch 32, Iter 5200, Batch 53, Loss: SoftIoULoss_0: 8.9622, WeightedDiceLoss_0: 8.3352, FocalLoss_0: 0.0341
+2026-04-12 19:14:42,204 INFO: Epoch 32, Iter 5210, Batch 63, Loss: SoftIoULoss_0: 8.0405, WeightedDiceLoss_0: 7.1038, FocalLoss_0: 0.0486
+2026-04-12 19:14:51,508 INFO: Epoch 32, Iter 5220, Batch 73, Loss: SoftIoULoss_0: 7.2517, WeightedDiceLoss_0: 6.3311, FocalLoss_0: 0.0475
+2026-04-12 19:14:57,178 INFO: Epoch 32, Iter 5230, Batch 83, Loss: SoftIoULoss_0: 6.9631, WeightedDiceLoss_0: 5.7940, FocalLoss_0: 0.0207
+2026-04-12 19:15:02,779 INFO: Epoch 32, Iter 5240, Batch 93, Loss: SoftIoULoss_0: 5.2496, WeightedDiceLoss_0: 3.7841, FocalLoss_0: 0.0141
+2026-04-12 19:15:08,442 INFO: Epoch 32, Iter 5250, Batch 103, Loss: SoftIoULoss_0: 5.7996, WeightedDiceLoss_0: 4.6491, FocalLoss_0: 0.0099
+2026-04-12 19:15:14,362 INFO: Epoch 32, Iter 5260, Batch 113, Loss: SoftIoULoss_0: 5.1950, WeightedDiceLoss_0: 4.0288, FocalLoss_0: 0.0152
+2026-04-12 19:15:23,955 INFO: Epoch 32, Iter 5270, Batch 123, Loss: SoftIoULoss_0: 6.7851, WeightedDiceLoss_0: 5.7150, FocalLoss_0: 0.0235
+2026-04-12 19:15:29,832 INFO: Epoch 32, Iter 5280, Batch 133, Loss: SoftIoULoss_0: 5.5910, WeightedDiceLoss_0: 4.5547, FocalLoss_0: 0.0209
+2026-04-12 19:15:35,735 INFO: Epoch 32, Iter 5290, Batch 143, Loss: SoftIoULoss_0: 6.1286, WeightedDiceLoss_0: 5.2479, FocalLoss_0: 0.0197
+2026-04-12 19:15:41,695 INFO: Epoch 32, Iter 5300, Batch 153, Loss: SoftIoULoss_0: 4.6052, WeightedDiceLoss_0: 4.0436, FocalLoss_0: 0.0046
+2026-04-12 19:15:47,545 INFO: Epoch 32, Iter 5310, Batch 163, Loss: SoftIoULoss_0: 5.4609, WeightedDiceLoss_0: 4.3561, FocalLoss_0: 0.0143
+2026-04-12 19:16:20,385 INFO: [SAMamba][epoch: 32, lr:(4.190e-04,)] [eta: 3:12:40, time (epoch): 107.039 ] 
+TrainSet
+SoftIoULoss_0:1.0305e+02  WeightedDiceLoss_0:8.6490e+01  FocalLoss_0:3.5572e-01  
+m_fscore:0.4555  m_iou:0.2949  n_fscore:0.1220  n_iou:0.0872  
+TestSet
+SoftIoULoss_0:9.5111e+01  WeightedDiceLoss_0:7.8685e+01  FocalLoss_0:2.5856e-01  
+m_fscore:0.5124  m_iou:0.3445  n_fscore:0.1395  n_iou:0.1059  
+
+2026-04-12 19:16:20,386 INFO: Start epoch 33/120
+2026-04-12 19:16:25,464 INFO: Epoch 33, Iter 5320, Batch 7, Loss: SoftIoULoss_0: 100.0643, WeightedDiceLoss_0: 82.9301, FocalLoss_0: 0.2667
+2026-04-12 19:16:31,201 INFO: Epoch 33, Iter 5330, Batch 17, Loss: SoftIoULoss_0: 5.7592, WeightedDiceLoss_0: 4.9999, FocalLoss_0: 0.0099
+2026-04-12 19:16:40,434 INFO: Epoch 33, Iter 5340, Batch 27, Loss: SoftIoULoss_0: 4.4741, WeightedDiceLoss_0: 3.1379, FocalLoss_0: 0.0122
+2026-04-12 19:16:46,080 INFO: Epoch 33, Iter 5350, Batch 37, Loss: SoftIoULoss_0: 5.7398, WeightedDiceLoss_0: 4.6199, FocalLoss_0: 0.0266
+2026-04-12 19:16:51,691 INFO: Epoch 33, Iter 5360, Batch 47, Loss: SoftIoULoss_0: 6.9718, WeightedDiceLoss_0: 6.1245, FocalLoss_0: 0.0346
+2026-04-12 19:16:57,330 INFO: Epoch 33, Iter 5370, Batch 57, Loss: SoftIoULoss_0: 8.7058, WeightedDiceLoss_0: 8.0115, FocalLoss_0: 0.0500
+2026-04-12 19:17:02,932 INFO: Epoch 33, Iter 5380, Batch 67, Loss: SoftIoULoss_0: 7.8281, WeightedDiceLoss_0: 6.9993, FocalLoss_0: 0.0707
+2026-04-12 19:17:12,369 INFO: Epoch 33, Iter 5390, Batch 77, Loss: SoftIoULoss_0: 7.5199, WeightedDiceLoss_0: 6.5356, FocalLoss_0: 0.0400
+2026-04-12 19:17:18,045 INFO: Epoch 33, Iter 5400, Batch 87, Loss: SoftIoULoss_0: 5.8055, WeightedDiceLoss_0: 4.5074, FocalLoss_0: 0.0178
+2026-04-12 19:17:23,588 INFO: Epoch 33, Iter 5410, Batch 97, Loss: SoftIoULoss_0: 5.6671, WeightedDiceLoss_0: 4.4187, FocalLoss_0: 0.0145
+2026-04-12 19:17:29,319 INFO: Epoch 33, Iter 5420, Batch 107, Loss: SoftIoULoss_0: 4.6948, WeightedDiceLoss_0: 3.4801, FocalLoss_0: 0.0113
+2026-04-12 19:17:34,954 INFO: Epoch 33, Iter 5430, Batch 117, Loss: SoftIoULoss_0: 5.7378, WeightedDiceLoss_0: 4.5555, FocalLoss_0: 0.0204
+2026-04-12 19:17:40,529 INFO: Epoch 33, Iter 5440, Batch 127, Loss: SoftIoULoss_0: 6.2604, WeightedDiceLoss_0: 5.0072, FocalLoss_0: 0.0186
+2026-04-12 19:17:49,630 INFO: Epoch 33, Iter 5450, Batch 137, Loss: SoftIoULoss_0: 5.0930, WeightedDiceLoss_0: 3.9523, FocalLoss_0: 0.0227
+2026-04-12 19:17:55,343 INFO: Epoch 33, Iter 5460, Batch 147, Loss: SoftIoULoss_0: 4.5478, WeightedDiceLoss_0: 3.7733, FocalLoss_0: 0.0069
+2026-04-12 19:18:01,004 INFO: Epoch 33, Iter 5470, Batch 157, Loss: SoftIoULoss_0: 5.1057, WeightedDiceLoss_0: 4.5204, FocalLoss_0: 0.0097
+2026-04-12 19:18:36,093 INFO: [SAMamba][epoch: 33, lr:(4.141e-04,)] [eta: 3:10:40, time (epoch): 105.186 ] 
+TrainSet
+SoftIoULoss_0:9.8879e+01  WeightedDiceLoss_0:8.2303e+01  FocalLoss_0:3.8583e-01  
+m_fscore:0.4507  m_iou:0.2909  n_fscore:0.1252  n_iou:0.0907  
+TestSet
+SoftIoULoss_0:1.0947e+02  WeightedDiceLoss_0:9.1843e+01  FocalLoss_0:3.3035e-01  
+m_fscore:0.4341  m_iou:0.2772  n_fscore:0.1184  n_iou:0.0832  
+
+2026-04-12 19:18:36,094 INFO: Start epoch 34/120
+2026-04-12 19:18:38,064 INFO: Epoch 34, Iter 5480, Batch 1, Loss: SoftIoULoss_0: 115.6168, WeightedDiceLoss_0: 97.0156, FocalLoss_0: 0.3448
+2026-04-12 19:18:43,606 INFO: Epoch 34, Iter 5490, Batch 11, Loss: SoftIoULoss_0: 5.5885, WeightedDiceLoss_0: 5.2131, FocalLoss_0: 0.0046
+2026-04-12 19:18:49,064 INFO: Epoch 34, Iter 5500, Batch 21, Loss: SoftIoULoss_0: 6.5562, WeightedDiceLoss_0: 5.5400, FocalLoss_0: 0.0135
+2026-04-12 19:18:54,562 INFO: Epoch 34, Iter 5510, Batch 31, Loss: SoftIoULoss_0: 5.3327, WeightedDiceLoss_0: 4.1325, FocalLoss_0: 0.0174
+2026-04-12 19:19:03,726 INFO: Epoch 34, Iter 5520, Batch 41, Loss: SoftIoULoss_0: 5.8265, WeightedDiceLoss_0: 4.5698, FocalLoss_0: 0.0299
+2026-04-12 19:19:09,290 INFO: Epoch 34, Iter 5530, Batch 51, Loss: SoftIoULoss_0: 8.1941, WeightedDiceLoss_0: 7.4557, FocalLoss_0: 0.0270
+2026-04-12 19:19:15,105 INFO: Epoch 34, Iter 5540, Batch 61, Loss: SoftIoULoss_0: 7.6125, WeightedDiceLoss_0: 6.6082, FocalLoss_0: 0.0302
+2026-04-12 19:19:20,536 INFO: Epoch 34, Iter 5550, Batch 71, Loss: SoftIoULoss_0: 8.3708, WeightedDiceLoss_0: 7.6742, FocalLoss_0: 0.0568
+2026-04-12 19:19:26,082 INFO: Epoch 34, Iter 5560, Batch 81, Loss: SoftIoULoss_0: 6.2977, WeightedDiceLoss_0: 5.1756, FocalLoss_0: 0.0255
+2026-04-12 19:19:35,121 INFO: Epoch 34, Iter 5570, Batch 91, Loss: SoftIoULoss_0: 5.8489, WeightedDiceLoss_0: 4.5651, FocalLoss_0: 0.0172
+2026-04-12 19:19:40,652 INFO: Epoch 34, Iter 5580, Batch 101, Loss: SoftIoULoss_0: 5.4132, WeightedDiceLoss_0: 4.0605, FocalLoss_0: 0.0124
+2026-04-12 19:19:46,204 INFO: Epoch 34, Iter 5590, Batch 111, Loss: SoftIoULoss_0: 5.7080, WeightedDiceLoss_0: 4.6335, FocalLoss_0: 0.0161
+2026-04-12 19:19:51,699 INFO: Epoch 34, Iter 5600, Batch 121, Loss: SoftIoULoss_0: 6.6041, WeightedDiceLoss_0: 5.5394, FocalLoss_0: 0.0229
+2026-04-12 19:19:57,331 INFO: Epoch 34, Iter 5610, Batch 131, Loss: SoftIoULoss_0: 5.5378, WeightedDiceLoss_0: 4.3718, FocalLoss_0: 0.0181
+2026-04-12 19:20:02,848 INFO: Epoch 34, Iter 5620, Batch 141, Loss: SoftIoULoss_0: 5.9258, WeightedDiceLoss_0: 4.9737, FocalLoss_0: 0.0201
+2026-04-12 19:20:11,890 INFO: Epoch 34, Iter 5630, Batch 151, Loss: SoftIoULoss_0: 4.5775, WeightedDiceLoss_0: 4.0311, FocalLoss_0: 0.0057
+2026-04-12 19:20:17,514 INFO: Epoch 34, Iter 5640, Batch 161, Loss: SoftIoULoss_0: 5.8849, WeightedDiceLoss_0: 5.1104, FocalLoss_0: 0.0136
+2026-04-12 19:20:49,901 INFO: [SAMamba][epoch: 34, lr:(4.092e-04,)] [eta: 3:08:34, time (epoch): 103.507 ] 
+TrainSet
+SoftIoULoss_0:1.0262e+02  WeightedDiceLoss_0:8.6361e+01  FocalLoss_0:3.3707e-01  
+m_fscore:0.4620  m_iou:0.3004  n_fscore:0.1205  n_iou:0.0853  
+TestSet
+SoftIoULoss_0:9.7224e+01  WeightedDiceLoss_0:7.9120e+01  FocalLoss_0:3.0953e-01  
+m_fscore:0.4813  m_iou:0.3169  n_fscore:0.1359  n_iou:0.1008  
+
+2026-04-12 19:20:49,902 INFO: Start epoch 35/120
+2026-04-12 19:20:53,621 INFO: Epoch 35, Iter 5650, Batch 5, Loss: SoftIoULoss_0: 103.2834, WeightedDiceLoss_0: 84.2977, FocalLoss_0: 0.3179
+2026-04-12 19:20:59,141 INFO: Epoch 35, Iter 5660, Batch 15, Loss: SoftIoULoss_0: 5.7849, WeightedDiceLoss_0: 5.3537, FocalLoss_0: 0.0098
+2026-04-12 19:21:04,559 INFO: Epoch 35, Iter 5670, Batch 25, Loss: SoftIoULoss_0: 5.5045, WeightedDiceLoss_0: 4.2106, FocalLoss_0: 0.0153
+2026-04-12 19:21:10,262 INFO: Epoch 35, Iter 5680, Batch 35, Loss: SoftIoULoss_0: 5.6592, WeightedDiceLoss_0: 4.5233, FocalLoss_0: 0.0260
+2026-04-12 19:21:15,760 INFO: Epoch 35, Iter 5690, Batch 45, Loss: SoftIoULoss_0: 6.4575, WeightedDiceLoss_0: 5.5320, FocalLoss_0: 0.0348
+2026-04-12 19:21:24,831 INFO: Epoch 35, Iter 5700, Batch 55, Loss: SoftIoULoss_0: 8.6139, WeightedDiceLoss_0: 7.9096, FocalLoss_0: 0.0308
+2026-04-12 19:21:30,372 INFO: Epoch 35, Iter 5710, Batch 65, Loss: SoftIoULoss_0: 7.5626, WeightedDiceLoss_0: 6.5231, FocalLoss_0: 0.0524
+2026-04-12 19:21:35,926 INFO: Epoch 35, Iter 5720, Batch 75, Loss: SoftIoULoss_0: 7.6670, WeightedDiceLoss_0: 6.7049, FocalLoss_0: 0.0465
+2026-04-12 19:21:41,418 INFO: Epoch 35, Iter 5730, Batch 85, Loss: SoftIoULoss_0: 6.1185, WeightedDiceLoss_0: 4.8863, FocalLoss_0: 0.0198
+2026-04-12 19:21:46,962 INFO: Epoch 35, Iter 5740, Batch 95, Loss: SoftIoULoss_0: 5.4122, WeightedDiceLoss_0: 4.2259, FocalLoss_0: 0.0143
+2026-04-12 19:21:52,468 INFO: Epoch 35, Iter 5750, Batch 105, Loss: SoftIoULoss_0: 5.9330, WeightedDiceLoss_0: 4.8841, FocalLoss_0: 0.0119
+2026-04-12 19:22:01,508 INFO: Epoch 35, Iter 5760, Batch 115, Loss: SoftIoULoss_0: 5.6871, WeightedDiceLoss_0: 4.5396, FocalLoss_0: 0.0187
+2026-04-12 19:22:07,008 INFO: Epoch 35, Iter 5770, Batch 125, Loss: SoftIoULoss_0: 6.8862, WeightedDiceLoss_0: 5.8637, FocalLoss_0: 0.0241
+2026-04-12 19:22:12,667 INFO: Epoch 35, Iter 5780, Batch 135, Loss: SoftIoULoss_0: 5.3377, WeightedDiceLoss_0: 4.0720, FocalLoss_0: 0.0192
+2026-04-12 19:22:18,192 INFO: Epoch 35, Iter 5790, Batch 145, Loss: SoftIoULoss_0: 5.2582, WeightedDiceLoss_0: 4.4025, FocalLoss_0: 0.0138
+2026-04-12 19:22:23,683 INFO: Epoch 35, Iter 5800, Batch 155, Loss: SoftIoULoss_0: 2.7637, WeightedDiceLoss_0: 2.1824, FocalLoss_0: 0.0024
+2026-04-12 19:22:29,039 INFO: Epoch 35, Iter 5810, Batch 165, Loss: SoftIoULoss_0: 5.7034, WeightedDiceLoss_0: 4.5933, FocalLoss_0: 0.0167
+2026-04-12 19:22:59,097 INFO: [SAMamba][epoch: 35, lr:(4.042e-04,)] [eta: 3:06:17, time (epoch): 99.139 ] 
+TrainSet
+SoftIoULoss_0:1.0027e+02  WeightedDiceLoss_0:8.3995e+01  FocalLoss_0:3.5979e-01  
+m_fscore:0.4508  m_iou:0.2910  n_fscore:0.1223  n_iou:0.0885  
+TestSet
+SoftIoULoss_0:1.0723e+02  WeightedDiceLoss_0:8.8282e+01  FocalLoss_0:3.0677e-01  
+m_fscore:0.4743  m_iou:0.3109  n_fscore:0.1263  n_iou:0.0900  
+
+2026-04-12 19:22:59,098 INFO: Start epoch 36/120
+2026-04-12 19:23:05,040 INFO: Epoch 36, Iter 5820, Batch 9, Loss: SoftIoULoss_0: 112.6120, WeightedDiceLoss_0: 93.0528, FocalLoss_0: 0.3139
+2026-04-12 19:23:14,304 INFO: Epoch 36, Iter 5830, Batch 19, Loss: SoftIoULoss_0: 5.5138, WeightedDiceLoss_0: 4.4234, FocalLoss_0: 0.0104
+2026-04-12 19:23:19,717 INFO: Epoch 36, Iter 5840, Batch 29, Loss: SoftIoULoss_0: 5.3001, WeightedDiceLoss_0: 4.0204, FocalLoss_0: 0.0167
+2026-04-12 19:23:25,596 INFO: Epoch 36, Iter 5850, Batch 39, Loss: SoftIoULoss_0: 5.4673, WeightedDiceLoss_0: 4.3218, FocalLoss_0: 0.0261
+2026-04-12 19:23:31,136 INFO: Epoch 36, Iter 5860, Batch 49, Loss: SoftIoULoss_0: 7.1793, WeightedDiceLoss_0: 6.3586, FocalLoss_0: 0.0283
+2026-04-12 19:23:36,645 INFO: Epoch 36, Iter 5870, Batch 59, Loss: SoftIoULoss_0: 8.0702, WeightedDiceLoss_0: 7.2109, FocalLoss_0: 0.0401
+2026-04-12 19:23:46,056 INFO: Epoch 36, Iter 5880, Batch 69, Loss: SoftIoULoss_0: 8.1047, WeightedDiceLoss_0: 7.3166, FocalLoss_0: 0.0637
+2026-04-12 19:23:51,544 INFO: Epoch 36, Iter 5890, Batch 79, Loss: SoftIoULoss_0: 6.8150, WeightedDiceLoss_0: 5.7617, FocalLoss_0: 0.0275
+2026-04-12 19:23:57,034 INFO: Epoch 36, Iter 5900, Batch 89, Loss: SoftIoULoss_0: 5.3561, WeightedDiceLoss_0: 4.0612, FocalLoss_0: 0.0160
+2026-04-12 19:24:02,571 INFO: Epoch 36, Iter 5910, Batch 99, Loss: SoftIoULoss_0: 5.7102, WeightedDiceLoss_0: 4.4588, FocalLoss_0: 0.0146
+2026-04-12 19:24:08,016 INFO: Epoch 36, Iter 5920, Batch 109, Loss: SoftIoULoss_0: 5.4166, WeightedDiceLoss_0: 4.2442, FocalLoss_0: 0.0154
+2026-04-12 19:24:13,633 INFO: Epoch 36, Iter 5930, Batch 119, Loss: SoftIoULoss_0: 6.0538, WeightedDiceLoss_0: 4.9381, FocalLoss_0: 0.0228
+2026-04-12 19:24:22,583 INFO: Epoch 36, Iter 5940, Batch 129, Loss: SoftIoULoss_0: 5.7703, WeightedDiceLoss_0: 4.7747, FocalLoss_0: 0.0188
+2026-04-12 19:24:28,017 INFO: Epoch 36, Iter 5950, Batch 139, Loss: SoftIoULoss_0: 5.0945, WeightedDiceLoss_0: 3.9357, FocalLoss_0: 0.0184
+2026-04-12 19:24:33,509 INFO: Epoch 36, Iter 5960, Batch 149, Loss: SoftIoULoss_0: 4.4197, WeightedDiceLoss_0: 3.8663, FocalLoss_0: 0.0042
+2026-04-12 19:24:38,913 INFO: Epoch 36, Iter 5970, Batch 159, Loss: SoftIoULoss_0: 4.5148, WeightedDiceLoss_0: 3.8292, FocalLoss_0: 0.0117
+2026-04-12 19:25:11,971 INFO: [SAMamba][epoch: 36, lr:(3.990e-04,)] [eta: 3:04:08, time (epoch): 102.962 ] 
+TrainSet
+SoftIoULoss_0:9.6973e+01  WeightedDiceLoss_0:8.0317e+01  FocalLoss_0:3.4761e-01  
+m_fscore:0.4809  m_iou:0.3166  n_fscore:0.1295  n_iou:0.0944  
+TestSet
+SoftIoULoss_0:1.0489e+02  WeightedDiceLoss_0:8.7433e+01  FocalLoss_0:3.0422e-01  
+m_fscore:0.4700  m_iou:0.3072  n_fscore:0.1265  n_iou:0.0919  
+
+2026-04-12 19:25:11,972 INFO: Start epoch 37/120
+2026-04-12 19:25:14,781 INFO: Epoch 37, Iter 5980, Batch 3, Loss: SoftIoULoss_0: 109.8983, WeightedDiceLoss_0: 91.3335, FocalLoss_0: 0.3132
+2026-04-12 19:25:20,680 INFO: Epoch 37, Iter 5990, Batch 13, Loss: SoftIoULoss_0: 4.3512, WeightedDiceLoss_0: 3.8274, FocalLoss_0: 0.0045
+2026-04-12 19:25:26,375 INFO: Epoch 37, Iter 6000, Batch 23, Loss: SoftIoULoss_0: 6.5707, WeightedDiceLoss_0: 5.4288, FocalLoss_0: 0.0183
+2026-04-12 19:25:35,610 INFO: Epoch 37, Iter 6010, Batch 33, Loss: SoftIoULoss_0: 5.1573, WeightedDiceLoss_0: 4.0360, FocalLoss_0: 0.0228
+2026-04-12 19:25:41,192 INFO: Epoch 37, Iter 6020, Batch 43, Loss: SoftIoULoss_0: 5.6187, WeightedDiceLoss_0: 4.5137, FocalLoss_0: 0.0306
+2026-04-12 19:25:46,743 INFO: Epoch 37, Iter 6030, Batch 53, Loss: SoftIoULoss_0: 8.9973, WeightedDiceLoss_0: 8.3712, FocalLoss_0: 0.0300
+2026-04-12 19:25:52,357 INFO: Epoch 37, Iter 6040, Batch 63, Loss: SoftIoULoss_0: 7.7457, WeightedDiceLoss_0: 6.7107, FocalLoss_0: 0.0441
+2026-04-12 19:25:58,202 INFO: Epoch 37, Iter 6050, Batch 73, Loss: SoftIoULoss_0: 7.5315, WeightedDiceLoss_0: 6.5884, FocalLoss_0: 0.0487
+2026-04-12 19:26:03,750 INFO: Epoch 37, Iter 6060, Batch 83, Loss: SoftIoULoss_0: 6.4554, WeightedDiceLoss_0: 5.2709, FocalLoss_0: 0.0285
+2026-04-12 19:26:12,954 INFO: Epoch 37, Iter 6070, Batch 93, Loss: SoftIoULoss_0: 4.8201, WeightedDiceLoss_0: 3.5620, FocalLoss_0: 0.0132
+2026-04-12 19:26:18,449 INFO: Epoch 37, Iter 6080, Batch 103, Loss: SoftIoULoss_0: 4.7954, WeightedDiceLoss_0: 3.6104, FocalLoss_0: 0.0099
+2026-04-12 19:26:23,882 INFO: Epoch 37, Iter 6090, Batch 113, Loss: SoftIoULoss_0: 5.5961, WeightedDiceLoss_0: 4.4202, FocalLoss_0: 0.0139
+2026-04-12 19:26:29,330 INFO: Epoch 37, Iter 6100, Batch 123, Loss: SoftIoULoss_0: 6.0444, WeightedDiceLoss_0: 4.8379, FocalLoss_0: 0.0196
+2026-04-12 19:26:34,769 INFO: Epoch 37, Iter 6110, Batch 133, Loss: SoftIoULoss_0: 6.9219, WeightedDiceLoss_0: 6.0459, FocalLoss_0: 0.0256
+2026-04-12 19:26:40,257 INFO: Epoch 37, Iter 6120, Batch 143, Loss: SoftIoULoss_0: 5.3514, WeightedDiceLoss_0: 4.3644, FocalLoss_0: 0.0141
+2026-04-12 19:26:49,548 INFO: Epoch 37, Iter 6130, Batch 153, Loss: SoftIoULoss_0: 5.0098, WeightedDiceLoss_0: 4.3709, FocalLoss_0: 0.0052
+2026-04-12 19:26:55,063 INFO: Epoch 37, Iter 6140, Batch 163, Loss: SoftIoULoss_0: 6.4532, WeightedDiceLoss_0: 5.6685, FocalLoss_0: 0.0175
+2026-04-12 19:27:26,311 INFO: [SAMamba][epoch: 37, lr:(3.938e-04,)] [eta: 3:02:03, time (epoch): 104.048 ] 
+TrainSet
+SoftIoULoss_0:1.0038e+02  WeightedDiceLoss_0:8.4003e+01  FocalLoss_0:3.5111e-01  
+m_fscore:0.4651  m_iou:0.3030  n_fscore:0.1251  n_iou:0.0908  
+TestSet
+SoftIoULoss_0:1.0657e+02  WeightedDiceLoss_0:8.8473e+01  FocalLoss_0:2.8669e-01  
+m_fscore:0.4739  m_iou:0.3105  n_fscore:0.1244  n_iou:0.0883  
+
+2026-04-12 19:27:26,312 INFO: Start epoch 38/120
+2026-04-12 19:27:31,177 INFO: Epoch 38, Iter 6150, Batch 7, Loss: SoftIoULoss_0: 112.9695, WeightedDiceLoss_0: 94.2645, FocalLoss_0: 0.2960
+2026-04-12 19:27:36,626 INFO: Epoch 38, Iter 6160, Batch 17, Loss: SoftIoULoss_0: 6.1710, WeightedDiceLoss_0: 5.5069, FocalLoss_0: 0.0100
+2026-04-12 19:27:42,088 INFO: Epoch 38, Iter 6170, Batch 27, Loss: SoftIoULoss_0: 5.7590, WeightedDiceLoss_0: 4.5737, FocalLoss_0: 0.0157
+2026-04-12 19:27:47,854 INFO: Epoch 38, Iter 6180, Batch 37, Loss: SoftIoULoss_0: 5.5633, WeightedDiceLoss_0: 4.4370, FocalLoss_0: 0.0259
+2026-04-12 19:27:56,987 INFO: Epoch 38, Iter 6190, Batch 47, Loss: SoftIoULoss_0: 6.5618, WeightedDiceLoss_0: 5.6182, FocalLoss_0: 0.0290
+2026-04-12 19:28:02,426 INFO: Epoch 38, Iter 6200, Batch 57, Loss: SoftIoULoss_0: 8.4865, WeightedDiceLoss_0: 7.7770, FocalLoss_0: 0.0336
+2026-04-12 19:28:07,864 INFO: Epoch 38, Iter 6210, Batch 67, Loss: SoftIoULoss_0: 8.0486, WeightedDiceLoss_0: 7.1214, FocalLoss_0: 0.0532
+2026-04-12 19:28:13,470 INFO: Epoch 38, Iter 6220, Batch 77, Loss: SoftIoULoss_0: 6.8071, WeightedDiceLoss_0: 5.7408, FocalLoss_0: 0.0271
+2026-04-12 19:28:18,975 INFO: Epoch 38, Iter 6230, Batch 87, Loss: SoftIoULoss_0: 5.5435, WeightedDiceLoss_0: 4.2329, FocalLoss_0: 0.0181
+2026-04-12 19:28:24,404 INFO: Epoch 38, Iter 6240, Batch 97, Loss: SoftIoULoss_0: 5.5055, WeightedDiceLoss_0: 4.2765, FocalLoss_0: 0.0155
+2026-04-12 19:28:33,399 INFO: Epoch 38, Iter 6250, Batch 107, Loss: SoftIoULoss_0: 5.3644, WeightedDiceLoss_0: 4.2346, FocalLoss_0: 0.0142
+2026-04-12 19:28:38,873 INFO: Epoch 38, Iter 6260, Batch 117, Loss: SoftIoULoss_0: 6.5301, WeightedDiceLoss_0: 5.4164, FocalLoss_0: 0.0224
+2026-04-12 19:28:44,306 INFO: Epoch 38, Iter 6270, Batch 127, Loss: SoftIoULoss_0: 5.9271, WeightedDiceLoss_0: 4.8256, FocalLoss_0: 0.0206
+2026-04-12 19:28:49,670 INFO: Epoch 38, Iter 6280, Batch 137, Loss: SoftIoULoss_0: 5.6392, WeightedDiceLoss_0: 4.5512, FocalLoss_0: 0.0229
+2026-04-12 19:28:55,160 INFO: Epoch 38, Iter 6290, Batch 147, Loss: SoftIoULoss_0: 4.3691, WeightedDiceLoss_0: 3.6765, FocalLoss_0: 0.0071
+2026-04-12 19:29:00,524 INFO: Epoch 38, Iter 6300, Batch 157, Loss: SoftIoULoss_0: 4.1123, WeightedDiceLoss_0: 3.5443, FocalLoss_0: 0.0078
+2026-04-12 19:29:36,567 INFO: [SAMamba][epoch: 38, lr:(3.885e-04,)] [eta: 2:59:49, time (epoch): 102.109 ] 
+TrainSet
+SoftIoULoss_0:1.0030e+02  WeightedDiceLoss_0:8.4183e+01  FocalLoss_0:3.4151e-01  
+m_fscore:0.4780  m_iou:0.3140  n_fscore:0.1243  n_iou:0.0894  
+TestSet
+SoftIoULoss_0:9.3837e+01  WeightedDiceLoss_0:7.4672e+01  FocalLoss_0:2.8616e-01  
+m_fscore:0.5094  m_iou:0.3418  n_fscore:0.1413  n_iou:0.1051  
+
+2026-04-12 19:29:36,568 INFO: Start epoch 39/120
+2026-04-12 19:29:38,166 INFO: Epoch 39, Iter 6310, Batch 1, Loss: SoftIoULoss_0: 99.6208, WeightedDiceLoss_0: 79.5072, FocalLoss_0: 0.3004
+2026-04-12 19:29:47,556 INFO: Epoch 39, Iter 6320, Batch 11, Loss: SoftIoULoss_0: 4.5496, WeightedDiceLoss_0: 4.0564, FocalLoss_0: 0.0072
+2026-04-12 19:29:53,465 INFO: Epoch 39, Iter 6330, Batch 21, Loss: SoftIoULoss_0: 6.2401, WeightedDiceLoss_0: 5.1696, FocalLoss_0: 0.0156
+2026-04-12 19:29:59,346 INFO: Epoch 39, Iter 6340, Batch 31, Loss: SoftIoULoss_0: 5.3003, WeightedDiceLoss_0: 4.1292, FocalLoss_0: 0.0182
+2026-04-12 19:30:05,173 INFO: Epoch 39, Iter 6350, Batch 41, Loss: SoftIoULoss_0: 6.0791, WeightedDiceLoss_0: 5.0856, FocalLoss_0: 0.0378
+2026-04-12 19:30:11,166 INFO: Epoch 39, Iter 6360, Batch 51, Loss: SoftIoULoss_0: 7.8138, WeightedDiceLoss_0: 7.1163, FocalLoss_0: 0.0266
+2026-04-12 19:30:20,641 INFO: Epoch 39, Iter 6370, Batch 61, Loss: SoftIoULoss_0: 8.1560, WeightedDiceLoss_0: 7.2576, FocalLoss_0: 0.0409
+2026-04-12 19:30:26,450 INFO: Epoch 39, Iter 6380, Batch 71, Loss: SoftIoULoss_0: 7.5172, WeightedDiceLoss_0: 6.6576, FocalLoss_0: 0.0445
+2026-04-12 19:30:32,156 INFO: Epoch 39, Iter 6390, Batch 81, Loss: SoftIoULoss_0: 6.0710, WeightedDiceLoss_0: 4.9662, FocalLoss_0: 0.0245
+2026-04-12 19:30:38,008 INFO: Epoch 39, Iter 6400, Batch 91, Loss: SoftIoULoss_0: 5.4190, WeightedDiceLoss_0: 4.2221, FocalLoss_0: 0.0185
+2026-04-12 19:30:43,825 INFO: Epoch 39, Iter 6410, Batch 101, Loss: SoftIoULoss_0: 6.0848, WeightedDiceLoss_0: 4.9905, FocalLoss_0: 0.0167
+2026-04-12 19:30:49,518 INFO: Epoch 39, Iter 6420, Batch 111, Loss: SoftIoULoss_0: 6.0251, WeightedDiceLoss_0: 4.7969, FocalLoss_0: 0.0179
+2026-04-12 19:30:58,919 INFO: Epoch 39, Iter 6430, Batch 121, Loss: SoftIoULoss_0: 5.9329, WeightedDiceLoss_0: 4.8954, FocalLoss_0: 0.0199
+2026-04-12 19:31:04,692 INFO: Epoch 39, Iter 6440, Batch 131, Loss: SoftIoULoss_0: 6.5995, WeightedDiceLoss_0: 5.7757, FocalLoss_0: 0.0285
+2026-04-12 19:31:10,508 INFO: Epoch 39, Iter 6450, Batch 141, Loss: SoftIoULoss_0: 5.3680, WeightedDiceLoss_0: 4.2520, FocalLoss_0: 0.0195
+2026-04-12 19:31:16,380 INFO: Epoch 39, Iter 6460, Batch 151, Loss: SoftIoULoss_0: 4.1151, WeightedDiceLoss_0: 3.5362, FocalLoss_0: 0.0040
+2026-04-12 19:31:22,069 INFO: Epoch 39, Iter 6470, Batch 161, Loss: SoftIoULoss_0: 5.7098, WeightedDiceLoss_0: 5.0008, FocalLoss_0: 0.0155
+2026-04-12 19:31:56,035 INFO: [SAMamba][epoch: 39, lr:(3.830e-04,)] [eta: 2:57:54, time (epoch): 107.722 ] 
+TrainSet
+SoftIoULoss_0:1.0049e+02  WeightedDiceLoss_0:8.4848e+01  FocalLoss_0:3.6436e-01  
+m_fscore:0.4719  m_iou:0.3088  n_fscore:0.1239  n_iou:0.0898  
+TestSet
+SoftIoULoss_0:9.4598e+01  WeightedDiceLoss_0:7.6308e+01  FocalLoss_0:3.0685e-01  
+m_fscore:0.4987  m_iou:0.3322  n_fscore:0.1396  n_iou:0.1037  
+
+2026-04-12 19:31:56,036 INFO: Start epoch 40/120
+2026-04-12 19:32:00,159 INFO: Epoch 40, Iter 6480, Batch 5, Loss: SoftIoULoss_0: 100.3724, WeightedDiceLoss_0: 81.3125, FocalLoss_0: 0.3167
+2026-04-12 19:32:09,741 INFO: Epoch 40, Iter 6490, Batch 15, Loss: SoftIoULoss_0: 5.4334, WeightedDiceLoss_0: 4.8514, FocalLoss_0: 0.0084
+2026-04-12 19:32:15,483 INFO: Epoch 40, Iter 6500, Batch 25, Loss: SoftIoULoss_0: 6.9097, WeightedDiceLoss_0: 5.9041, FocalLoss_0: 0.0195
+2026-04-12 19:32:21,085 INFO: Epoch 40, Iter 6510, Batch 35, Loss: SoftIoULoss_0: 5.7440, WeightedDiceLoss_0: 4.6462, FocalLoss_0: 0.0275
+2026-04-12 19:32:26,869 INFO: Epoch 40, Iter 6520, Batch 45, Loss: SoftIoULoss_0: 6.1345, WeightedDiceLoss_0: 5.2096, FocalLoss_0: 0.0286
+2026-04-12 19:32:32,666 INFO: Epoch 40, Iter 6530, Batch 55, Loss: SoftIoULoss_0: 8.6562, WeightedDiceLoss_0: 7.9411, FocalLoss_0: 0.0327
+2026-04-12 19:32:38,107 INFO: Epoch 40, Iter 6540, Batch 65, Loss: SoftIoULoss_0: 8.0365, WeightedDiceLoss_0: 7.1873, FocalLoss_0: 0.0514
+2026-04-12 19:32:47,067 INFO: Epoch 40, Iter 6550, Batch 75, Loss: SoftIoULoss_0: 7.4835, WeightedDiceLoss_0: 6.6987, FocalLoss_0: 0.0415
+2026-04-12 19:32:52,420 INFO: Epoch 40, Iter 6560, Batch 85, Loss: SoftIoULoss_0: 5.9077, WeightedDiceLoss_0: 4.5735, FocalLoss_0: 0.0175
+2026-04-12 19:32:57,848 INFO: Epoch 40, Iter 6570, Batch 95, Loss: SoftIoULoss_0: 5.9741, WeightedDiceLoss_0: 4.6888, FocalLoss_0: 0.0161
+2026-04-12 19:33:03,232 INFO: Epoch 40, Iter 6580, Batch 105, Loss: SoftIoULoss_0: 5.2449, WeightedDiceLoss_0: 3.9938, FocalLoss_0: 0.0123
+2026-04-12 19:33:08,573 INFO: Epoch 40, Iter 6590, Batch 115, Loss: SoftIoULoss_0: 6.0049, WeightedDiceLoss_0: 4.9527, FocalLoss_0: 0.0213
+2026-04-12 19:33:14,073 INFO: Epoch 40, Iter 6600, Batch 125, Loss: SoftIoULoss_0: 6.1199, WeightedDiceLoss_0: 5.0238, FocalLoss_0: 0.0190
+2026-04-12 19:33:23,007 INFO: Epoch 40, Iter 6610, Batch 135, Loss: SoftIoULoss_0: 5.3202, WeightedDiceLoss_0: 4.2478, FocalLoss_0: 0.0223
+2026-04-12 19:33:28,457 INFO: Epoch 40, Iter 6620, Batch 145, Loss: SoftIoULoss_0: 5.0039, WeightedDiceLoss_0: 4.1803, FocalLoss_0: 0.0109
+2026-04-12 19:33:34,037 INFO: Epoch 40, Iter 6630, Batch 155, Loss: SoftIoULoss_0: 4.8518, WeightedDiceLoss_0: 4.3767, FocalLoss_0: 0.0045
+2026-04-12 19:33:39,454 INFO: Epoch 40, Iter 6640, Batch 165, Loss: SoftIoULoss_0: 5.8455, WeightedDiceLoss_0: 4.8430, FocalLoss_0: 0.0200
+2026-04-12 19:34:09,521 INFO: [SAMamba][epoch: 40, lr:(3.775e-04,)] [eta: 2:55:45, time (epoch): 103.419 ] 
+TrainSet
+SoftIoULoss_0:1.0246e+02  WeightedDiceLoss_0:8.6862e+01  FocalLoss_0:3.5819e-01  
+m_fscore:0.4596  m_iou:0.2983  n_fscore:0.1195  n_iou:0.0856  
+TestSet
+SoftIoULoss_0:1.1684e+02  WeightedDiceLoss_0:1.0144e+02  FocalLoss_0:3.2627e-01  
+m_fscore:0.4086  m_iou:0.2568  n_fscore:0.1070  n_iou:0.0747  
+
+2026-04-12 19:34:09,522 INFO: Start epoch 41/120
+2026-04-12 19:34:15,366 INFO: Epoch 41, Iter 6650, Batch 9, Loss: SoftIoULoss_0: 121.3392, WeightedDiceLoss_0: 105.5226, FocalLoss_0: 0.3325
+2026-04-12 19:34:20,922 INFO: Epoch 41, Iter 6660, Batch 19, Loss: SoftIoULoss_0: 5.3440, WeightedDiceLoss_0: 4.4431, FocalLoss_0: 0.0119
+2026-04-12 19:34:26,334 INFO: Epoch 41, Iter 6670, Batch 29, Loss: SoftIoULoss_0: 5.0704, WeightedDiceLoss_0: 3.8262, FocalLoss_0: 0.0179
+2026-04-12 19:34:35,325 INFO: Epoch 41, Iter 6680, Batch 39, Loss: SoftIoULoss_0: 6.1243, WeightedDiceLoss_0: 5.2541, FocalLoss_0: 0.0332
+2026-04-12 19:34:40,620 INFO: Epoch 41, Iter 6690, Batch 49, Loss: SoftIoULoss_0: 7.4224, WeightedDiceLoss_0: 6.5596, FocalLoss_0: 0.0308
+2026-04-12 19:34:45,970 INFO: Epoch 41, Iter 6700, Batch 59, Loss: SoftIoULoss_0: 7.6689, WeightedDiceLoss_0: 6.6624, FocalLoss_0: 0.0379
+2026-04-12 19:34:51,343 INFO: Epoch 41, Iter 6710, Batch 69, Loss: SoftIoULoss_0: 8.1793, WeightedDiceLoss_0: 7.2863, FocalLoss_0: 0.0631
+2026-04-12 19:34:56,665 INFO: Epoch 41, Iter 6720, Batch 79, Loss: SoftIoULoss_0: 6.1651, WeightedDiceLoss_0: 4.9522, FocalLoss_0: 0.0261
+2026-04-12 19:35:02,002 INFO: Epoch 41, Iter 6730, Batch 89, Loss: SoftIoULoss_0: 6.2830, WeightedDiceLoss_0: 5.1526, FocalLoss_0: 0.0229
+2026-04-12 19:35:10,910 INFO: Epoch 41, Iter 6740, Batch 99, Loss: SoftIoULoss_0: 5.9684, WeightedDiceLoss_0: 4.7690, FocalLoss_0: 0.0174
+2026-04-12 19:35:16,714 INFO: Epoch 41, Iter 6750, Batch 109, Loss: SoftIoULoss_0: 4.5874, WeightedDiceLoss_0: 3.3899, FocalLoss_0: 0.0109
+2026-04-12 19:35:22,208 INFO: Epoch 41, Iter 6760, Batch 119, Loss: SoftIoULoss_0: 5.4612, WeightedDiceLoss_0: 4.2926, FocalLoss_0: 0.0184
+2026-04-12 19:35:28,060 INFO: Epoch 41, Iter 6770, Batch 129, Loss: SoftIoULoss_0: 5.3430, WeightedDiceLoss_0: 4.1664, FocalLoss_0: 0.0189
+2026-04-12 19:35:33,816 INFO: Epoch 41, Iter 6780, Batch 139, Loss: SoftIoULoss_0: 5.1088, WeightedDiceLoss_0: 4.0052, FocalLoss_0: 0.0192
+2026-04-12 19:35:42,689 INFO: Epoch 41, Iter 6790, Batch 149, Loss: SoftIoULoss_0: 4.6379, WeightedDiceLoss_0: 4.0615, FocalLoss_0: 0.0065
+2026-04-12 19:35:47,883 INFO: Epoch 41, Iter 6800, Batch 159, Loss: SoftIoULoss_0: 4.5880, WeightedDiceLoss_0: 3.8701, FocalLoss_0: 0.0122
+2026-04-12 19:36:20,023 INFO: [SAMamba][epoch: 41, lr:(3.719e-04,)] [eta: 2:53:31, time (epoch): 101.341 ] 
+TrainSet
+SoftIoULoss_0:9.5486e+01  WeightedDiceLoss_0:7.9070e+01  FocalLoss_0:3.6052e-01  
+m_fscore:0.4904  m_iou:0.3249  n_fscore:0.1306  n_iou:0.0957  
+TestSet
+SoftIoULoss_0:9.4303e+01  WeightedDiceLoss_0:7.6612e+01  FocalLoss_0:2.7213e-01  
+m_fscore:0.5267  m_iou:0.3575  n_fscore:0.1420  n_iou:0.1061  
+
+2026-04-12 19:36:20,024 INFO: Start epoch 42/120
+2026-04-12 19:36:22,561 INFO: Epoch 42, Iter 6810, Batch 3, Loss: SoftIoULoss_0: 100.0656, WeightedDiceLoss_0: 81.4619, FocalLoss_0: 0.2818
+2026-04-12 19:36:28,036 INFO: Epoch 42, Iter 6820, Batch 13, Loss: SoftIoULoss_0: 3.9569, WeightedDiceLoss_0: 3.5180, FocalLoss_0: 0.0050
+2026-04-12 19:36:33,572 INFO: Epoch 42, Iter 6830, Batch 23, Loss: SoftIoULoss_0: 6.3875, WeightedDiceLoss_0: 5.2949, FocalLoss_0: 0.0163
+2026-04-12 19:36:39,257 INFO: Epoch 42, Iter 6840, Batch 33, Loss: SoftIoULoss_0: 4.8050, WeightedDiceLoss_0: 3.5677, FocalLoss_0: 0.0223
+2026-04-12 19:36:44,916 INFO: Epoch 42, Iter 6850, Batch 43, Loss: SoftIoULoss_0: 5.9375, WeightedDiceLoss_0: 4.8709, FocalLoss_0: 0.0358
+2026-04-12 19:36:54,048 INFO: Epoch 42, Iter 6860, Batch 53, Loss: SoftIoULoss_0: 8.4670, WeightedDiceLoss_0: 7.7707, FocalLoss_0: 0.0311
+2026-04-12 19:36:59,367 INFO: Epoch 42, Iter 6870, Batch 63, Loss: SoftIoULoss_0: 7.3215, WeightedDiceLoss_0: 6.2514, FocalLoss_0: 0.0424
+2026-04-12 19:37:04,795 INFO: Epoch 42, Iter 6880, Batch 73, Loss: SoftIoULoss_0: 7.6756, WeightedDiceLoss_0: 6.7985, FocalLoss_0: 0.0399
+2026-04-12 19:37:10,181 INFO: Epoch 42, Iter 6890, Batch 83, Loss: SoftIoULoss_0: 6.2550, WeightedDiceLoss_0: 5.0820, FocalLoss_0: 0.0297
+2026-04-12 19:37:15,745 INFO: Epoch 42, Iter 6900, Batch 93, Loss: SoftIoULoss_0: 5.5100, WeightedDiceLoss_0: 4.1904, FocalLoss_0: 0.0185
+2026-04-12 19:37:21,010 INFO: Epoch 42, Iter 6910, Batch 103, Loss: SoftIoULoss_0: 5.6686, WeightedDiceLoss_0: 4.5131, FocalLoss_0: 0.0125
+2026-04-12 19:37:29,862 INFO: Epoch 42, Iter 6920, Batch 113, Loss: SoftIoULoss_0: 5.6249, WeightedDiceLoss_0: 4.3874, FocalLoss_0: 0.0162
+2026-04-12 19:37:34,960 INFO: Epoch 42, Iter 6930, Batch 123, Loss: SoftIoULoss_0: 6.2337, WeightedDiceLoss_0: 5.2404, FocalLoss_0: 0.0238
+2026-04-12 19:37:40,179 INFO: Epoch 42, Iter 6940, Batch 133, Loss: SoftIoULoss_0: 5.9250, WeightedDiceLoss_0: 4.7850, FocalLoss_0: 0.0189
+2026-04-12 19:37:45,438 INFO: Epoch 42, Iter 6950, Batch 143, Loss: SoftIoULoss_0: 6.2621, WeightedDiceLoss_0: 5.5406, FocalLoss_0: 0.0174
+2026-04-12 19:37:50,623 INFO: Epoch 42, Iter 6960, Batch 153, Loss: SoftIoULoss_0: 3.7670, WeightedDiceLoss_0: 3.3243, FocalLoss_0: 0.0030
+2026-04-12 19:37:55,820 INFO: Epoch 42, Iter 6970, Batch 163, Loss: SoftIoULoss_0: 5.0985, WeightedDiceLoss_0: 3.9939, FocalLoss_0: 0.0130
+2026-04-12 19:38:25,627 INFO: [SAMamba][epoch: 42, lr:(3.663e-04,)] [eta: 2:51:08, time (epoch): 96.721 ] 
+TrainSet
+SoftIoULoss_0:9.8550e+01  WeightedDiceLoss_0:8.2350e+01  FocalLoss_0:3.5013e-01  
+m_fscore:0.4904  m_iou:0.3249  n_fscore:0.1300  n_iou:0.0948  
+TestSet
+SoftIoULoss_0:9.2663e+01  WeightedDiceLoss_0:7.5108e+01  FocalLoss_0:2.8257e-01  
+m_fscore:0.5182  m_iou:0.3497  n_fscore:0.1427  n_iou:0.1076  
+
+2026-04-12 19:38:25,628 INFO: Start epoch 43/120
+2026-04-12 19:38:30,222 INFO: Epoch 43, Iter 6980, Batch 7, Loss: SoftIoULoss_0: 97.8590, WeightedDiceLoss_0: 79.6989, FocalLoss_0: 0.2886
+2026-04-12 19:38:35,505 INFO: Epoch 43, Iter 6990, Batch 17, Loss: SoftIoULoss_0: 5.7831, WeightedDiceLoss_0: 5.0794, FocalLoss_0: 0.0078
+2026-04-12 19:38:44,318 INFO: Epoch 43, Iter 7000, Batch 27, Loss: SoftIoULoss_0: 5.3030, WeightedDiceLoss_0: 4.1889, FocalLoss_0: 0.0146
+2026-04-12 19:38:49,511 INFO: Epoch 43, Iter 7010, Batch 37, Loss: SoftIoULoss_0: 5.5646, WeightedDiceLoss_0: 4.3722, FocalLoss_0: 0.0252
+2026-04-12 19:38:54,639 INFO: Epoch 43, Iter 7020, Batch 47, Loss: SoftIoULoss_0: 5.8253, WeightedDiceLoss_0: 4.8038, FocalLoss_0: 0.0329
+2026-04-12 19:38:59,828 INFO: Epoch 43, Iter 7030, Batch 57, Loss: SoftIoULoss_0: 8.0513, WeightedDiceLoss_0: 7.2560, FocalLoss_0: 0.0327
+2026-04-12 19:39:05,115 INFO: Epoch 43, Iter 7040, Batch 67, Loss: SoftIoULoss_0: 7.8086, WeightedDiceLoss_0: 6.8588, FocalLoss_0: 0.0533
+2026-04-12 19:39:10,497 INFO: Epoch 43, Iter 7050, Batch 77, Loss: SoftIoULoss_0: 6.8086, WeightedDiceLoss_0: 5.6797, FocalLoss_0: 0.0339
+2026-04-12 19:39:19,246 INFO: Epoch 43, Iter 7060, Batch 87, Loss: SoftIoULoss_0: 6.1173, WeightedDiceLoss_0: 4.9121, FocalLoss_0: 0.0194
+2026-04-12 19:39:24,418 INFO: Epoch 43, Iter 7070, Batch 97, Loss: SoftIoULoss_0: 5.9242, WeightedDiceLoss_0: 4.7269, FocalLoss_0: 0.0178
+2026-04-12 19:39:29,604 INFO: Epoch 43, Iter 7080, Batch 107, Loss: SoftIoULoss_0: 5.4737, WeightedDiceLoss_0: 4.3836, FocalLoss_0: 0.0136
+2026-04-12 19:39:34,781 INFO: Epoch 43, Iter 7090, Batch 117, Loss: SoftIoULoss_0: 5.5021, WeightedDiceLoss_0: 4.2901, FocalLoss_0: 0.0206
+2026-04-12 19:39:39,928 INFO: Epoch 43, Iter 7100, Batch 127, Loss: SoftIoULoss_0: 5.9257, WeightedDiceLoss_0: 4.9031, FocalLoss_0: 0.0212
+2026-04-12 19:39:45,198 INFO: Epoch 43, Iter 7110, Batch 137, Loss: SoftIoULoss_0: 5.1785, WeightedDiceLoss_0: 4.0417, FocalLoss_0: 0.0196
+2026-04-12 19:39:53,955 INFO: Epoch 43, Iter 7120, Batch 147, Loss: SoftIoULoss_0: 5.2023, WeightedDiceLoss_0: 4.4099, FocalLoss_0: 0.0076
+2026-04-12 19:39:59,145 INFO: Epoch 43, Iter 7130, Batch 157, Loss: SoftIoULoss_0: 5.0793, WeightedDiceLoss_0: 4.4192, FocalLoss_0: 0.0095
+2026-04-12 19:40:32,147 INFO: [SAMamba][epoch: 43, lr:(3.605e-04,)] [eta: 2:48:47, time (epoch): 97.542 ] 
+TrainSet
+SoftIoULoss_0:9.8330e+01  WeightedDiceLoss_0:8.1954e+01  FocalLoss_0:3.4804e-01  
+m_fscore:0.4831  m_iou:0.3185  n_fscore:0.1252  n_iou:0.0901  
+TestSet
+SoftIoULoss_0:1.0605e+02  WeightedDiceLoss_0:8.8590e+01  FocalLoss_0:2.9596e-01  
+m_fscore:0.4789  m_iou:0.3148  n_fscore:0.1252  n_iou:0.0896  
+
+2026-04-12 19:40:32,148 INFO: Start epoch 44/120
+2026-04-12 19:40:33,577 INFO: Epoch 44, Iter 7140, Batch 1, Loss: SoftIoULoss_0: 111.5099, WeightedDiceLoss_0: 93.0227, FocalLoss_0: 0.3120
+2026-04-12 19:40:38,799 INFO: Epoch 44, Iter 7150, Batch 11, Loss: SoftIoULoss_0: 5.5191, WeightedDiceLoss_0: 5.1458, FocalLoss_0: 0.0056
+2026-04-12 19:40:43,954 INFO: Epoch 44, Iter 7160, Batch 21, Loss: SoftIoULoss_0: 6.8715, WeightedDiceLoss_0: 5.7871, FocalLoss_0: 0.0182
+2026-04-12 19:40:49,145 INFO: Epoch 44, Iter 7170, Batch 31, Loss: SoftIoULoss_0: 4.8557, WeightedDiceLoss_0: 3.7130, FocalLoss_0: 0.0193
+2026-04-12 19:40:54,402 INFO: Epoch 44, Iter 7180, Batch 41, Loss: SoftIoULoss_0: 5.8011, WeightedDiceLoss_0: 4.7218, FocalLoss_0: 0.0333
+2026-04-12 19:41:00,031 INFO: Epoch 44, Iter 7190, Batch 51, Loss: SoftIoULoss_0: 7.9462, WeightedDiceLoss_0: 7.1907, FocalLoss_0: 0.0244
+2026-04-12 19:41:09,041 INFO: Epoch 44, Iter 7200, Batch 61, Loss: SoftIoULoss_0: 7.3418, WeightedDiceLoss_0: 6.3160, FocalLoss_0: 0.0398
+2026-04-12 19:41:14,683 INFO: Epoch 44, Iter 7210, Batch 71, Loss: SoftIoULoss_0: 7.7716, WeightedDiceLoss_0: 6.8599, FocalLoss_0: 0.0525
+2026-04-12 19:41:20,114 INFO: Epoch 44, Iter 7220, Batch 81, Loss: SoftIoULoss_0: 6.1931, WeightedDiceLoss_0: 5.0132, FocalLoss_0: 0.0254
+2026-04-12 19:41:25,465 INFO: Epoch 44, Iter 7230, Batch 91, Loss: SoftIoULoss_0: 5.5337, WeightedDiceLoss_0: 4.2434, FocalLoss_0: 0.0169
+2026-04-12 19:41:30,812 INFO: Epoch 44, Iter 7240, Batch 101, Loss: SoftIoULoss_0: 6.4741, WeightedDiceLoss_0: 5.3079, FocalLoss_0: 0.0162
+2026-04-12 19:41:36,300 INFO: Epoch 44, Iter 7250, Batch 111, Loss: SoftIoULoss_0: 5.1677, WeightedDiceLoss_0: 4.0535, FocalLoss_0: 0.0179
+2026-04-12 19:41:45,204 INFO: Epoch 44, Iter 7260, Batch 121, Loss: SoftIoULoss_0: 6.0920, WeightedDiceLoss_0: 4.8892, FocalLoss_0: 0.0230
+2026-04-12 19:41:50,738 INFO: Epoch 44, Iter 7270, Batch 131, Loss: SoftIoULoss_0: 5.7547, WeightedDiceLoss_0: 4.7270, FocalLoss_0: 0.0220
+2026-04-12 19:41:56,259 INFO: Epoch 44, Iter 7280, Batch 141, Loss: SoftIoULoss_0: 4.7107, WeightedDiceLoss_0: 3.6964, FocalLoss_0: 0.0178
+2026-04-12 19:42:01,512 INFO: Epoch 44, Iter 7290, Batch 151, Loss: SoftIoULoss_0: 4.2645, WeightedDiceLoss_0: 3.4535, FocalLoss_0: 0.0052
+2026-04-12 19:42:06,609 INFO: Epoch 44, Iter 7300, Batch 161, Loss: SoftIoULoss_0: 5.3559, WeightedDiceLoss_0: 4.6513, FocalLoss_0: 0.0173
+2026-04-12 19:42:38,611 INFO: [SAMamba][epoch: 44, lr:(3.547e-04,)] [eta: 2:46:26, time (epoch): 96.441 ] 
+TrainSet
+SoftIoULoss_0:9.8542e+01  WeightedDiceLoss_0:8.1933e+01  FocalLoss_0:3.6307e-01  
+m_fscore:0.4982  m_iou:0.3318  n_fscore:0.1271  n_iou:0.0919  
+TestSet
+SoftIoULoss_0:9.1419e+01  WeightedDiceLoss_0:7.4062e+01  FocalLoss_0:3.0543e-01  
+m_fscore:0.5194  m_iou:0.3508  n_fscore:0.1440  n_iou:0.1096  
+
+2026-04-12 19:42:38,612 INFO: Start epoch 45/120
+2026-04-12 19:42:42,185 INFO: Epoch 45, Iter 7310, Batch 5, Loss: SoftIoULoss_0: 97.3075, WeightedDiceLoss_0: 79.2510, FocalLoss_0: 0.3185
+2026-04-12 19:42:47,455 INFO: Epoch 45, Iter 7320, Batch 15, Loss: SoftIoULoss_0: 4.7625, WeightedDiceLoss_0: 4.2257, FocalLoss_0: 0.0073
+2026-04-12 19:42:56,509 INFO: Epoch 45, Iter 7330, Batch 25, Loss: SoftIoULoss_0: 5.3950, WeightedDiceLoss_0: 4.2013, FocalLoss_0: 0.0175
+2026-04-12 19:43:01,869 INFO: Epoch 45, Iter 7340, Batch 35, Loss: SoftIoULoss_0: 5.2971, WeightedDiceLoss_0: 4.0477, FocalLoss_0: 0.0242
+2026-04-12 19:43:07,375 INFO: Epoch 45, Iter 7350, Batch 45, Loss: SoftIoULoss_0: 6.3744, WeightedDiceLoss_0: 5.3877, FocalLoss_0: 0.0320
+2026-04-12 19:43:12,777 INFO: Epoch 45, Iter 7360, Batch 55, Loss: SoftIoULoss_0: 8.0069, WeightedDiceLoss_0: 7.1199, FocalLoss_0: 0.0207
+2026-04-12 19:43:17,845 INFO: Epoch 45, Iter 7370, Batch 65, Loss: SoftIoULoss_0: 7.7835, WeightedDiceLoss_0: 6.8550, FocalLoss_0: 0.0491
+2026-04-12 19:43:22,908 INFO: Epoch 45, Iter 7380, Batch 75, Loss: SoftIoULoss_0: 6.9102, WeightedDiceLoss_0: 5.9598, FocalLoss_0: 0.0344
+2026-04-12 19:43:31,548 INFO: Epoch 45, Iter 7390, Batch 85, Loss: SoftIoULoss_0: 5.7380, WeightedDiceLoss_0: 4.3952, FocalLoss_0: 0.0203
+2026-04-12 19:43:36,825 INFO: Epoch 45, Iter 7400, Batch 95, Loss: SoftIoULoss_0: 5.2365, WeightedDiceLoss_0: 3.9940, FocalLoss_0: 0.0145
+2026-04-12 19:43:42,225 INFO: Epoch 45, Iter 7410, Batch 105, Loss: SoftIoULoss_0: 4.9224, WeightedDiceLoss_0: 3.7669, FocalLoss_0: 0.0118
+2026-04-12 19:43:47,302 INFO: Epoch 45, Iter 7420, Batch 115, Loss: SoftIoULoss_0: 5.4944, WeightedDiceLoss_0: 4.3130, FocalLoss_0: 0.0193
+2026-04-12 19:43:52,444 INFO: Epoch 45, Iter 7430, Batch 125, Loss: SoftIoULoss_0: 6.5239, WeightedDiceLoss_0: 5.4136, FocalLoss_0: 0.0223
+2026-04-12 19:43:57,774 INFO: Epoch 45, Iter 7440, Batch 135, Loss: SoftIoULoss_0: 5.4075, WeightedDiceLoss_0: 4.3975, FocalLoss_0: 0.0247
+2026-04-12 19:44:06,813 INFO: Epoch 45, Iter 7450, Batch 145, Loss: SoftIoULoss_0: 5.5087, WeightedDiceLoss_0: 4.6376, FocalLoss_0: 0.0119
+2026-04-12 19:44:12,335 INFO: Epoch 45, Iter 7460, Batch 155, Loss: SoftIoULoss_0: 3.8169, WeightedDiceLoss_0: 3.2217, FocalLoss_0: 0.0045
+2026-04-12 19:44:17,489 INFO: Epoch 45, Iter 7470, Batch 165, Loss: SoftIoULoss_0: 5.2312, WeightedDiceLoss_0: 4.1261, FocalLoss_0: 0.0165
+2026-04-12 19:44:47,027 INFO: [SAMamba][epoch: 45, lr:(3.488e-04,)] [eta: 2:44:10, time (epoch): 98.878 ] 
+TrainSet
+SoftIoULoss_0:9.6356e+01  WeightedDiceLoss_0:7.9813e+01  FocalLoss_0:3.3805e-01  
+m_fscore:0.5112  m_iou:0.3433  n_fscore:0.1329  n_iou:0.0982  
+TestSet
+SoftIoULoss_0:1.0458e+02  WeightedDiceLoss_0:8.5582e+01  FocalLoss_0:3.1600e-01  
+m_fscore:0.4997  m_iou:0.3330  n_fscore:0.1285  n_iou:0.0908  
+
+2026-04-12 19:44:47,028 INFO: Start epoch 46/120
+2026-04-12 19:44:52,685 INFO: Epoch 46, Iter 7480, Batch 9, Loss: SoftIoULoss_0: 110.3201, WeightedDiceLoss_0: 90.7573, FocalLoss_0: 0.3244
+2026-04-12 19:44:57,915 INFO: Epoch 46, Iter 7490, Batch 19, Loss: SoftIoULoss_0: 5.5095, WeightedDiceLoss_0: 4.5268, FocalLoss_0: 0.0120
+2026-04-12 19:45:03,198 INFO: Epoch 46, Iter 7500, Batch 29, Loss: SoftIoULoss_0: 4.7548, WeightedDiceLoss_0: 3.4348, FocalLoss_0: 0.0169
+2026-04-12 19:45:08,948 INFO: Epoch 46, Iter 7510, Batch 39, Loss: SoftIoULoss_0: 6.2762, WeightedDiceLoss_0: 5.2915, FocalLoss_0: 0.0353
+2026-04-12 19:45:18,154 INFO: Epoch 46, Iter 7520, Batch 49, Loss: SoftIoULoss_0: 6.9681, WeightedDiceLoss_0: 6.0787, FocalLoss_0: 0.0246
+2026-04-12 19:45:23,649 INFO: Epoch 46, Iter 7530, Batch 59, Loss: SoftIoULoss_0: 7.5784, WeightedDiceLoss_0: 6.5527, FocalLoss_0: 0.0359
+2026-04-12 19:45:29,278 INFO: Epoch 46, Iter 7540, Batch 69, Loss: SoftIoULoss_0: 8.1761, WeightedDiceLoss_0: 7.4093, FocalLoss_0: 0.0637
+2026-04-12 19:45:34,478 INFO: Epoch 46, Iter 7550, Batch 79, Loss: SoftIoULoss_0: 6.6823, WeightedDiceLoss_0: 5.6022, FocalLoss_0: 0.0322
+2026-04-12 19:45:39,796 INFO: Epoch 46, Iter 7560, Batch 89, Loss: SoftIoULoss_0: 5.4372, WeightedDiceLoss_0: 4.1729, FocalLoss_0: 0.0244
+2026-04-12 19:45:44,958 INFO: Epoch 46, Iter 7570, Batch 99, Loss: SoftIoULoss_0: 5.8914, WeightedDiceLoss_0: 4.6395, FocalLoss_0: 0.0192
+2026-04-12 19:45:53,802 INFO: Epoch 46, Iter 7580, Batch 109, Loss: SoftIoULoss_0: 4.7876, WeightedDiceLoss_0: 3.5159, FocalLoss_0: 0.0136
+2026-04-12 19:45:59,063 INFO: Epoch 46, Iter 7590, Batch 119, Loss: SoftIoULoss_0: 5.3309, WeightedDiceLoss_0: 4.1715, FocalLoss_0: 0.0189
+2026-04-12 19:46:04,268 INFO: Epoch 46, Iter 7600, Batch 129, Loss: SoftIoULoss_0: 5.1741, WeightedDiceLoss_0: 4.0238, FocalLoss_0: 0.0193
+2026-04-12 19:46:09,459 INFO: Epoch 46, Iter 7610, Batch 139, Loss: SoftIoULoss_0: 5.8081, WeightedDiceLoss_0: 4.6965, FocalLoss_0: 0.0262
+2026-04-12 19:46:14,935 INFO: Epoch 46, Iter 7620, Batch 149, Loss: SoftIoULoss_0: 5.5842, WeightedDiceLoss_0: 4.9184, FocalLoss_0: 0.0089
+2026-04-12 19:46:20,186 INFO: Epoch 46, Iter 7630, Batch 159, Loss: SoftIoULoss_0: 4.9204, WeightedDiceLoss_0: 4.1143, FocalLoss_0: 0.0141
+2026-04-12 19:46:51,346 INFO: [SAMamba][epoch: 46, lr:(3.428e-04,)] [eta: 2:41:47, time (epoch): 96.112 ] 
+TrainSet
+SoftIoULoss_0:9.7643e+01  WeightedDiceLoss_0:8.0600e+01  FocalLoss_0:3.8110e-01  
+m_fscore:0.4662  m_iou:0.3039  n_fscore:0.1233  n_iou:0.0884  
+TestSet
+SoftIoULoss_0:9.0506e+01  WeightedDiceLoss_0:7.2673e+01  FocalLoss_0:2.8087e-01  
+m_fscore:0.5538  m_iou:0.3830  n_fscore:0.1475  n_iou:0.1122  
+
+2026-04-12 19:46:51,347 INFO: Start epoch 47/120
+2026-04-12 19:46:53,813 INFO: Epoch 47, Iter 7640, Batch 3, Loss: SoftIoULoss_0: 95.6120, WeightedDiceLoss_0: 76.8677, FocalLoss_0: 0.2920
+2026-04-12 19:46:59,003 INFO: Epoch 47, Iter 7650, Batch 13, Loss: SoftIoULoss_0: 5.1260, WeightedDiceLoss_0: 4.5792, FocalLoss_0: 0.0055
+2026-04-12 19:47:07,637 INFO: Epoch 47, Iter 7660, Batch 23, Loss: SoftIoULoss_0: 6.3554, WeightedDiceLoss_0: 5.1888, FocalLoss_0: 0.0167
+2026-04-12 19:47:12,845 INFO: Epoch 47, Iter 7670, Batch 33, Loss: SoftIoULoss_0: 5.5014, WeightedDiceLoss_0: 4.4851, FocalLoss_0: 0.0252
+2026-04-12 19:47:17,904 INFO: Epoch 47, Iter 7680, Batch 43, Loss: SoftIoULoss_0: 6.0725, WeightedDiceLoss_0: 5.0252, FocalLoss_0: 0.0327
+2026-04-12 19:47:22,995 INFO: Epoch 47, Iter 7690, Batch 53, Loss: SoftIoULoss_0: 8.1982, WeightedDiceLoss_0: 7.3615, FocalLoss_0: 0.0185
+2026-04-12 19:47:28,025 INFO: Epoch 47, Iter 7700, Batch 63, Loss: SoftIoULoss_0: 7.2482, WeightedDiceLoss_0: 6.1914, FocalLoss_0: 0.0387
+2026-04-12 19:47:33,050 INFO: Epoch 47, Iter 7710, Batch 73, Loss: SoftIoULoss_0: 7.2346, WeightedDiceLoss_0: 6.2902, FocalLoss_0: 0.0466
+2026-04-12 19:47:41,603 INFO: Epoch 47, Iter 7720, Batch 83, Loss: SoftIoULoss_0: 5.9066, WeightedDiceLoss_0: 4.7135, FocalLoss_0: 0.0228
+2026-04-12 19:47:46,662 INFO: Epoch 47, Iter 7730, Batch 93, Loss: SoftIoULoss_0: 4.8622, WeightedDiceLoss_0: 3.5061, FocalLoss_0: 0.0186
+2026-04-12 19:47:51,816 INFO: Epoch 47, Iter 7740, Batch 103, Loss: SoftIoULoss_0: 5.6564, WeightedDiceLoss_0: 4.5339, FocalLoss_0: 0.0149
+2026-04-12 19:47:57,074 INFO: Epoch 47, Iter 7750, Batch 113, Loss: SoftIoULoss_0: 5.0658, WeightedDiceLoss_0: 4.0317, FocalLoss_0: 0.0185
+2026-04-12 19:48:02,367 INFO: Epoch 47, Iter 7760, Batch 123, Loss: SoftIoULoss_0: 5.5631, WeightedDiceLoss_0: 4.4715, FocalLoss_0: 0.0222
+2026-04-12 19:48:07,599 INFO: Epoch 47, Iter 7770, Batch 133, Loss: SoftIoULoss_0: 5.5478, WeightedDiceLoss_0: 4.4341, FocalLoss_0: 0.0226
+2026-04-12 19:48:16,531 INFO: Epoch 47, Iter 7780, Batch 143, Loss: SoftIoULoss_0: 5.0442, WeightedDiceLoss_0: 4.0903, FocalLoss_0: 0.0164
+2026-04-12 19:48:21,568 INFO: Epoch 47, Iter 7790, Batch 153, Loss: SoftIoULoss_0: 3.0499, WeightedDiceLoss_0: 2.4609, FocalLoss_0: 0.0036
+2026-04-12 19:48:26,627 INFO: Epoch 47, Iter 7800, Batch 163, Loss: SoftIoULoss_0: 5.6700, WeightedDiceLoss_0: 4.5450, FocalLoss_0: 0.0147
+2026-04-12 19:48:55,710 INFO: [SAMamba][epoch: 47, lr:(3.368e-04,)] [eta: 2:39:26, time (epoch): 96.169 ] 
+TrainSet
+SoftIoULoss_0:9.4986e+01  WeightedDiceLoss_0:7.8374e+01  FocalLoss_0:3.4363e-01  
+m_fscore:0.5133  m_iou:0.3453  n_fscore:0.1323  n_iou:0.0965  
+TestSet
+SoftIoULoss_0:1.0320e+02  WeightedDiceLoss_0:8.4708e+01  FocalLoss_0:3.0600e-01  
+m_fscore:0.5032  m_iou:0.3362  n_fscore:0.1303  n_iou:0.0932  
+
+2026-04-12 19:48:55,711 INFO: Start epoch 48/120
+2026-04-12 19:49:00,260 INFO: Epoch 48, Iter 7810, Batch 7, Loss: SoftIoULoss_0: 108.7559, WeightedDiceLoss_0: 89.6850, FocalLoss_0: 0.3131
+2026-04-12 19:49:05,422 INFO: Epoch 48, Iter 7820, Batch 17, Loss: SoftIoULoss_0: 6.5742, WeightedDiceLoss_0: 5.8590, FocalLoss_0: 0.0102
+2026-04-12 19:49:10,679 INFO: Epoch 48, Iter 7830, Batch 27, Loss: SoftIoULoss_0: 4.7602, WeightedDiceLoss_0: 3.4783, FocalLoss_0: 0.0134
+2026-04-12 19:49:15,824 INFO: Epoch 48, Iter 7840, Batch 37, Loss: SoftIoULoss_0: 4.2056, WeightedDiceLoss_0: 2.9926, FocalLoss_0: 0.0196
+2026-04-12 19:49:20,931 INFO: Epoch 48, Iter 7850, Batch 47, Loss: SoftIoULoss_0: 6.8974, WeightedDiceLoss_0: 6.0438, FocalLoss_0: 0.0280
+2026-04-12 19:49:29,610 INFO: Epoch 48, Iter 7860, Batch 57, Loss: SoftIoULoss_0: 8.2454, WeightedDiceLoss_0: 7.5203, FocalLoss_0: 0.0341
+2026-04-12 19:49:34,692 INFO: Epoch 48, Iter 7870, Batch 67, Loss: SoftIoULoss_0: 7.3623, WeightedDiceLoss_0: 6.3973, FocalLoss_0: 0.0575
+2026-04-12 19:49:39,810 INFO: Epoch 48, Iter 7880, Batch 77, Loss: SoftIoULoss_0: 7.1386, WeightedDiceLoss_0: 6.2681, FocalLoss_0: 0.0406
+2026-04-12 19:49:44,904 INFO: Epoch 48, Iter 7890, Batch 87, Loss: SoftIoULoss_0: 5.5665, WeightedDiceLoss_0: 4.2807, FocalLoss_0: 0.0205
+2026-04-12 19:49:49,980 INFO: Epoch 48, Iter 7900, Batch 97, Loss: SoftIoULoss_0: 5.7824, WeightedDiceLoss_0: 4.7171, FocalLoss_0: 0.0181
+2026-04-12 19:49:55,097 INFO: Epoch 48, Iter 7910, Batch 107, Loss: SoftIoULoss_0: 5.6901, WeightedDiceLoss_0: 4.5646, FocalLoss_0: 0.0140
+2026-04-12 19:50:03,785 INFO: Epoch 48, Iter 7920, Batch 117, Loss: SoftIoULoss_0: 5.9656, WeightedDiceLoss_0: 4.9704, FocalLoss_0: 0.0212
+2026-04-12 19:50:08,946 INFO: Epoch 48, Iter 7930, Batch 127, Loss: SoftIoULoss_0: 5.6117, WeightedDiceLoss_0: 4.5600, FocalLoss_0: 0.0180
+2026-04-12 19:50:14,239 INFO: Epoch 48, Iter 7940, Batch 137, Loss: SoftIoULoss_0: 5.3076, WeightedDiceLoss_0: 4.1661, FocalLoss_0: 0.0210
+2026-04-12 19:50:19,324 INFO: Epoch 48, Iter 7950, Batch 147, Loss: SoftIoULoss_0: 4.1875, WeightedDiceLoss_0: 3.4714, FocalLoss_0: 0.0064
+2026-04-12 19:50:24,390 INFO: Epoch 48, Iter 7960, Batch 157, Loss: SoftIoULoss_0: 4.9065, WeightedDiceLoss_0: 4.4376, FocalLoss_0: 0.0105
+2026-04-12 19:50:56,527 INFO: [SAMamba][epoch: 48, lr:(3.307e-04,)] [eta: 2:36:59, time (epoch): 92.638 ] 
+TrainSet
+SoftIoULoss_0:9.6727e+01  WeightedDiceLoss_0:8.0963e+01  FocalLoss_0:3.5001e-01  
+m_fscore:0.4891  m_iou:0.3237  n_fscore:0.1263  n_iou:0.0929  
+TestSet
+SoftIoULoss_0:1.0092e+02  WeightedDiceLoss_0:8.3686e+01  FocalLoss_0:3.0325e-01  
+m_fscore:0.5004  m_iou:0.3337  n_fscore:0.1329  n_iou:0.0983  
+
+2026-04-12 19:50:56,527 INFO: Start epoch 49/120
+2026-04-12 19:50:57,914 INFO: Epoch 49, Iter 7970, Batch 1, Loss: SoftIoULoss_0: 105.6721, WeightedDiceLoss_0: 87.2901, FocalLoss_0: 0.3165
+2026-04-12 19:51:03,039 INFO: Epoch 49, Iter 7980, Batch 11, Loss: SoftIoULoss_0: 3.8038, WeightedDiceLoss_0: 3.3710, FocalLoss_0: 0.0036
+2026-04-12 19:51:08,205 INFO: Epoch 49, Iter 7990, Batch 21, Loss: SoftIoULoss_0: 5.7228, WeightedDiceLoss_0: 4.5690, FocalLoss_0: 0.0136
+2026-04-12 19:51:17,097 INFO: Epoch 49, Iter 8000, Batch 31, Loss: SoftIoULoss_0: 4.9640, WeightedDiceLoss_0: 3.6840, FocalLoss_0: 0.0181
+2026-04-12 19:51:22,174 INFO: Epoch 49, Iter 8010, Batch 41, Loss: SoftIoULoss_0: 5.7586, WeightedDiceLoss_0: 4.6718, FocalLoss_0: 0.0332
+2026-04-12 19:51:27,234 INFO: Epoch 49, Iter 8020, Batch 51, Loss: SoftIoULoss_0: 8.1966, WeightedDiceLoss_0: 7.5366, FocalLoss_0: 0.0277
+2026-04-12 19:51:32,387 INFO: Epoch 49, Iter 8030, Batch 61, Loss: SoftIoULoss_0: 7.0428, WeightedDiceLoss_0: 5.9560, FocalLoss_0: 0.0341
+2026-04-12 19:51:37,415 INFO: Epoch 49, Iter 8040, Batch 71, Loss: SoftIoULoss_0: 7.9438, WeightedDiceLoss_0: 7.1492, FocalLoss_0: 0.0579
+2026-04-12 19:51:42,510 INFO: Epoch 49, Iter 8050, Batch 81, Loss: SoftIoULoss_0: 6.0939, WeightedDiceLoss_0: 4.9799, FocalLoss_0: 0.0186
+2026-04-12 19:51:51,224 INFO: Epoch 49, Iter 8060, Batch 91, Loss: SoftIoULoss_0: 5.3431, WeightedDiceLoss_0: 3.9888, FocalLoss_0: 0.0156
+2026-04-12 19:51:56,307 INFO: Epoch 49, Iter 8070, Batch 101, Loss: SoftIoULoss_0: 5.3023, WeightedDiceLoss_0: 4.0321, FocalLoss_0: 0.0177
+2026-04-12 19:52:01,356 INFO: Epoch 49, Iter 8080, Batch 111, Loss: SoftIoULoss_0: 5.2530, WeightedDiceLoss_0: 4.0680, FocalLoss_0: 0.0156
+2026-04-12 19:52:06,422 INFO: Epoch 49, Iter 8090, Batch 121, Loss: SoftIoULoss_0: 5.7497, WeightedDiceLoss_0: 4.6296, FocalLoss_0: 0.0220
+2026-04-12 19:52:11,670 INFO: Epoch 49, Iter 8100, Batch 131, Loss: SoftIoULoss_0: 5.8118, WeightedDiceLoss_0: 4.6810, FocalLoss_0: 0.0217
+2026-04-12 19:52:16,842 INFO: Epoch 49, Iter 8110, Batch 141, Loss: SoftIoULoss_0: 4.9347, WeightedDiceLoss_0: 3.8784, FocalLoss_0: 0.0173
+2026-04-12 19:52:25,615 INFO: Epoch 49, Iter 8120, Batch 151, Loss: SoftIoULoss_0: 3.4778, WeightedDiceLoss_0: 2.8985, FocalLoss_0: 0.0028
+2026-04-12 19:52:30,753 INFO: Epoch 49, Iter 8130, Batch 161, Loss: SoftIoULoss_0: 5.4988, WeightedDiceLoss_0: 4.7952, FocalLoss_0: 0.0154
+2026-04-12 19:52:57,384 INFO: [SAMamba][epoch: 49, lr:(3.246e-04,)] [eta: 2:34:34, time (epoch): 96.137 ] 
+TrainSet
+SoftIoULoss_0:9.3626e+01  WeightedDiceLoss_0:7.6908e+01  FocalLoss_0:3.4132e-01  
+m_fscore:0.5093  m_iou:0.3417  n_fscore:0.1354  n_iou:0.1003  
+TestSet
+SoftIoULoss_0:9.0670e+01  WeightedDiceLoss_0:7.2365e+01  FocalLoss_0:2.7912e-01  
+m_fscore:0.5475  m_iou:0.3770  n_fscore:0.1475  n_iou:0.1119  
+
+2026-04-12 19:52:57,385 INFO: Start epoch 50/120
+2026-04-12 19:53:04,428 INFO: Epoch 50, Iter 8140, Batch 5, Loss: SoftIoULoss_0: 95.4552, WeightedDiceLoss_0: 76.2615, FocalLoss_0: 0.2880
+2026-04-12 19:53:09,538 INFO: Epoch 50, Iter 8150, Batch 15, Loss: SoftIoULoss_0: 4.8052, WeightedDiceLoss_0: 4.3912, FocalLoss_0: 0.0083
+2026-04-12 19:53:14,787 INFO: Epoch 50, Iter 8160, Batch 25, Loss: SoftIoULoss_0: 5.6449, WeightedDiceLoss_0: 4.3457, FocalLoss_0: 0.0172
+2026-04-12 19:53:19,917 INFO: Epoch 50, Iter 8170, Batch 35, Loss: SoftIoULoss_0: 4.6032, WeightedDiceLoss_0: 3.2598, FocalLoss_0: 0.0231
+2026-04-12 19:53:24,998 INFO: Epoch 50, Iter 8180, Batch 45, Loss: SoftIoULoss_0: 5.5856, WeightedDiceLoss_0: 4.5864, FocalLoss_0: 0.0267
+2026-04-12 19:53:30,105 INFO: Epoch 50, Iter 8190, Batch 55, Loss: SoftIoULoss_0: 8.3335, WeightedDiceLoss_0: 7.6079, FocalLoss_0: 0.0326
+2026-04-12 19:53:38,804 INFO: Epoch 50, Iter 8200, Batch 65, Loss: SoftIoULoss_0: 7.1758, WeightedDiceLoss_0: 6.1933, FocalLoss_0: 0.0482
+2026-04-12 19:53:43,954 INFO: Epoch 50, Iter 8210, Batch 75, Loss: SoftIoULoss_0: 6.6171, WeightedDiceLoss_0: 5.8215, FocalLoss_0: 0.0391
+2026-04-12 19:53:49,048 INFO: Epoch 50, Iter 8220, Batch 85, Loss: SoftIoULoss_0: 5.4802, WeightedDiceLoss_0: 4.1597, FocalLoss_0: 0.0171
+2026-04-12 19:53:54,104 INFO: Epoch 50, Iter 8230, Batch 95, Loss: SoftIoULoss_0: 5.6750, WeightedDiceLoss_0: 4.3942, FocalLoss_0: 0.0182
+2026-04-12 19:53:59,279 INFO: Epoch 50, Iter 8240, Batch 105, Loss: SoftIoULoss_0: 5.3954, WeightedDiceLoss_0: 4.1824, FocalLoss_0: 0.0127
+2026-04-12 19:54:04,371 INFO: Epoch 50, Iter 8250, Batch 115, Loss: SoftIoULoss_0: 5.1884, WeightedDiceLoss_0: 4.0349, FocalLoss_0: 0.0191
+2026-04-12 19:54:14,009 INFO: Epoch 50, Iter 8260, Batch 125, Loss: SoftIoULoss_0: 6.4205, WeightedDiceLoss_0: 5.3743, FocalLoss_0: 0.0229
+2026-04-12 19:54:19,246 INFO: Epoch 50, Iter 8270, Batch 135, Loss: SoftIoULoss_0: 5.6800, WeightedDiceLoss_0: 4.4571, FocalLoss_0: 0.0220
+2026-04-12 19:54:24,500 INFO: Epoch 50, Iter 8280, Batch 145, Loss: SoftIoULoss_0: 4.4588, WeightedDiceLoss_0: 3.7007, FocalLoss_0: 0.0092
+2026-04-12 19:54:29,735 INFO: Epoch 50, Iter 8290, Batch 155, Loss: SoftIoULoss_0: 2.5779, WeightedDiceLoss_0: 2.2365, FocalLoss_0: 0.0038
+2026-04-12 19:54:34,934 INFO: Epoch 50, Iter 8300, Batch 165, Loss: SoftIoULoss_0: 5.2042, WeightedDiceLoss_0: 4.1066, FocalLoss_0: 0.0144
+2026-04-12 19:55:03,711 INFO: [SAMamba][epoch: 50, lr:(3.184e-04,)] [eta: 2:32:17, time (epoch): 97.551 ] 
+TrainSet
+SoftIoULoss_0:9.1881e+01  WeightedDiceLoss_0:7.5528e+01  FocalLoss_0:3.3848e-01  
+m_fscore:0.5024  m_iou:0.3354  n_fscore:0.1350  n_iou:0.1005  
+TestSet
+SoftIoULoss_0:1.0030e+02  WeightedDiceLoss_0:8.2624e+01  FocalLoss_0:2.9541e-01  
+m_fscore:0.5131  m_iou:0.3451  n_fscore:0.1349  n_iou:0.0986  
+
+2026-04-12 19:55:03,712 INFO: Start epoch 51/120
+2026-04-12 19:55:09,297 INFO: Epoch 51, Iter 8310, Batch 9, Loss: SoftIoULoss_0: 105.2283, WeightedDiceLoss_0: 87.1642, FocalLoss_0: 0.3059
+2026-04-12 19:55:14,818 INFO: Epoch 51, Iter 8320, Batch 19, Loss: SoftIoULoss_0: 6.0756, WeightedDiceLoss_0: 5.2332, FocalLoss_0: 0.0108
+2026-04-12 19:55:20,054 INFO: Epoch 51, Iter 8330, Batch 29, Loss: SoftIoULoss_0: 4.5671, WeightedDiceLoss_0: 3.1866, FocalLoss_0: 0.0160
+2026-04-12 19:55:28,949 INFO: Epoch 51, Iter 8340, Batch 39, Loss: SoftIoULoss_0: 5.3987, WeightedDiceLoss_0: 4.3397, FocalLoss_0: 0.0270
+2026-04-12 19:55:34,196 INFO: Epoch 51, Iter 8350, Batch 49, Loss: SoftIoULoss_0: 6.9314, WeightedDiceLoss_0: 6.0650, FocalLoss_0: 0.0236
+2026-04-12 19:55:39,380 INFO: Epoch 51, Iter 8360, Batch 59, Loss: SoftIoULoss_0: 7.5714, WeightedDiceLoss_0: 6.5828, FocalLoss_0: 0.0274
+2026-04-12 19:55:44,490 INFO: Epoch 51, Iter 8370, Batch 69, Loss: SoftIoULoss_0: 8.2238, WeightedDiceLoss_0: 7.3836, FocalLoss_0: 0.0572
+2026-04-12 19:55:49,708 INFO: Epoch 51, Iter 8380, Batch 79, Loss: SoftIoULoss_0: 6.0601, WeightedDiceLoss_0: 4.9642, FocalLoss_0: 0.0228
+2026-04-12 19:55:54,844 INFO: Epoch 51, Iter 8390, Batch 89, Loss: SoftIoULoss_0: 4.9643, WeightedDiceLoss_0: 3.7685, FocalLoss_0: 0.0175
+2026-04-12 19:56:03,668 INFO: Epoch 51, Iter 8400, Batch 99, Loss: SoftIoULoss_0: 5.6662, WeightedDiceLoss_0: 4.4647, FocalLoss_0: 0.0142
+2026-04-12 19:56:08,823 INFO: Epoch 51, Iter 8410, Batch 109, Loss: SoftIoULoss_0: 5.1777, WeightedDiceLoss_0: 4.0609, FocalLoss_0: 0.0143
+2026-04-12 19:56:14,115 INFO: Epoch 51, Iter 8420, Batch 119, Loss: SoftIoULoss_0: 5.8880, WeightedDiceLoss_0: 4.7851, FocalLoss_0: 0.0224
+2026-04-12 19:56:19,326 INFO: Epoch 51, Iter 8430, Batch 129, Loss: SoftIoULoss_0: 5.4932, WeightedDiceLoss_0: 4.4564, FocalLoss_0: 0.0219
+2026-04-12 19:56:24,510 INFO: Epoch 51, Iter 8440, Batch 139, Loss: SoftIoULoss_0: 6.4990, WeightedDiceLoss_0: 5.5379, FocalLoss_0: 0.0244
+2026-04-12 19:56:29,708 INFO: Epoch 51, Iter 8450, Batch 149, Loss: SoftIoULoss_0: 4.3316, WeightedDiceLoss_0: 3.8782, FocalLoss_0: 0.0100
+2026-04-12 19:56:38,390 INFO: Epoch 51, Iter 8460, Batch 159, Loss: SoftIoULoss_0: 4.2133, WeightedDiceLoss_0: 3.3106, FocalLoss_0: 0.0103
+2026-04-12 19:57:06,468 INFO: [SAMamba][epoch: 51, lr:(3.122e-04,)] [eta: 2:29:56, time (epoch): 97.632 ] 
+TrainSet
+SoftIoULoss_0:9.4844e+01  WeightedDiceLoss_0:7.8699e+01  FocalLoss_0:3.3605e-01  
+m_fscore:0.5170  m_iou:0.3486  n_fscore:0.1317  n_iou:0.0965  
+TestSet
+SoftIoULoss_0:1.0604e+02  WeightedDiceLoss_0:8.8538e+01  FocalLoss_0:2.9608e-01  
+m_fscore:0.4936  m_iou:0.3277  n_fscore:0.1257  n_iou:0.0885  
+
+2026-04-12 19:57:06,469 INFO: Start epoch 52/120
+2026-04-12 19:57:12,666 INFO: Epoch 52, Iter 8470, Batch 3, Loss: SoftIoULoss_0: 111.1572, WeightedDiceLoss_0: 92.7006, FocalLoss_0: 0.3073
+2026-04-12 19:57:18,105 INFO: Epoch 52, Iter 8480, Batch 13, Loss: SoftIoULoss_0: 5.2282, WeightedDiceLoss_0: 4.7843, FocalLoss_0: 0.0090
+2026-04-12 19:57:23,382 INFO: Epoch 52, Iter 8490, Batch 23, Loss: SoftIoULoss_0: 6.1661, WeightedDiceLoss_0: 5.0748, FocalLoss_0: 0.0159
+2026-04-12 19:57:28,546 INFO: Epoch 52, Iter 8500, Batch 33, Loss: SoftIoULoss_0: 5.2443, WeightedDiceLoss_0: 3.9905, FocalLoss_0: 0.0236
+2026-04-12 19:57:33,759 INFO: Epoch 52, Iter 8510, Batch 43, Loss: SoftIoULoss_0: 5.6876, WeightedDiceLoss_0: 4.7593, FocalLoss_0: 0.0329
+2026-04-12 19:57:38,946 INFO: Epoch 52, Iter 8520, Batch 53, Loss: SoftIoULoss_0: 7.8768, WeightedDiceLoss_0: 6.9758, FocalLoss_0: 0.0181
+2026-04-12 19:57:44,147 INFO: Epoch 52, Iter 8530, Batch 63, Loss: SoftIoULoss_0: 7.4451, WeightedDiceLoss_0: 6.4396, FocalLoss_0: 0.0418
+2026-04-12 19:57:52,860 INFO: Epoch 52, Iter 8540, Batch 73, Loss: SoftIoULoss_0: 7.0624, WeightedDiceLoss_0: 6.2314, FocalLoss_0: 0.0452
+2026-04-12 19:57:58,451 INFO: Epoch 52, Iter 8550, Batch 83, Loss: SoftIoULoss_0: 5.8593, WeightedDiceLoss_0: 4.6906, FocalLoss_0: 0.0192
+2026-04-12 19:58:03,911 INFO: Epoch 52, Iter 8560, Batch 93, Loss: SoftIoULoss_0: 5.8484, WeightedDiceLoss_0: 4.5715, FocalLoss_0: 0.0226
+2026-04-12 19:58:09,302 INFO: Epoch 52, Iter 8570, Batch 103, Loss: SoftIoULoss_0: 6.2081, WeightedDiceLoss_0: 5.0221, FocalLoss_0: 0.0149
+2026-04-12 19:58:14,673 INFO: Epoch 52, Iter 8580, Batch 113, Loss: SoftIoULoss_0: 5.9238, WeightedDiceLoss_0: 4.8123, FocalLoss_0: 0.0205
+2026-04-12 19:58:19,799 INFO: Epoch 52, Iter 8590, Batch 123, Loss: SoftIoULoss_0: 6.3985, WeightedDiceLoss_0: 5.3442, FocalLoss_0: 0.0258
+2026-04-12 19:58:28,636 INFO: Epoch 52, Iter 8600, Batch 133, Loss: SoftIoULoss_0: 5.7584, WeightedDiceLoss_0: 4.8274, FocalLoss_0: 0.0239
+2026-04-12 19:58:33,929 INFO: Epoch 52, Iter 8610, Batch 143, Loss: SoftIoULoss_0: 4.7610, WeightedDiceLoss_0: 3.8204, FocalLoss_0: 0.0140
+2026-04-12 19:58:39,119 INFO: Epoch 52, Iter 8620, Batch 153, Loss: SoftIoULoss_0: 4.8745, WeightedDiceLoss_0: 4.4545, FocalLoss_0: 0.0064
+2026-04-12 19:58:44,355 INFO: Epoch 52, Iter 8630, Batch 163, Loss: SoftIoULoss_0: 5.4069, WeightedDiceLoss_0: 4.4769, FocalLoss_0: 0.0180
+2026-04-12 19:59:14,544 INFO: [SAMamba][epoch: 52, lr:(3.060e-04,)] [eta: 2:27:43, time (epoch): 98.771 ] 
+TrainSet
+SoftIoULoss_0:9.8564e+01  WeightedDiceLoss_0:8.2625e+01  FocalLoss_0:3.5854e-01  
+m_fscore:0.4891  m_iou:0.3237  n_fscore:0.1241  n_iou:0.0889  
+TestSet
+SoftIoULoss_0:9.0386e+01  WeightedDiceLoss_0:7.2870e+01  FocalLoss_0:2.8420e-01  
+m_fscore:0.5452  m_iou:0.3747  n_fscore:0.1476  n_iou:0.1131  
+
+2026-04-12 19:59:14,545 INFO: Start epoch 53/120
+2026-04-12 19:59:19,301 INFO: Epoch 53, Iter 8640, Batch 7, Loss: SoftIoULoss_0: 94.5878, WeightedDiceLoss_0: 76.3760, FocalLoss_0: 0.2892
+2026-04-12 19:59:24,601 INFO: Epoch 53, Iter 8650, Batch 17, Loss: SoftIoULoss_0: 6.2720, WeightedDiceLoss_0: 5.5374, FocalLoss_0: 0.0107
+2026-04-12 19:59:29,963 INFO: Epoch 53, Iter 8660, Batch 27, Loss: SoftIoULoss_0: 6.1141, WeightedDiceLoss_0: 4.9678, FocalLoss_0: 0.0188
+2026-04-12 19:59:38,879 INFO: Epoch 53, Iter 8670, Batch 37, Loss: SoftIoULoss_0: 5.3763, WeightedDiceLoss_0: 4.3136, FocalLoss_0: 0.0293
+2026-04-12 19:59:44,285 INFO: Epoch 53, Iter 8680, Batch 47, Loss: SoftIoULoss_0: 6.7574, WeightedDiceLoss_0: 5.8445, FocalLoss_0: 0.0292
+2026-04-12 19:59:49,701 INFO: Epoch 53, Iter 8690, Batch 57, Loss: SoftIoULoss_0: 7.4784, WeightedDiceLoss_0: 6.4623, FocalLoss_0: 0.0183
+2026-04-12 19:59:55,264 INFO: Epoch 53, Iter 8700, Batch 67, Loss: SoftIoULoss_0: 8.1814, WeightedDiceLoss_0: 7.4397, FocalLoss_0: 0.0560
+2026-04-12 20:00:00,647 INFO: Epoch 53, Iter 8710, Batch 77, Loss: SoftIoULoss_0: 6.8210, WeightedDiceLoss_0: 5.9107, FocalLoss_0: 0.0321
+2026-04-12 20:00:05,928 INFO: Epoch 53, Iter 8720, Batch 87, Loss: SoftIoULoss_0: 5.5374, WeightedDiceLoss_0: 4.1985, FocalLoss_0: 0.0192
+2026-04-12 20:00:15,108 INFO: Epoch 53, Iter 8730, Batch 97, Loss: SoftIoULoss_0: 5.6478, WeightedDiceLoss_0: 4.3238, FocalLoss_0: 0.0173
+2026-04-12 20:00:20,602 INFO: Epoch 53, Iter 8740, Batch 107, Loss: SoftIoULoss_0: 4.7513, WeightedDiceLoss_0: 3.5626, FocalLoss_0: 0.0126
+2026-04-12 20:00:26,035 INFO: Epoch 53, Iter 8750, Batch 117, Loss: SoftIoULoss_0: 5.1466, WeightedDiceLoss_0: 3.9601, FocalLoss_0: 0.0190
+2026-04-12 20:00:31,461 INFO: Epoch 53, Iter 8760, Batch 127, Loss: SoftIoULoss_0: 5.4971, WeightedDiceLoss_0: 4.4184, FocalLoss_0: 0.0202
+2026-04-12 20:00:36,896 INFO: Epoch 53, Iter 8770, Batch 137, Loss: SoftIoULoss_0: 4.9730, WeightedDiceLoss_0: 3.8266, FocalLoss_0: 0.0180
+2026-04-12 20:00:42,412 INFO: Epoch 53, Iter 8780, Batch 147, Loss: SoftIoULoss_0: 4.7925, WeightedDiceLoss_0: 4.2241, FocalLoss_0: 0.0086
+2026-04-12 20:00:51,391 INFO: Epoch 53, Iter 8790, Batch 157, Loss: SoftIoULoss_0: 4.2929, WeightedDiceLoss_0: 3.6609, FocalLoss_0: 0.0095
+2026-04-12 20:01:25,887 INFO: [SAMamba][epoch: 53, lr:(2.997e-04,)] [eta: 2:25:34, time (epoch): 101.100 ] 
+TrainSet
+SoftIoULoss_0:9.5688e+01  WeightedDiceLoss_0:7.9405e+01  FocalLoss_0:3.3684e-01  
+m_fscore:0.5222  m_iou:0.3534  n_fscore:0.1325  n_iou:0.0966  
+TestSet
+SoftIoULoss_0:8.7825e+01  WeightedDiceLoss_0:7.0311e+01  FocalLoss_0:3.1934e-01  
+m_fscore:0.5402  m_iou:0.3700  n_fscore:0.1503  n_iou:0.1158  
+
+2026-04-12 20:01:25,888 INFO: Start epoch 54/120
+2026-04-12 20:01:27,354 INFO: Epoch 54, Iter 8800, Batch 1, Loss: SoftIoULoss_0: 92.9592, WeightedDiceLoss_0: 74.4592, FocalLoss_0: 0.3360
+2026-04-12 20:01:32,616 INFO: Epoch 54, Iter 8810, Batch 11, Loss: SoftIoULoss_0: 4.0717, WeightedDiceLoss_0: 3.6297, FocalLoss_0: 0.0041
+2026-04-12 20:01:37,763 INFO: Epoch 54, Iter 8820, Batch 21, Loss: SoftIoULoss_0: 6.0290, WeightedDiceLoss_0: 4.9680, FocalLoss_0: 0.0168
+2026-04-12 20:01:42,919 INFO: Epoch 54, Iter 8830, Batch 31, Loss: SoftIoULoss_0: 4.7791, WeightedDiceLoss_0: 3.4451, FocalLoss_0: 0.0182
+2026-04-12 20:01:48,015 INFO: Epoch 54, Iter 8840, Batch 41, Loss: SoftIoULoss_0: 6.8184, WeightedDiceLoss_0: 6.0045, FocalLoss_0: 0.0412
+2026-04-12 20:01:53,184 INFO: Epoch 54, Iter 8850, Batch 51, Loss: SoftIoULoss_0: 7.4883, WeightedDiceLoss_0: 6.5623, FocalLoss_0: 0.0216
+2026-04-12 20:02:02,074 INFO: Epoch 54, Iter 8860, Batch 61, Loss: SoftIoULoss_0: 7.2654, WeightedDiceLoss_0: 6.2910, FocalLoss_0: 0.0314
+2026-04-12 20:02:07,443 INFO: Epoch 54, Iter 8870, Batch 71, Loss: SoftIoULoss_0: 7.6145, WeightedDiceLoss_0: 6.8786, FocalLoss_0: 0.0517
+2026-04-12 20:02:13,314 INFO: Epoch 54, Iter 8880, Batch 81, Loss: SoftIoULoss_0: 5.7611, WeightedDiceLoss_0: 4.7035, FocalLoss_0: 0.0222
+2026-04-12 20:02:18,616 INFO: Epoch 54, Iter 8890, Batch 91, Loss: SoftIoULoss_0: 5.7177, WeightedDiceLoss_0: 4.4275, FocalLoss_0: 0.0186
+2026-04-12 20:02:23,967 INFO: Epoch 54, Iter 8900, Batch 101, Loss: SoftIoULoss_0: 6.0817, WeightedDiceLoss_0: 4.8715, FocalLoss_0: 0.0186
+2026-04-12 20:02:29,524 INFO: Epoch 54, Iter 8910, Batch 111, Loss: SoftIoULoss_0: 4.8834, WeightedDiceLoss_0: 3.6742, FocalLoss_0: 0.0184
+2026-04-12 20:02:38,309 INFO: Epoch 54, Iter 8920, Batch 121, Loss: SoftIoULoss_0: 5.8019, WeightedDiceLoss_0: 4.6996, FocalLoss_0: 0.0227
+2026-04-12 20:02:43,651 INFO: Epoch 54, Iter 8930, Batch 131, Loss: SoftIoULoss_0: 5.0035, WeightedDiceLoss_0: 3.9493, FocalLoss_0: 0.0223
+2026-04-12 20:02:48,767 INFO: Epoch 54, Iter 8940, Batch 141, Loss: SoftIoULoss_0: 5.5188, WeightedDiceLoss_0: 4.5606, FocalLoss_0: 0.0198
+2026-04-12 20:02:53,786 INFO: Epoch 54, Iter 8950, Batch 151, Loss: SoftIoULoss_0: 4.1083, WeightedDiceLoss_0: 3.3490, FocalLoss_0: 0.0050
+2026-04-12 20:02:58,969 INFO: Epoch 54, Iter 8960, Batch 161, Loss: SoftIoULoss_0: 5.6449, WeightedDiceLoss_0: 4.7290, FocalLoss_0: 0.0165
+2026-04-12 20:03:29,892 INFO: [SAMamba][epoch: 54, lr:(2.934e-04,)] [eta: 2:23:16, time (epoch): 95.040 ] 
+TrainSet
+SoftIoULoss_0:9.4982e+01  WeightedDiceLoss_0:7.8518e+01  FocalLoss_0:3.5718e-01  
+m_fscore:0.5057  m_iou:0.3384  n_fscore:0.1306  n_iou:0.0956  
+TestSet
+SoftIoULoss_0:8.9956e+01  WeightedDiceLoss_0:7.2492e+01  FocalLoss_0:3.0646e-01  
+m_fscore:0.5389  m_iou:0.3688  n_fscore:0.1470  n_iou:0.1123  
+
+2026-04-12 20:03:29,893 INFO: Start epoch 55/120
+2026-04-12 20:03:33,510 INFO: Epoch 55, Iter 8970, Batch 5, Loss: SoftIoULoss_0: 94.3215, WeightedDiceLoss_0: 76.1393, FocalLoss_0: 0.3171
+2026-04-12 20:03:38,623 INFO: Epoch 55, Iter 8980, Batch 15, Loss: SoftIoULoss_0: 5.4726, WeightedDiceLoss_0: 4.8957, FocalLoss_0: 0.0089
+2026-04-12 20:03:47,365 INFO: Epoch 55, Iter 8990, Batch 25, Loss: SoftIoULoss_0: 5.6472, WeightedDiceLoss_0: 4.3600, FocalLoss_0: 0.0173
+2026-04-12 20:03:52,793 INFO: Epoch 55, Iter 9000, Batch 35, Loss: SoftIoULoss_0: 5.4631, WeightedDiceLoss_0: 4.2114, FocalLoss_0: 0.0284
+2026-04-12 20:03:58,365 INFO: Epoch 55, Iter 9010, Batch 45, Loss: SoftIoULoss_0: 5.5096, WeightedDiceLoss_0: 4.5692, FocalLoss_0: 0.0258
+2026-04-12 20:04:04,240 INFO: Epoch 55, Iter 9020, Batch 55, Loss: SoftIoULoss_0: 8.1303, WeightedDiceLoss_0: 7.2351, FocalLoss_0: 0.0197
+2026-04-12 20:04:10,139 INFO: Epoch 55, Iter 9030, Batch 65, Loss: SoftIoULoss_0: 7.4901, WeightedDiceLoss_0: 6.5369, FocalLoss_0: 0.0473
+2026-04-12 20:04:16,048 INFO: Epoch 55, Iter 9040, Batch 75, Loss: SoftIoULoss_0: 6.6447, WeightedDiceLoss_0: 5.7682, FocalLoss_0: 0.0412
+2026-04-12 20:04:25,405 INFO: Epoch 55, Iter 9050, Batch 85, Loss: SoftIoULoss_0: 5.5638, WeightedDiceLoss_0: 4.1931, FocalLoss_0: 0.0179
+2026-04-12 20:04:31,195 INFO: Epoch 55, Iter 9060, Batch 95, Loss: SoftIoULoss_0: 5.2987, WeightedDiceLoss_0: 4.1248, FocalLoss_0: 0.0182
+2026-04-12 20:04:37,001 INFO: Epoch 55, Iter 9070, Batch 105, Loss: SoftIoULoss_0: 5.0910, WeightedDiceLoss_0: 3.9272, FocalLoss_0: 0.0134
+2026-04-12 20:04:42,766 INFO: Epoch 55, Iter 9080, Batch 115, Loss: SoftIoULoss_0: 5.1252, WeightedDiceLoss_0: 3.9831, FocalLoss_0: 0.0197
+2026-04-12 20:04:48,532 INFO: Epoch 55, Iter 9090, Batch 125, Loss: SoftIoULoss_0: 5.2684, WeightedDiceLoss_0: 4.1728, FocalLoss_0: 0.0173
+2026-04-12 20:04:54,213 INFO: Epoch 55, Iter 9100, Batch 135, Loss: SoftIoULoss_0: 4.5180, WeightedDiceLoss_0: 3.4003, FocalLoss_0: 0.0195
+2026-04-12 20:05:03,574 INFO: Epoch 55, Iter 9110, Batch 145, Loss: SoftIoULoss_0: 4.9215, WeightedDiceLoss_0: 4.3280, FocalLoss_0: 0.0135
+2026-04-12 20:05:09,357 INFO: Epoch 55, Iter 9120, Batch 155, Loss: SoftIoULoss_0: 3.9268, WeightedDiceLoss_0: 3.5719, FocalLoss_0: 0.0057
+2026-04-12 20:05:15,091 INFO: Epoch 55, Iter 9130, Batch 165, Loss: SoftIoULoss_0: 5.2980, WeightedDiceLoss_0: 4.2570, FocalLoss_0: 0.0200
+2026-04-12 20:05:46,831 INFO: [SAMamba][epoch: 55, lr:(2.870e-04,)] [eta: 2:21:13, time (epoch): 105.199 ] 
+TrainSet
+SoftIoULoss_0:9.2074e+01  WeightedDiceLoss_0:7.5980e+01  FocalLoss_0:3.3890e-01  
+m_fscore:0.5315  m_iou:0.3619  n_fscore:0.1341  n_iou:0.0988  
+TestSet
+SoftIoULoss_0:8.8195e+01  WeightedDiceLoss_0:7.0987e+01  FocalLoss_0:2.8323e-01  
+m_fscore:0.5665  m_iou:0.3952  n_fscore:0.1509  n_iou:0.1151  
+
+2026-04-12 20:05:46,832 INFO: Start epoch 56/120
+2026-04-12 20:05:53,802 INFO: Epoch 56, Iter 9140, Batch 9, Loss: SoftIoULoss_0: 93.2431, WeightedDiceLoss_0: 75.4264, FocalLoss_0: 0.2908
+2026-04-12 20:06:00,382 INFO: Epoch 56, Iter 9150, Batch 19, Loss: SoftIoULoss_0: 6.4785, WeightedDiceLoss_0: 5.7669, FocalLoss_0: 0.0139
+2026-04-12 20:06:10,613 INFO: Epoch 56, Iter 9160, Batch 29, Loss: SoftIoULoss_0: 5.6993, WeightedDiceLoss_0: 4.6095, FocalLoss_0: 0.0204
+2026-04-12 20:06:17,323 INFO: Epoch 56, Iter 9170, Batch 39, Loss: SoftIoULoss_0: 5.9144, WeightedDiceLoss_0: 5.0155, FocalLoss_0: 0.0331
+2026-04-12 20:06:23,758 INFO: Epoch 56, Iter 9180, Batch 49, Loss: SoftIoULoss_0: 7.7298, WeightedDiceLoss_0: 6.9023, FocalLoss_0: 0.0306
+2026-04-12 20:06:30,329 INFO: Epoch 56, Iter 9190, Batch 59, Loss: SoftIoULoss_0: 7.8886, WeightedDiceLoss_0: 6.9579, FocalLoss_0: 0.0360
+2026-04-12 20:06:36,770 INFO: Epoch 56, Iter 9200, Batch 69, Loss: SoftIoULoss_0: 7.2176, WeightedDiceLoss_0: 6.2955, FocalLoss_0: 0.0535
+2026-04-12 20:06:46,233 INFO: Epoch 56, Iter 9210, Batch 79, Loss: SoftIoULoss_0: 5.8664, WeightedDiceLoss_0: 4.8435, FocalLoss_0: 0.0262
+2026-04-12 20:06:51,461 INFO: Epoch 56, Iter 9220, Batch 89, Loss: SoftIoULoss_0: 5.6132, WeightedDiceLoss_0: 4.2064, FocalLoss_0: 0.0170
+2026-04-12 20:06:56,808 INFO: Epoch 56, Iter 9230, Batch 99, Loss: SoftIoULoss_0: 5.7941, WeightedDiceLoss_0: 4.5300, FocalLoss_0: 0.0167
+2026-04-12 20:07:02,617 INFO: Epoch 56, Iter 9240, Batch 109, Loss: SoftIoULoss_0: 4.5883, WeightedDiceLoss_0: 3.4215, FocalLoss_0: 0.0139
+2026-04-12 20:07:08,332 INFO: Epoch 56, Iter 9250, Batch 119, Loss: SoftIoULoss_0: 5.2059, WeightedDiceLoss_0: 4.0643, FocalLoss_0: 0.0211
+2026-04-12 20:07:14,215 INFO: Epoch 56, Iter 9260, Batch 129, Loss: SoftIoULoss_0: 5.3400, WeightedDiceLoss_0: 4.2791, FocalLoss_0: 0.0194
+2026-04-12 20:07:23,593 INFO: Epoch 56, Iter 9270, Batch 139, Loss: SoftIoULoss_0: 5.0910, WeightedDiceLoss_0: 3.9341, FocalLoss_0: 0.0216
+2026-04-12 20:07:29,311 INFO: Epoch 56, Iter 9280, Batch 149, Loss: SoftIoULoss_0: 5.6353, WeightedDiceLoss_0: 5.1491, FocalLoss_0: 0.0056
+2026-04-12 20:07:35,011 INFO: Epoch 56, Iter 9290, Batch 159, Loss: SoftIoULoss_0: 4.4978, WeightedDiceLoss_0: 3.9836, FocalLoss_0: 0.0139
+2026-04-12 20:08:09,757 INFO: [SAMamba][epoch: 56, lr:(2.806e-04,)] [eta: 2:19:17, time (epoch): 111.523 ] 
+TrainSet
+SoftIoULoss_0:9.6650e+01  WeightedDiceLoss_0:8.0793e+01  FocalLoss_0:3.5832e-01  
+m_fscore:0.5159  m_iou:0.3476  n_fscore:0.1308  n_iou:0.0955  
+TestSet
+SoftIoULoss_0:9.3757e+01  WeightedDiceLoss_0:7.6110e+01  FocalLoss_0:2.9056e-01  
+m_fscore:0.5239  m_iou:0.3549  n_fscore:0.1420  n_iou:0.1060  
+
+2026-04-12 20:08:09,758 INFO: Start epoch 57/120
+2026-04-12 20:08:12,733 INFO: Epoch 57, Iter 9300, Batch 3, Loss: SoftIoULoss_0: 98.8712, WeightedDiceLoss_0: 80.3633, FocalLoss_0: 0.3014
+2026-04-12 20:08:18,157 INFO: Epoch 57, Iter 9310, Batch 13, Loss: SoftIoULoss_0: 5.3016, WeightedDiceLoss_0: 4.8267, FocalLoss_0: 0.0060
+2026-04-12 20:08:23,457 INFO: Epoch 57, Iter 9320, Batch 23, Loss: SoftIoULoss_0: 6.0112, WeightedDiceLoss_0: 4.9192, FocalLoss_0: 0.0175
+2026-04-12 20:08:28,554 INFO: Epoch 57, Iter 9330, Batch 33, Loss: SoftIoULoss_0: 4.8142, WeightedDiceLoss_0: 3.6436, FocalLoss_0: 0.0219
+2026-04-12 20:08:37,272 INFO: Epoch 57, Iter 9340, Batch 43, Loss: SoftIoULoss_0: 5.1876, WeightedDiceLoss_0: 4.3054, FocalLoss_0: 0.0306
+2026-04-12 20:08:42,515 INFO: Epoch 57, Iter 9350, Batch 53, Loss: SoftIoULoss_0: 8.5283, WeightedDiceLoss_0: 7.8974, FocalLoss_0: 0.0276
+2026-04-12 20:08:47,925 INFO: Epoch 57, Iter 9360, Batch 63, Loss: SoftIoULoss_0: 7.4255, WeightedDiceLoss_0: 6.3789, FocalLoss_0: 0.0537
+2026-04-12 20:08:53,463 INFO: Epoch 57, Iter 9370, Batch 73, Loss: SoftIoULoss_0: 6.8841, WeightedDiceLoss_0: 5.9278, FocalLoss_0: 0.0501
+2026-04-12 20:08:58,997 INFO: Epoch 57, Iter 9380, Batch 83, Loss: SoftIoULoss_0: 6.1580, WeightedDiceLoss_0: 4.9780, FocalLoss_0: 0.0287
+2026-04-12 20:09:04,276 INFO: Epoch 57, Iter 9390, Batch 93, Loss: SoftIoULoss_0: 4.3837, WeightedDiceLoss_0: 3.1071, FocalLoss_0: 0.0164
+2026-04-12 20:09:13,440 INFO: Epoch 57, Iter 9400, Batch 103, Loss: SoftIoULoss_0: 5.9552, WeightedDiceLoss_0: 4.7013, FocalLoss_0: 0.0153
+2026-04-12 20:09:18,692 INFO: Epoch 57, Iter 9410, Batch 113, Loss: SoftIoULoss_0: 5.3186, WeightedDiceLoss_0: 4.1879, FocalLoss_0: 0.0178
+2026-04-12 20:09:23,961 INFO: Epoch 57, Iter 9420, Batch 123, Loss: SoftIoULoss_0: 5.9926, WeightedDiceLoss_0: 4.9417, FocalLoss_0: 0.0272
+2026-04-12 20:09:29,289 INFO: Epoch 57, Iter 9430, Batch 133, Loss: SoftIoULoss_0: 5.2464, WeightedDiceLoss_0: 4.2310, FocalLoss_0: 0.0206
+2026-04-12 20:09:34,715 INFO: Epoch 57, Iter 9440, Batch 143, Loss: SoftIoULoss_0: 4.4175, WeightedDiceLoss_0: 3.5927, FocalLoss_0: 0.0153
+2026-04-12 20:09:40,011 INFO: Epoch 57, Iter 9450, Batch 153, Loss: SoftIoULoss_0: 4.2514, WeightedDiceLoss_0: 3.6808, FocalLoss_0: 0.0049
+2026-04-12 20:09:48,860 INFO: Epoch 57, Iter 9460, Batch 163, Loss: SoftIoULoss_0: 5.4632, WeightedDiceLoss_0: 4.5301, FocalLoss_0: 0.0163
+2026-04-12 20:10:16,260 INFO: [SAMamba][epoch: 57, lr:(2.743e-04,)] [eta: 2:17:02, time (epoch): 100.007 ] 
+TrainSet
+SoftIoULoss_0:9.4257e+01  WeightedDiceLoss_0:7.8275e+01  FocalLoss_0:3.7523e-01  
+m_fscore:0.5044  m_iou:0.3372  n_fscore:0.1309  n_iou:0.0959  
+TestSet
+SoftIoULoss_0:8.8066e+01  WeightedDiceLoss_0:6.9724e+01  FocalLoss_0:3.1192e-01  
+m_fscore:0.5544  m_iou:0.3835  n_fscore:0.1502  n_iou:0.1150  
+
+2026-04-12 20:10:16,261 INFO: Start epoch 58/120
+2026-04-12 20:10:24,345 INFO: Epoch 58, Iter 9470, Batch 7, Loss: SoftIoULoss_0: 92.9950, WeightedDiceLoss_0: 73.9267, FocalLoss_0: 0.3206
+2026-04-12 20:10:29,608 INFO: Epoch 58, Iter 9480, Batch 17, Loss: SoftIoULoss_0: 5.3415, WeightedDiceLoss_0: 4.8602, FocalLoss_0: 0.0095
+2026-04-12 20:10:34,886 INFO: Epoch 58, Iter 9490, Batch 27, Loss: SoftIoULoss_0: 5.2739, WeightedDiceLoss_0: 4.0424, FocalLoss_0: 0.0164
+2026-04-12 20:10:40,069 INFO: Epoch 58, Iter 9500, Batch 37, Loss: SoftIoULoss_0: 5.4360, WeightedDiceLoss_0: 4.3416, FocalLoss_0: 0.0337
+2026-04-12 20:10:45,334 INFO: Epoch 58, Iter 9510, Batch 47, Loss: SoftIoULoss_0: 6.4998, WeightedDiceLoss_0: 5.5460, FocalLoss_0: 0.0276
+2026-04-12 20:10:50,485 INFO: Epoch 58, Iter 9520, Batch 57, Loss: SoftIoULoss_0: 7.5052, WeightedDiceLoss_0: 6.4955, FocalLoss_0: 0.0284
+2026-04-12 20:10:59,852 INFO: Epoch 58, Iter 9530, Batch 67, Loss: SoftIoULoss_0: 7.7985, WeightedDiceLoss_0: 6.8393, FocalLoss_0: 0.0566
+2026-04-12 20:11:05,661 INFO: Epoch 58, Iter 9540, Batch 77, Loss: SoftIoULoss_0: 6.0419, WeightedDiceLoss_0: 5.0018, FocalLoss_0: 0.0288
+2026-04-12 20:11:11,571 INFO: Epoch 58, Iter 9550, Batch 87, Loss: SoftIoULoss_0: 5.4737, WeightedDiceLoss_0: 4.3451, FocalLoss_0: 0.0259
+2026-04-12 20:11:17,335 INFO: Epoch 58, Iter 9560, Batch 97, Loss: SoftIoULoss_0: 5.4115, WeightedDiceLoss_0: 4.0929, FocalLoss_0: 0.0183
+2026-04-12 20:11:23,022 INFO: Epoch 58, Iter 9570, Batch 107, Loss: SoftIoULoss_0: 4.9771, WeightedDiceLoss_0: 3.7815, FocalLoss_0: 0.0163
+2026-04-12 20:11:32,412 INFO: Epoch 58, Iter 9580, Batch 117, Loss: SoftIoULoss_0: 5.6711, WeightedDiceLoss_0: 4.5528, FocalLoss_0: 0.0227
+2026-04-12 20:11:38,131 INFO: Epoch 58, Iter 9590, Batch 127, Loss: SoftIoULoss_0: 5.5015, WeightedDiceLoss_0: 4.5254, FocalLoss_0: 0.0221
+2026-04-12 20:11:43,835 INFO: Epoch 58, Iter 9600, Batch 137, Loss: SoftIoULoss_0: 4.3770, WeightedDiceLoss_0: 3.0891, FocalLoss_0: 0.0163
+2026-04-12 20:11:49,633 INFO: Epoch 58, Iter 9610, Batch 147, Loss: SoftIoULoss_0: 4.9696, WeightedDiceLoss_0: 4.3546, FocalLoss_0: 0.0076
+2026-04-12 20:11:55,479 INFO: Epoch 58, Iter 9620, Batch 157, Loss: SoftIoULoss_0: 4.4310, WeightedDiceLoss_0: 3.6331, FocalLoss_0: 0.0103
+2026-04-12 20:12:34,871 INFO: [SAMamba][epoch: 58, lr:(2.679e-04,)] [eta: 2:15:00, time (epoch): 104.392 ] 
+TrainSet
+SoftIoULoss_0:9.2796e+01  WeightedDiceLoss_0:7.6218e+01  FocalLoss_0:3.5957e-01  
+m_fscore:0.5182  m_iou:0.3497  n_fscore:0.1354  n_iou:0.1006  
+TestSet
+SoftIoULoss_0:9.8784e+01  WeightedDiceLoss_0:8.1317e+01  FocalLoss_0:3.1175e-01  
+m_fscore:0.5164  m_iou:0.3481  n_fscore:0.1357  n_iou:0.0990  
+
+2026-04-12 20:12:34,872 INFO: Start epoch 59/120
+2026-04-12 20:12:36,397 INFO: Epoch 59, Iter 9630, Batch 1, Loss: SoftIoULoss_0: 104.2813, WeightedDiceLoss_0: 85.8372, FocalLoss_0: 0.3313
+2026-04-12 20:12:45,192 INFO: Epoch 59, Iter 9640, Batch 11, Loss: SoftIoULoss_0: 4.7434, WeightedDiceLoss_0: 4.3865, FocalLoss_0: 0.0059
+2026-04-12 20:12:50,267 INFO: Epoch 59, Iter 9650, Batch 21, Loss: SoftIoULoss_0: 5.6112, WeightedDiceLoss_0: 4.4781, FocalLoss_0: 0.0144
+2026-04-12 20:12:55,489 INFO: Epoch 59, Iter 9660, Batch 31, Loss: SoftIoULoss_0: 5.5470, WeightedDiceLoss_0: 4.3864, FocalLoss_0: 0.0214
+2026-04-12 20:13:00,714 INFO: Epoch 59, Iter 9670, Batch 41, Loss: SoftIoULoss_0: 5.6076, WeightedDiceLoss_0: 4.6509, FocalLoss_0: 0.0361
+2026-04-12 20:13:06,020 INFO: Epoch 59, Iter 9680, Batch 51, Loss: SoftIoULoss_0: 7.6313, WeightedDiceLoss_0: 6.7304, FocalLoss_0: 0.0245
+2026-04-12 20:13:12,044 INFO: Epoch 59, Iter 9690, Batch 61, Loss: SoftIoULoss_0: 6.7982, WeightedDiceLoss_0: 5.5933, FocalLoss_0: 0.0287
+2026-04-12 20:13:21,609 INFO: Epoch 59, Iter 9700, Batch 71, Loss: SoftIoULoss_0: 7.8413, WeightedDiceLoss_0: 7.0137, FocalLoss_0: 0.0551
+2026-04-12 20:13:26,965 INFO: Epoch 59, Iter 9710, Batch 81, Loss: SoftIoULoss_0: 5.9058, WeightedDiceLoss_0: 4.7354, FocalLoss_0: 0.0260
+2026-04-12 20:13:32,237 INFO: Epoch 59, Iter 9720, Batch 91, Loss: SoftIoULoss_0: 4.9237, WeightedDiceLoss_0: 3.6219, FocalLoss_0: 0.0188
+2026-04-12 20:13:37,497 INFO: Epoch 59, Iter 9730, Batch 101, Loss: SoftIoULoss_0: 5.0684, WeightedDiceLoss_0: 3.8007, FocalLoss_0: 0.0155
+2026-04-12 20:13:43,097 INFO: Epoch 59, Iter 9740, Batch 111, Loss: SoftIoULoss_0: 4.7211, WeightedDiceLoss_0: 3.4753, FocalLoss_0: 0.0144
+2026-04-12 20:13:48,504 INFO: Epoch 59, Iter 9750, Batch 121, Loss: SoftIoULoss_0: 6.7612, WeightedDiceLoss_0: 5.7713, FocalLoss_0: 0.0293
+2026-04-12 20:13:58,028 INFO: Epoch 59, Iter 9760, Batch 131, Loss: SoftIoULoss_0: 5.4779, WeightedDiceLoss_0: 4.3703, FocalLoss_0: 0.0196
+2026-04-12 20:14:04,219 INFO: Epoch 59, Iter 9770, Batch 141, Loss: SoftIoULoss_0: 5.4051, WeightedDiceLoss_0: 4.3532, FocalLoss_0: 0.0227
+2026-04-12 20:14:09,465 INFO: Epoch 59, Iter 9780, Batch 151, Loss: SoftIoULoss_0: 4.8780, WeightedDiceLoss_0: 4.2511, FocalLoss_0: 0.0089
+2026-04-12 20:14:14,920 INFO: Epoch 59, Iter 9790, Batch 161, Loss: SoftIoULoss_0: 5.5444, WeightedDiceLoss_0: 4.8780, FocalLoss_0: 0.0229
+2026-04-12 20:14:48,660 INFO: [SAMamba][epoch: 59, lr:(2.615e-04,)] [eta: 2:12:53, time (epoch): 102.270 ] 
+TrainSet
+SoftIoULoss_0:9.5891e+01  WeightedDiceLoss_0:7.9307e+01  FocalLoss_0:3.7725e-01  
+m_fscore:0.4993  m_iou:0.3327  n_fscore:0.1272  n_iou:0.0919  
+TestSet
+SoftIoULoss_0:8.4207e+01  WeightedDiceLoss_0:6.6078e+01  FocalLoss_0:2.9479e-01  
+m_fscore:0.5665  m_iou:0.3951  n_fscore:0.1545  n_iou:0.1192  
+
+2026-04-12 20:14:48,661 INFO: Start epoch 60/120
+2026-04-12 20:14:52,489 INFO: Epoch 60, Iter 9800, Batch 5, Loss: SoftIoULoss_0: 89.3261, WeightedDiceLoss_0: 70.2533, FocalLoss_0: 0.3059
+2026-04-12 20:14:58,790 INFO: Epoch 60, Iter 9810, Batch 15, Loss: SoftIoULoss_0: 6.3541, WeightedDiceLoss_0: 5.8040, FocalLoss_0: 0.0125
+2026-04-12 20:15:09,017 INFO: Epoch 60, Iter 9820, Batch 25, Loss: SoftIoULoss_0: 5.9602, WeightedDiceLoss_0: 4.7304, FocalLoss_0: 0.0184
+2026-04-12 20:15:15,626 INFO: Epoch 60, Iter 9830, Batch 35, Loss: SoftIoULoss_0: 5.7243, WeightedDiceLoss_0: 4.6428, FocalLoss_0: 0.0296
+2026-04-12 20:15:22,132 INFO: Epoch 60, Iter 9840, Batch 45, Loss: SoftIoULoss_0: 5.6678, WeightedDiceLoss_0: 4.6561, FocalLoss_0: 0.0273
+2026-04-12 20:15:28,684 INFO: Epoch 60, Iter 9850, Batch 55, Loss: SoftIoULoss_0: 8.1322, WeightedDiceLoss_0: 7.2423, FocalLoss_0: 0.0220
+2026-04-12 20:15:35,226 INFO: Epoch 60, Iter 9860, Batch 65, Loss: SoftIoULoss_0: 6.9831, WeightedDiceLoss_0: 5.8983, FocalLoss_0: 0.0507
+2026-04-12 20:15:45,327 INFO: Epoch 60, Iter 9870, Batch 75, Loss: SoftIoULoss_0: 6.3852, WeightedDiceLoss_0: 5.4188, FocalLoss_0: 0.0389
+2026-04-12 20:15:51,862 INFO: Epoch 60, Iter 9880, Batch 85, Loss: SoftIoULoss_0: 5.9696, WeightedDiceLoss_0: 4.5962, FocalLoss_0: 0.0208
+2026-04-12 20:15:58,418 INFO: Epoch 60, Iter 9890, Batch 95, Loss: SoftIoULoss_0: 4.9365, WeightedDiceLoss_0: 3.6632, FocalLoss_0: 0.0164
+2026-04-12 20:16:04,969 INFO: Epoch 60, Iter 9900, Batch 105, Loss: SoftIoULoss_0: 5.7417, WeightedDiceLoss_0: 4.5324, FocalLoss_0: 0.0163
+2026-04-12 20:16:11,769 INFO: Epoch 60, Iter 9910, Batch 115, Loss: SoftIoULoss_0: 4.9364, WeightedDiceLoss_0: 3.7086, FocalLoss_0: 0.0167
+2026-04-12 20:16:21,450 INFO: Epoch 60, Iter 9920, Batch 125, Loss: SoftIoULoss_0: 6.1893, WeightedDiceLoss_0: 5.2276, FocalLoss_0: 0.0272
+2026-04-12 20:16:26,730 INFO: Epoch 60, Iter 9930, Batch 135, Loss: SoftIoULoss_0: 5.2687, WeightedDiceLoss_0: 4.1653, FocalLoss_0: 0.0304
+2026-04-12 20:16:31,966 INFO: Epoch 60, Iter 9940, Batch 145, Loss: SoftIoULoss_0: 3.5555, WeightedDiceLoss_0: 2.7748, FocalLoss_0: 0.0098
+2026-04-12 20:16:37,106 INFO: Epoch 60, Iter 9950, Batch 155, Loss: SoftIoULoss_0: 5.4970, WeightedDiceLoss_0: 4.8464, FocalLoss_0: 0.0066
+2026-04-12 20:16:42,083 INFO: Epoch 60, Iter 9960, Batch 165, Loss: SoftIoULoss_0: 4.8079, WeightedDiceLoss_0: 3.6799, FocalLoss_0: 0.0181
+2026-04-12 20:17:13,044 INFO: [SAMamba][epoch: 60, lr:(2.550e-04,)] [eta: 2:10:56, time (epoch): 113.424 ] 
+TrainSet
+SoftIoULoss_0:9.5298e+01  WeightedDiceLoss_0:7.8392e+01  FocalLoss_0:3.6664e-01  
+m_fscore:0.5151  m_iou:0.3469  n_fscore:0.1296  n_iou:0.0937  
+TestSet
+SoftIoULoss_0:8.2384e+01  WeightedDiceLoss_0:6.4545e+01  FocalLoss_0:2.7183e-01  
+m_fscore:0.5847  m_iou:0.4131  n_fscore:0.1580  n_iou:0.1239  
+
+2026-04-12 20:17:13,045 INFO: Start epoch 61/120
+2026-04-12 20:17:18,799 INFO: Epoch 61, Iter 9970, Batch 9, Loss: SoftIoULoss_0: 86.9721, WeightedDiceLoss_0: 68.7096, FocalLoss_0: 0.2803
+2026-04-12 20:17:23,827 INFO: Epoch 61, Iter 9980, Batch 19, Loss: SoftIoULoss_0: 5.4752, WeightedDiceLoss_0: 4.6315, FocalLoss_0: 0.0142
+2026-04-12 20:17:32,423 INFO: Epoch 61, Iter 9990, Batch 29, Loss: SoftIoULoss_0: 5.1180, WeightedDiceLoss_0: 3.7670, FocalLoss_0: 0.0186
+2026-04-12 20:17:37,718 INFO: Epoch 61, Iter 10000, Batch 39, Loss: SoftIoULoss_0: 5.6877, WeightedDiceLoss_0: 4.6960, FocalLoss_0: 0.0328
+2026-04-12 20:17:42,925 INFO: Epoch 61, Iter 10010, Batch 49, Loss: SoftIoULoss_0: 7.2032, WeightedDiceLoss_0: 6.2774, FocalLoss_0: 0.0246
+2026-04-12 20:17:48,255 INFO: Epoch 61, Iter 10020, Batch 59, Loss: SoftIoULoss_0: 7.7643, WeightedDiceLoss_0: 6.8335, FocalLoss_0: 0.0312
+2026-04-12 20:17:53,600 INFO: Epoch 61, Iter 10030, Batch 69, Loss: SoftIoULoss_0: 8.3709, WeightedDiceLoss_0: 7.5973, FocalLoss_0: 0.0567
+2026-04-12 20:17:58,827 INFO: Epoch 61, Iter 10040, Batch 79, Loss: SoftIoULoss_0: 6.2226, WeightedDiceLoss_0: 5.1801, FocalLoss_0: 0.0206
+2026-04-12 20:18:07,810 INFO: Epoch 61, Iter 10050, Batch 89, Loss: SoftIoULoss_0: 4.5848, WeightedDiceLoss_0: 3.3145, FocalLoss_0: 0.0170
+2026-04-12 20:18:13,331 INFO: Epoch 61, Iter 10060, Batch 99, Loss: SoftIoULoss_0: 5.4514, WeightedDiceLoss_0: 4.2543, FocalLoss_0: 0.0198
+2026-04-12 20:18:18,648 INFO: Epoch 61, Iter 10070, Batch 109, Loss: SoftIoULoss_0: 4.7722, WeightedDiceLoss_0: 3.4781, FocalLoss_0: 0.0155
+2026-04-12 20:18:23,888 INFO: Epoch 61, Iter 10080, Batch 119, Loss: SoftIoULoss_0: 4.9217, WeightedDiceLoss_0: 3.7778, FocalLoss_0: 0.0181
+2026-04-12 20:18:29,179 INFO: Epoch 61, Iter 10090, Batch 129, Loss: SoftIoULoss_0: 5.0777, WeightedDiceLoss_0: 3.9260, FocalLoss_0: 0.0196
+2026-04-12 20:18:34,405 INFO: Epoch 61, Iter 10100, Batch 139, Loss: SoftIoULoss_0: 4.6020, WeightedDiceLoss_0: 3.4396, FocalLoss_0: 0.0185
+2026-04-12 20:18:43,083 INFO: Epoch 61, Iter 10110, Batch 149, Loss: SoftIoULoss_0: 5.0332, WeightedDiceLoss_0: 4.5024, FocalLoss_0: 0.0060
+2026-04-12 20:18:48,857 INFO: Epoch 61, Iter 10120, Batch 159, Loss: SoftIoULoss_0: 4.2152, WeightedDiceLoss_0: 3.4285, FocalLoss_0: 0.0121
+2026-04-12 20:19:23,369 INFO: [SAMamba][epoch: 61, lr:(2.486e-04,)] [eta: 2:08:44, time (epoch): 99.126 ] 
+TrainSet
+SoftIoULoss_0:9.1875e+01  WeightedDiceLoss_0:7.5210e+01  FocalLoss_0:3.3965e-01  
+m_fscore:0.5362  m_iou:0.3663  n_fscore:0.1349  n_iou:0.1006  
+TestSet
+SoftIoULoss_0:7.8605e+01  WeightedDiceLoss_0:6.0871e+01  FocalLoss_0:2.4612e-01  
+m_fscore:0.6290  m_iou:0.4587  n_fscore:0.1648  n_iou:0.1305  
+
+2026-04-12 20:19:23,370 INFO: Start epoch 62/120
+2026-04-12 20:19:26,007 INFO: Epoch 62, Iter 10130, Batch 3, Loss: SoftIoULoss_0: 83.2652, WeightedDiceLoss_0: 64.4630, FocalLoss_0: 0.2555
+2026-04-12 20:19:31,294 INFO: Epoch 62, Iter 10140, Batch 13, Loss: SoftIoULoss_0: 5.0788, WeightedDiceLoss_0: 4.4436, FocalLoss_0: 0.0072
+2026-04-12 20:19:36,577 INFO: Epoch 62, Iter 10150, Batch 23, Loss: SoftIoULoss_0: 6.4806, WeightedDiceLoss_0: 5.4680, FocalLoss_0: 0.0205
+2026-04-12 20:19:41,904 INFO: Epoch 62, Iter 10160, Batch 33, Loss: SoftIoULoss_0: 5.2600, WeightedDiceLoss_0: 4.0521, FocalLoss_0: 0.0270
+2026-04-12 20:19:47,244 INFO: Epoch 62, Iter 10170, Batch 43, Loss: SoftIoULoss_0: 5.9666, WeightedDiceLoss_0: 5.0426, FocalLoss_0: 0.0348
+2026-04-12 20:19:56,204 INFO: Epoch 62, Iter 10180, Batch 53, Loss: SoftIoULoss_0: 7.6130, WeightedDiceLoss_0: 6.7589, FocalLoss_0: 0.0163
+2026-04-12 20:20:01,481 INFO: Epoch 62, Iter 10190, Batch 63, Loss: SoftIoULoss_0: 6.7846, WeightedDiceLoss_0: 5.7065, FocalLoss_0: 0.0378
+2026-04-12 20:20:06,689 INFO: Epoch 62, Iter 10200, Batch 73, Loss: SoftIoULoss_0: 6.8845, WeightedDiceLoss_0: 5.9623, FocalLoss_0: 0.0452
+2026-04-12 20:20:12,184 INFO: Epoch 62, Iter 10210, Batch 83, Loss: SoftIoULoss_0: 5.7452, WeightedDiceLoss_0: 4.5035, FocalLoss_0: 0.0266
+2026-04-12 20:20:17,456 INFO: Epoch 62, Iter 10220, Batch 93, Loss: SoftIoULoss_0: 4.8856, WeightedDiceLoss_0: 3.6321, FocalLoss_0: 0.0187
+2026-04-12 20:20:22,698 INFO: Epoch 62, Iter 10230, Batch 103, Loss: SoftIoULoss_0: 5.9688, WeightedDiceLoss_0: 4.9487, FocalLoss_0: 0.0161
+2026-04-12 20:20:31,548 INFO: Epoch 62, Iter 10240, Batch 113, Loss: SoftIoULoss_0: 4.5140, WeightedDiceLoss_0: 3.1958, FocalLoss_0: 0.0147
+2026-04-12 20:20:36,867 INFO: Epoch 62, Iter 10250, Batch 123, Loss: SoftIoULoss_0: 6.0344, WeightedDiceLoss_0: 5.1167, FocalLoss_0: 0.0223
+2026-04-12 20:20:42,151 INFO: Epoch 62, Iter 10260, Batch 133, Loss: SoftIoULoss_0: 5.7796, WeightedDiceLoss_0: 4.6593, FocalLoss_0: 0.0234
+2026-04-12 20:20:47,508 INFO: Epoch 62, Iter 10270, Batch 143, Loss: SoftIoULoss_0: 4.2563, WeightedDiceLoss_0: 3.3270, FocalLoss_0: 0.0152
+2026-04-12 20:20:52,820 INFO: Epoch 62, Iter 10280, Batch 153, Loss: SoftIoULoss_0: 3.1381, WeightedDiceLoss_0: 2.5933, FocalLoss_0: 0.0031
+2026-04-12 20:20:58,077 INFO: Epoch 62, Iter 10290, Batch 163, Loss: SoftIoULoss_0: 4.6234, WeightedDiceLoss_0: 3.6119, FocalLoss_0: 0.0138
+2026-04-12 20:21:28,393 INFO: [SAMamba][epoch: 62, lr:(2.422e-04,)] [eta: 2:06:28, time (epoch): 95.626 ] 
+TrainSet
+SoftIoULoss_0:9.1679e+01  WeightedDiceLoss_0:7.5194e+01  FocalLoss_0:3.4764e-01  
+m_fscore:0.5406  m_iou:0.3704  n_fscore:0.1374  n_iou:0.1007  
+TestSet
+SoftIoULoss_0:7.9238e+01  WeightedDiceLoss_0:6.1343e+01  FocalLoss_0:2.4868e-01  
+m_fscore:0.6213  m_iou:0.4506  n_fscore:0.1641  n_iou:0.1296  
+
+2026-04-12 20:21:28,394 INFO: Start epoch 63/120
+2026-04-12 20:21:33,148 INFO: Epoch 63, Iter 10300, Batch 7, Loss: SoftIoULoss_0: 83.3342, WeightedDiceLoss_0: 64.8411, FocalLoss_0: 0.2580
+2026-04-12 20:21:41,944 INFO: Epoch 63, Iter 10310, Batch 17, Loss: SoftIoULoss_0: 4.7910, WeightedDiceLoss_0: 4.0680, FocalLoss_0: 0.0090
+2026-04-12 20:21:47,183 INFO: Epoch 63, Iter 10320, Batch 27, Loss: SoftIoULoss_0: 5.0584, WeightedDiceLoss_0: 3.8518, FocalLoss_0: 0.0168
+2026-04-12 20:21:52,383 INFO: Epoch 63, Iter 10330, Batch 37, Loss: SoftIoULoss_0: 5.2912, WeightedDiceLoss_0: 4.2089, FocalLoss_0: 0.0327
+2026-04-12 20:21:57,605 INFO: Epoch 63, Iter 10340, Batch 47, Loss: SoftIoULoss_0: 6.5253, WeightedDiceLoss_0: 5.5803, FocalLoss_0: 0.0325
+2026-04-12 20:22:02,912 INFO: Epoch 63, Iter 10350, Batch 57, Loss: SoftIoULoss_0: 7.6065, WeightedDiceLoss_0: 6.6636, FocalLoss_0: 0.0255
+2026-04-12 20:22:08,176 INFO: Epoch 63, Iter 10360, Batch 67, Loss: SoftIoULoss_0: 7.0996, WeightedDiceLoss_0: 5.9851, FocalLoss_0: 0.0475
+2026-04-12 20:22:17,211 INFO: Epoch 63, Iter 10370, Batch 77, Loss: SoftIoULoss_0: 6.3866, WeightedDiceLoss_0: 5.3354, FocalLoss_0: 0.0320
+2026-04-12 20:22:22,453 INFO: Epoch 63, Iter 10380, Batch 87, Loss: SoftIoULoss_0: 5.3279, WeightedDiceLoss_0: 4.0496, FocalLoss_0: 0.0184
+2026-04-12 20:22:27,669 INFO: Epoch 63, Iter 10390, Batch 97, Loss: SoftIoULoss_0: 5.1784, WeightedDiceLoss_0: 3.9514, FocalLoss_0: 0.0154
+2026-04-12 20:22:32,885 INFO: Epoch 63, Iter 10400, Batch 107, Loss: SoftIoULoss_0: 5.4529, WeightedDiceLoss_0: 4.5113, FocalLoss_0: 0.0165
+2026-04-12 20:22:38,224 INFO: Epoch 63, Iter 10410, Batch 117, Loss: SoftIoULoss_0: 5.1397, WeightedDiceLoss_0: 3.8053, FocalLoss_0: 0.0189
+2026-04-12 20:22:43,548 INFO: Epoch 63, Iter 10420, Batch 127, Loss: SoftIoULoss_0: 5.8315, WeightedDiceLoss_0: 4.7794, FocalLoss_0: 0.0222
+2026-04-12 20:22:48,959 INFO: Epoch 63, Iter 10430, Batch 137, Loss: SoftIoULoss_0: 4.9900, WeightedDiceLoss_0: 3.7638, FocalLoss_0: 0.0229
+2026-04-12 20:22:57,835 INFO: Epoch 63, Iter 10440, Batch 147, Loss: SoftIoULoss_0: 4.7849, WeightedDiceLoss_0: 4.0757, FocalLoss_0: 0.0117
+2026-04-12 20:23:03,072 INFO: Epoch 63, Iter 10450, Batch 157, Loss: SoftIoULoss_0: 4.7713, WeightedDiceLoss_0: 4.0486, FocalLoss_0: 0.0112
+2026-04-12 20:23:36,719 INFO: [SAMamba][epoch: 63, lr:(2.358e-04,)] [eta: 2:04:15, time (epoch): 98.782 ] 
+TrainSet
+SoftIoULoss_0:9.1836e+01  WeightedDiceLoss_0:7.5129e+01  FocalLoss_0:3.5400e-01  
+m_fscore:0.5260  m_iou:0.3568  n_fscore:0.1351  n_iou:0.0990  
+TestSet
+SoftIoULoss_0:7.8920e+01  WeightedDiceLoss_0:6.0795e+01  FocalLoss_0:2.7486e-01  
+m_fscore:0.5898  m_iou:0.4182  n_fscore:0.1620  n_iou:0.1281  
+
+2026-04-12 20:23:36,719 INFO: Start epoch 64/120
+2026-04-12 20:23:38,146 INFO: Epoch 64, Iter 10460, Batch 1, Loss: SoftIoULoss_0: 84.1396, WeightedDiceLoss_0: 65.1462, FocalLoss_0: 0.2932
+2026-04-12 20:23:43,340 INFO: Epoch 64, Iter 10470, Batch 11, Loss: SoftIoULoss_0: 4.7166, WeightedDiceLoss_0: 4.1750, FocalLoss_0: 0.0041
+2026-04-12 20:23:48,616 INFO: Epoch 64, Iter 10480, Batch 21, Loss: SoftIoULoss_0: 5.4177, WeightedDiceLoss_0: 4.2322, FocalLoss_0: 0.0138

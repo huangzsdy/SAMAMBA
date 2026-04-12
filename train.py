@@ -91,9 +91,11 @@ def main():
 
     import setproctitle
     setproctitle.setproctitle(opt['exp']['name'])
+
     # 自动检测单卡还是多卡模式
     # 方式1: 使用 torch.distributed.launch (设置 WORLD_SIZE)
     world_size = int(os.environ.get('WORLD_SIZE', 1))
+    local_rank = args.local_rank if args.local_rank >= 0 else 0
 
     if world_size > 1:
         # 多卡模式 (通过 torch.distributed.launch 启动)
@@ -104,30 +106,25 @@ def main():
         cur_rank = dist.get_rank()
         torch.cuda.set_device(cur_rank)
     else:
-        # 单卡模式
-        os.environ['CUDA_VISIBLE_DEVICES'] = str(opt['exp']['device'])
-        if isinstance(opt['exp']['device'], int):
+        # 单卡模式 - 检查是否在 yaml 中配置了多卡字符串
+        if isinstance(opt['exp']['device'], str) and ',' in opt['exp']['device']:
+            # 多卡字符串 "0,1,2,3" - 不支持这种方式，改用 launch 或 spawn
+            print("Warning: 多卡字符串格式不支持，请使用 torch.distributed.launch 方式启动")
+            print("例如: python -m torch.distributed.launch --nproc_per_node=4 train.py --opt options/train.yaml")
             opt['exp']['dist'] = False
             cur_rank = 0
             total_device = 1
             opt['exp']['num_devices'] = total_device
-        elif isinstance(opt['exp']['device'], str):
-            # 检查是否是逗号分隔的多卡字符串
-            if ',' in opt['exp']['device']:
-                # 多卡字符串 "0,1,2,3"
-                opt['exp']['dist'] = True
-                dist.init_process_group(backend='nccl')
-                device_list = opt['exp']['device'].split(',')
-                total_device = len(device_list)
-                opt['exp']['num_devices'] = total_device
-                cur_rank = dist.get_rank()
-                torch.cuda.set_device(cur_rank)
-            else:
-                # 单卡字符串 "0" 或 "1"
-                opt['exp']['dist'] = False
-                cur_rank = 0
-                total_device = 1
-                opt['exp']['num_devices'] = total_device
+        else:
+            # 单卡模式
+            if isinstance(opt['exp']['device'], int):
+                os.environ['CUDA_VISIBLE_DEVICES'] = str(opt['exp']['device'])
+            elif isinstance(opt['exp']['device'], str):
+                os.environ['CUDA_VISIBLE_DEVICES'] = opt['exp']['device']
+            opt['exp']['dist'] = False
+            cur_rank = 0
+            total_device = 1
+            opt['exp']['num_devices'] = total_device
 
     # init dataset
     trainset, testset = init_dataset(opt)
@@ -172,10 +169,15 @@ def main():
         ########## training ##########
         for idx, data in enumerate(train_loader):
             cur_iter += 1
-            if cur_iter % opt['exp'].get('log_interval', 10) == 0:
-                logger.info(f'Epoch {epoch}, Iter {cur_iter}/{total_iters}, Batch {idx}/{len(train_loader)}')
             model.update_learning_rate(cur_iter, idx)
             model.optimize_one_iter(data, epoch)
+
+            # 打印每个 batch 的 loss
+            if cur_iter % opt['exp'].get('log_interval', 10) == 0:
+                batch_loss_dict = model.get_batch_loss(reduction='sum')
+                loss_str = ', '.join([f'{k}: {v:.4f}' for k, v in batch_loss_dict.items()])
+                logger.info(f'Epoch {epoch}, Iter {cur_iter}, Batch {idx}, Loss: {loss_str}')
+
         epoch_time = time.time() - epoch_st_time
         log_vars = {'epoch': epoch}
         log_vars.update({'lrs': model.get_current_learning_rate()})
@@ -187,11 +189,15 @@ def main():
         if cur_rank == 0 and epoch % test_interval == 0:
             # model.net.eval()
             model.model_to_eval()
+            model.reset_metric()  # 重置 metric，确保重新计算
             for idx, data in enumerate(test_loader):
                 model.test_one_iter(data)
             log_vars.update({'test_loss': model.get_epoch_loss()})
             test_mean_metric = model.get_mean_metric()
+            print(f"DEBUG after get_mean_metric: tp={model.metric.tp}, fp={model.metric.fp}, fn={model.metric.fn}")
             test_norm_metric = model.get_norm_metric()
+            print(f"DEBUG test_mean_metric: {test_mean_metric}")
+            print(f"DEBUG test_norm_metric: {test_norm_metric}")
             log_vars.update({'test_mean_metric': test_mean_metric})
             log_vars.update({'test_norm_metric': test_norm_metric})
             if test_mean_metric['iou'] > model.best_mean_metric['iou']:
@@ -218,9 +224,12 @@ def main():
     ########## trainging done ##########
     if cur_rank == 0:
         model.save_network(opt, model.net, current_epoch='latest')
-        model.save_network(opt, model.best_mean_metric['net'], current_epoch='best_mean', net_dict=True)
-        model.save_network(opt, model.best_norm_metric['net'], current_epoch='best_norm', net_dict=True)
-        model.save_network(opt, model.best_F1['net'], current_epoch='best_F1', net_dict=True)
+        if model.best_mean_metric['net'] is not None:
+            model.save_network(opt, model.best_mean_metric['net'], current_epoch='best_mean', net_dict=True)
+        if model.best_norm_metric['net'] is not None:
+            model.save_network(opt, model.best_norm_metric['net'], current_epoch='best_norm', net_dict=True)
+        if model.best_F1['net'] is not None:
+            model.save_network(opt, model.best_F1['net'], current_epoch='best_F1', net_dict=True)
         logger.info(f"best_mean_metric: [epoch: {model.best_mean_metric['epoch']}] [iou: {model.best_mean_metric['iou']:.4f}]")
         logger.info(f"best_norm_metric: [epoch: {model.best_norm_metric['epoch']}] [iou: {model.best_norm_metric['iou']:.4f}]")
         logger.info(f"best_F1: [epoch: {model.best_F1['epoch']}] [F1: {model.best_F1['F1']:.4f}]")

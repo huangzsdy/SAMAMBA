@@ -1,21 +1,21 @@
 exp:
   name: SAMamba
   save_exp: True
-  bs: 2
+  bs: 4                    # 增大 batch size
   total_epochs: 120
-  log_interval: 1
-  save_interval: 60
+  log_interval: 10          # 减少日志频率
+  save_interval: 1
   test_interval: 1
-  device: 0
-  nw: 4                    # 数据加载线程数，加速数据读取
+  device: 0                 # 单卡用整数，多卡用 launch 方式启动
+  nw: 8                    # 数据加载线程数
 
-  # 加速训练配置 (最快稳定模式: AMP + 梯度累积)
+  # 加速训练配置
   use_amp: True
-  accum_steps: 4
-  use_compile: False         # 关闭，兼容 AMP + 梯度累积
-  pin_memory: True           # 锁页内存，加速CPU-GPU传输
-  prefetch_factor: 4         # 数据预取数量
-  channels_last: True        # channels_last 内存格式，提速约10-20%
+  accum_steps: 1           # batch够大，关闭梯度累积
+  use_compile: False
+  pin_memory: True
+  prefetch_factor: 2        # 减少预取
+  channels_last: True
 model:
   net:
     type: SAMamba
@@ -51,13 +51,14 @@ dataset:
   train:
     type: Dataset_aug_bac
     data_root: /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/trainval
-    img_sz: 1024
+    img_sz: 512
+    bd_loss: False
 
   test:
     type: Dataset_test
     data_root:  /mnt/c/users/ThinkPad/my_own_files/for_min/my_own_files/study/ai/dataset/NUDT-SIRST/test
-    img_sz: 1024
+    img_sz: 512
 
 resume:
-  net_path: 
+  net_path:
   state_path:

@@ -32,6 +32,10 @@ class Seg_model(Base_model):
         self.metric = Binary_metric()
         self.epoch_metric = {}
         self.batch_metric = {}
+
+    def reset_metric(self):
+        """重置 metric，确保测试时重新计算"""
+        self.metric = Binary_metric()
         
     def get_mean_metric(self, dist=False, reduction='mean'):
         if dist:
@@ -155,4 +159,10 @@ class Seg_model(Base_model):
                         self.epoch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
                         self.batch_loss[loss_type + '_' + str(idx)] += loss.detach().clone()
                 self.metric.update(pred=pred[0], target=mask)
+
+                # 调试打印
+                print(f"DEBUG: pred[0] shape={pred[0].shape}, min={pred[0].min():.4f}, max={pred[0].max():.4f}, mask sum={mask.sum()}")
+
+                # 直接在 metric 上打印
+                print(f"DEBUG metric: tp={self.metric.tp}, fp={self.metric.fp}, fn={self.metric.fn}")
 
